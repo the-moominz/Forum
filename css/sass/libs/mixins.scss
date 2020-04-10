@@ -8,6 +8,6 @@
     border-right: $size solid transparent;
     position: absolute;
     bottom: $size * -1;
-    left: calc(50% - $size);
+    left: calc(50% - #{$size});
   }
 }
