@@ -1,9 +1,60 @@
-* {
-  margin: 0;
+@charset "UTF-8";
+/* On déclare les styles globaux */
+html {
+  /* 1 rem = 10px */
+  font-size: 62.5%;
 }
 
-.uneclasse {
-  color: #363;
+body {
+  background-color: #3580dd;
+  font-family: "Work Sans";
+  font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  /* Propriétés pour rendre les images responsive */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Déclaration des styles pour la mise en forme du HEADER */
+header {
+  /* structure */
+  height: 500px;
+  /* background */
+  background-image: url("../img/ban.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+/* Mise en forme de la barre de navigation */
+.nav {
+  /* structure */
+  width: 100%;
+}
+
+.nav.navbar {
+  /* structure */
+  /* presentation */
+  background-color: #293c67;
+}
+
+#logo {
+  width: 50px;
+}
+
+/* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
+#pseudo {
+  /* presentation */
+  font-family: "Megrim";
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=style.css.map */

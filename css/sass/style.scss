@@ -1,7 +1,71 @@
-* {
-  margin: 0;
+@import "libs/responsive.scss";
+@import "libs/mixins.scss";
+
+$black: #2e2947;
+$white: #f3ebdf;
+$red: #f00346;
+$primary: #293c67;
+$backgroundColor: #3580dd;
+
+$globalFont: 'Work Sans';
+$titleFont: 'Megrim';
+
+/* On déclare les styles globaux */
+html { /* 1 rem = 10px */
+  font-size: 62.5%;
 }
-$couleur: #363;
-.uneclasse {
-    color: $couleur;
+
+body {
+  background-color: $backgroundColor;
+  font-family: $globalFont;
+  font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img { /* Propriétés pour rendre les images responsive */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Déclaration des styles pour la mise en forme du HEADER */
+header {
+  /* structure */
+  height: 500px;
+
+  /* background */
+  background : {
+    image: url('../img/ban.png');
+    repeat: no-repeat;
+    size: cover;
+    position: bottom;
+  }
+}
+
+/* Mise en forme de la barre de navigation */
+.nav {
+  /* structure */
+  width: 100%;
+}
+.nav.navbar {
+  /* structure */
+
+
+  /* presentation */
+  background-color: $primary;
+}
+
+#logo {
+  width: 50px;
+}
+
+/* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
+#pseudo {
+  /* presentation */
+  font-family: $titleFont;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
 }

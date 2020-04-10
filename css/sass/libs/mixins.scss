@@ -1,0 +1,13 @@
+@mixin triangle ($color, $size) {
+  &::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    position: absolute;
+    bottom: $size * -1;
+    left: calc(50% - $size);
+  }
+}
