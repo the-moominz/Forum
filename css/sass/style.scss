@@ -3,9 +3,10 @@
 
 $black: #2e2947;
 $white: #f3ebdf;
-$red: #f00346;
-$primary: #293c67;
-$backgroundColor: #3580dd;
+$pink: #DC28E3;
+$primary: #2D2F62;
+$backgroundColor: #7776B8;
+$padding: 20px;
 
 $globalFont: 'Work Sans';
 $titleFont: 'Megrim';
@@ -68,4 +69,18 @@ header {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
+}
+
+
+
+
+/* Footer */
+footer {
+  /* structure */
+  padding: $padding - 10px;
+
+  /* presentation */
+  background-color: $primary;
+  text-align: center;
+  color: $white;
 }

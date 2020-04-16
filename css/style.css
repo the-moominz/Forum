@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  background-color: #3580dd;
+  background-color: #7776B8;
   font-family: "Work Sans";
   font-size: 1.4rem;
 }
@@ -41,7 +41,7 @@ header {
 .nav.navbar {
   /* structure */
   /* presentation */
-  background-color: #293c67;
+  background-color: #2D2F62;
 }
 
 #logo {
@@ -55,6 +55,16 @@ header {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
+}
+
+/* Footer */
+footer {
+  /* structure */
+  padding: 10px;
+  /* presentation */
+  background-color: #2D2F62;
+  text-align: center;
+  color: #f3ebdf;
 }
 
 /*# sourceMappingURL=style.css.map */
