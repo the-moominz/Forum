@@ -12,6 +12,9 @@ $globalFont: 'Work Sans';
 $titleFont: 'Megrim';
 
 /* On déclare les styles globaux */
+* {
+  margin: 0;
+}
 html { /* 1 rem = 10px */
   font-size: 62.5%;
 }
@@ -22,6 +25,19 @@ body {
   font-size: 1.4rem;
 }
 
+h1 {
+  /* structure */
+  padding-top: 50px;
+
+  /* presentation */
+  font-family: $titleFont;
+  font-size: 4rem;
+  color: $white;
+  text-align: center;
+
+  /* effet néon */
+
+}
 a {
   text-decoration: none;
 }
@@ -31,35 +47,62 @@ img { /* Propriétés pour rendre les images responsive */
   height: auto;
 }
 
-/* Déclaration des styles pour la mise en forme du HEADER */
-header {
-  /* structure */
-  height: 500px;
-
-  /* background */
-  background : {
-    image: url('../img/ban.png');
-    repeat: no-repeat;
-    size: cover;
-    position: bottom;
-  }
+/* Hack pour éviter les problèmes liés au float/position */
+.clear {
+  clear: both;
 }
 
+/* Déclaration des styles pour la mise en forme du HEADER */
+header {
+  position: relative;
+}
+/* Mise en forme de la bannière du header */
+header img {
+  width: 100%;
+  height: 600px;
+}
+/* Style du logo */
+#logo {
+  /* structure */
+  width: 100px;
+  height: 100px;
+  /* positionnement du logo à cheval sur la section 1 et le header */
+  position: absolute;
+  left: 45%;
+  bottom: -8%;
+}
 /* Mise en forme de la barre de navigation */
 .nav {
   /* structure */
   width: 100%;
-}
-.nav.navbar {
-  /* structure */
-
+  padding: $padding - 10px;
+  position: fixed;
+  top: 0;
 
   /* presentation */
   background-color: $primary;
+  font-family: $titleFont;
+  color: $pink;
 }
 
-#logo {
-  width: 50px;
+/* Mise en forme des liens de la navigation */
+.nav ul {
+  /* flexbox */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.nav li {
+  /* structure */
+  margin-right: 80px;
+
+  /* presentation */
+  list-style-type: none;
+  font-size: 2rem;
+}
+.nav a {
+  /* presentation */
+  color: $pink;
 }
 
 /* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
@@ -71,7 +114,21 @@ header {
   font-weight: bold;
 }
 
+/****************************** MAIN BODY *********************/
+/*  SECTION UNE #dashboard */
+#dashboard {
+  /* structure */
+  margin-top: -3px;
 
+  /* presentation */
+  background-color: $primary;
+  background : {
+    image: url('../img/computer.png');
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+}
 
 
 /* Footer */
