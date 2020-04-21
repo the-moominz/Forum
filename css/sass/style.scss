@@ -82,6 +82,7 @@ header img {
   padding: $padding - 10px;
   position: fixed;
   top: 0;
+  z-index: 999;
 
   /* presentation */
   background-color: $primary;
@@ -291,6 +292,50 @@ h3 {
   font-family: $titleFont;
   color: $pink;
   text-align: center;
+}
+
+/* SECTION DEUX #section-list */
+#section-list {
+  /* Pour gérer le h2 en absolute */
+  position: relative;
+  text-align: center;
+}
+/* Mise en forme uniquement de l'image tout en haut de la section (fond h2) */
+#section-list img:first-child {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 40px;
+}
+#section-list h2 {
+  /* structure */
+  position: absolute;
+  top: 25px;
+  left: 45%;
+
+  /* presentation */
+  color: $white;
+  font-family: $titleFont;
+  font-size: 3.5rem;
+  text-align: center;
+}
+/* Mise en forme globale des articles de la section */
+#section-list article {
+  /* structure */
+  display: inline-block;
+  width: 40%;
+
+  /* presentation */
+}
+/* Tous les h3 pairs */
+#section-list h3:nth-child(even) {
+  /* presentation */
+  text-align: right;
+  font-weight: 300;
+}
+/* Tous les h3 impairs */
+#section-list h3:nth-child(odd) {
+  /* presentation */
+  text-align: right;
 }
 
 /* Footer */
