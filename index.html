@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,8 @@
   <title>CyberPunk Forum RPG</title>
   <!-- Lien pour l'image Favicon -->
   <link rel="icon" type="image/png" href="img/logo.png" />
+  <!-- Link FontAwesome -->
+  <script src="https://kit.fontawesome.com/0f8b35e999.js" crossorigin="anonymous"></script>
   <!-- Google Fonts Work Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
   <!-- Google Fonts Megrim -->
@@ -16,6 +19,7 @@
   <!-- Lien pour la feuille de style -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <header role="banner">
     <nav class="nav" role="navigation">
@@ -26,14 +30,80 @@
     </nav>
     <img src="img/ban.png" alt="Un univers cyberpunk" />
     <a href="index.html" title="Retour à l'accueil">
-      <img id="logo" src="img/logo.png" alt="Logo"/>
+      <img id="logo" src="img/logo.png" alt="Logo" />
     </a>
   </header>
   <main>
+    <!-- Début de la section #dashboard dédiée à l'affichage du tableau de bord -->
     <section id="dashboard">
+      <!-- Barre de recherche -->
+      <form class="search-form" method="post" action="#">
+        <input type="text" name="search-bar" placeholder="Rechercher..." />
+        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+      <!-- Titre du forum -->
       <h1>Cyberpunk 2022</h1>
-
-
+      <p class="dash-nav">
+        <a href="#" title="Règles du forum">Rules</a>
+        <a href="#">Context</a>
+        <a href="#" title="Description des groupes">Factions</a>
+      </p>
+      <!-- Article dédiée à l'affichage des tuiles en CSS grid -->
+      <article class="dash-grid">
+        <!-- Tuile dédiée à l'affichage des derniers posts sur le forum -->
+        <article class="grid-lastpost">
+          <h2>Derniers messages postés</h2>
+          <ul>
+            <li><a href="#">Nom du topic</a>
+              <ul>
+                <li>Posté par Auteur le 00/00/0000</li>
+                <li>Dans Nom Section</li>
+              </ul>
+            </li>
+            <li><a href="#">Nom du topic</a>
+              <ul>
+                <li>Posté par Auteur le 00/00/0000</li>
+                <li>Dans Nom Section</li>
+              </ul>
+            </li>
+            <li><a href="#">Nom du topic</a>
+              <ul>
+                <li>Posté par Auteur le 00/00/0000</li>
+                <li>Dans Nom Section</li>
+              </ul>
+            </li>
+          </ul>
+        </article>
+        <!-- Tuile dédiée à l'affichage de la météo et date du jour -->
+        <article class="grid-weather">
+          <h2>Météo & Date du jour</h2>
+          <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy. Dessert
+            sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit. Candy
+            canes donut cookie oat cake cheesecake bonbon chupa chups. Topping gummi bears cake cupcake toffee brownie apple pie. Halvah
+            tootsie roll sweet cupcake. Wafer cupcake sugar plum.</p>
+        </article>
+        <!-- Tuile dédiée à l'affichage du contexte -->
+        <article class="grid-context">
+          <h2>Synopsis</h2>
+          <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy. Dessert
+            sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit. Candy
+            canes donut cookie oat cake cheesecake bonbon chupa chups. Topping gummi bears cake cupcake toffee brownie apple pie. Halvah
+            tootsie roll sweet cupcake. Wafer cupcake sugar plum.</p>
+        </article>
+        <!-- Tuile dédiée à l'affichage du membre du mois -->
+        <article class="grid-user">
+          <h2>Membre du mois</h2>
+          <img src="img/user.png" alt="Nom du membre" />
+        </article>
+        <!-- Tuile dédiée à l'affichage des news et derniers events -->
+        <article class="grid-news">
+          <h2>News & Events</h2>
+          <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy. Dessert
+            sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit. Candy
+            canes donut cookie oat cake cheesecake bonbon chupa chups. Topping gummi bears cake cupcake toffee brownie apple pie. Halvah
+            tootsie roll sweet cupcake. Wafer cupcake sugar plum.</p>
+        </article>
+      </article>
     </section>
     <section id="section-list">
       <table>
@@ -91,4 +161,5 @@
     Mentions légales, blablabla
   </footer>
 </body>
+
 </html>

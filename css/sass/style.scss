@@ -31,17 +31,20 @@ h1 {
 
   /* presentation */
   font-family: $titleFont;
-  font-size: 4rem;
-  color: $white;
+  font-size: 5rem;
+  color: $pink;
   text-align: center;
 
   /* effet néon */
-
+  text-shadow: 0 2px 10px $white;
 }
-a {
+a { /* Retrait du sous-lignage de tous les liens du site */
   text-decoration: none;
 }
 
+li { /* Retrait de toutes les puces des listes à puce */
+  list-style-type: none;
+}
 img { /* Propriétés pour rendre les images responsive */
   max-width: 100%;
   height: auto;
@@ -70,6 +73,7 @@ header img {
   position: absolute;
   left: 45%;
   bottom: -8%;
+  z-index: 2;
 }
 /* Mise en forme de la barre de navigation */
 .nav {
@@ -91,11 +95,9 @@ header img {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 50px;
 }
 .nav li {
-  /* structure */
-  margin-right: 80px;
-
   /* presentation */
   list-style-type: none;
   font-size: 2rem;
@@ -103,6 +105,12 @@ header img {
 .nav a {
   /* presentation */
   color: $pink;
+}
+/* Ajout d'un séparateur entre les liens de la navigation */
+.nav li + li:before {
+  content: '|';
+  margin: 0 20px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
@@ -119,6 +127,9 @@ header img {
 #dashboard {
   /* structure */
   margin-top: -3px;
+  /* on met la section en relative pour que la barre de recherche puisse être positionnée en absolute */
+  position: relative;
+  padding: $padding;
 
   /* presentation */
   background-color: $primary;
@@ -129,7 +140,158 @@ header img {
     position: center;
   }
 }
+/* Mise en forme de la barre de recherche */
+.search-form {
+  /* structure */
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+.search-form input[type="text"] {
+  /* structure */
+  padding: 5px;
+  width: 200px;
 
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(220, 40, 227, 0.5);
+}
+.search-btn {
+  /* structure */
+  padding: 5px;
+  display: none;
+
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  color: $pink;
+  cursor: pointer;
+}
+/* Petit menu de navigation sur le tableau de bord pour naviguer sur les topics importants du forum */
+.dash-nav {
+  /* structure */
+  margin: -10px auto 0;
+
+  /* presentation */
+  color: $white;
+  font-family: $titleFont;
+  text-align: center;
+  font-size: 2rem;
+
+  a {
+    color: $white;
+  }
+  /* Ajout d'un petit octogone rose pour séparer les liens */
+  a + a:before {
+    content: '⬡';
+    margin: 0 20px;
+    color: $pink;
+  }
+}
+/* Agencement des tuiles du tableau de bord avec CSS Grid */
+.dash-grid {
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  margin-top: 40px;
+}
+/* Mise en forme des titres des tuiles */
+h3 {
+  /* structure */
+}
+
+/* Mise en forme globale de toutes les tuiles */
+.grid-context,
+.grid-lastpost,
+.grid-weather,
+.grid-user,
+.grid-news {
+  /* structure */
+  padding: 15px;
+  overflow: auto;
+
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-align: justify;
+}
+
+/* Disposition de chaque tuile en fonction de la grille parente */
+
+/*
+ * Tuile du dashboard dédiée à l'affichage du synopsis
+ */
+.grid-context {
+  /* propriétés grid */
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+/*
+ * Tuile du dashboard dédiée à l'affichage des derniers posts
+ */
+.grid-lastpost {
+  /* propriétés grid */
+  grid-column: 1;
+  grid-row: 1;
+
+  /* presentation */
+
+}
+.grid-lastpost ul {
+  margin-left: -20px;
+}
+
+/*
+ * Tuile du dashboard dédiée à l'affichage de la météo
+ */
+.grid-weather {
+  /* propriétés grid */
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/*
+ * Tuile du dashboard dédiée à l'affichage du membre du mois
+ */
+.grid-user {
+  /* propriétés grid */
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Mise en forme de l'image du membre du mois */
+.grid-user img {
+  /* structure */
+  width: 100px;
+  height: 100px;
+
+  /* presentation */
+  border-radius: 100px;
+}
+
+/*
+ * Tuile du dashboard dédiée à l'affichage des nouveautés
+ */
+.grid-news {
+  /* propriétés grid */
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Mise en forme des h2 du tableau de bord */
+#dashboard h2 {
+  /* presentation */
+  font-family: $titleFont;
+  color: $pink;
+  text-align: center;
+}
 
 /* Footer */
 footer {
