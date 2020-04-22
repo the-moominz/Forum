@@ -30,6 +30,7 @@ h1 {
 a {
   /* Retrait du sous-lignage de tous les liens du site */
   text-decoration: none;
+  color: #f3ebdf;
 }
 
 li {
@@ -59,15 +60,25 @@ header img {
   height: 600px;
 }
 
+/* Style de l'octogone qui entoure le logo */
+.octogone {
+  /* structure */
+  position: absolute;
+  left: 45%;
+  bottom: -15%;
+  z-index: 2;
+}
+
 /* Style du logo */
 #logo {
   /* structure */
-  width: 100px;
-  height: 100px;
+  display: none;
+  width: 85px;
+  height: 85px;
   /* positionnement du logo à cheval sur la section 1 et le header */
   position: absolute;
-  left: 45%;
-  bottom: -8%;
+  left: 45.7%;
+  bottom: -5%;
   z-index: 2;
 }
 
@@ -169,6 +180,14 @@ header img {
   cursor: pointer;
 }
 
+/* Mise en forme du SVG des "réseaux informatiques" */
+.paths {
+  /* structure */
+  position: absolute;
+  top: 15px;
+  left: -10px;
+}
+
 /* Petit menu de navigation sur le tableau de bord pour naviguer sur les topics importants du forum */
 .dash-nav {
   /* structure */
@@ -200,8 +219,9 @@ header img {
 }
 
 /* Mise en forme des titres des tuiles */
-h3 {
+.dash-grid h2 {
   /* structure */
+  margin-bottom: 10px;
 }
 
 /* Mise en forme globale de toutes les tuiles */
@@ -295,7 +315,8 @@ h3 {
 }
 
 /* Mise en forme uniquement de l'image tout en haut de la section (fond h2) */
-#section-list img:first-child {
+#section-list img:first-child,
+#who-online img:first-child {
   width: 100%;
   height: 100px;
   margin-bottom: 40px;
@@ -314,24 +335,168 @@ h3 {
 }
 
 /* Mise en forme globale des articles de la section */
-#section-list article {
+#section-list table {
   /* structure */
   display: inline-block;
   width: 40%;
-  /* presentation */
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
-/* Tous les h3 pairs */
-#section-list h3:nth-child(even) {
+/* Toutes les lignes tr des thead pairs */
+#section-list table:nth-child(even) thead {
   /* presentation */
-  text-align: right;
-  font-weight: 300;
+  background-color: #A600B3;
+  border: 1px solid #A600B3;
 }
 
-/* Tous les h3 impairs */
-#section-list h3:nth-child(odd) {
+/* Toutes les lignes tr des thead impairs */
+#section-list table:nth-child(odd) thead {
+  /* presentation */
+  background-color: #5FF5E9;
+  border: 1px solid #5FF5E9;
+}
+
+#section-list thead th {
+  padding: 5px;
   /* presentation */
   text-align: right;
+  font-size: 1.7rem;
+}
+
+#section-list thead a {
+  color: #2e2947;
+}
+
+#section-list tbody,
+#section-list tfoot {
+  /* presentation */
+  background-color: #2D2F62;
+  color: #f3ebdf;
+  text-align: justify;
+}
+
+#section-list td {
+  padding: 15px;
+}
+
+#section-list tfoot > tr > td {
+  width: 50%;
+  text-align: center;
+}
+
+#section-list tfoot a {
+  color: #f3ebdf;
+}
+
+/* SECTION DEUX #who-online */
+#who-online {
+  position: relative;
+  /*presentation */
+  background-color: #2D2F62;
+}
+
+#who-online h2 {
+  /* structure */
+  position: absolute;
+  top: 25px;
+  left: 40%;
+  /* presentation */
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+#who-online h3 {
+  /* structure */
+  margin-bottom: 10px;
+  /* presentation */
+  font-family: "Megrim";
+  color: #f3ebdf;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+#who-online ul {
+  /* retrait de la marge naturelle de l'ul */
+  margin-left: -20px;
+}
+
+/* Mise en forme du CSS Grid des statistiques */
+#who-online .dash-grid {
+  margin-top: -20px;
+  padding: 20px;
+}
+
+.user-online,
+.stats,
+.faction-one,
+.faction-two,
+.faction-three,
+.faction-four {
+  /* structure */
+  padding: 15px;
+  overflow: auto;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-align: justify;
+}
+
+/*
+ * Grille dédiée à l'affichage des membres en ligne
+ */
+.user-online {
+  /* CSS Grid */
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.user-online ul {
+  /* Flexbox */
+  /* On met en ligne les li */
+  display: flex;
+}
+
+/* On met un séparateur entre les li */
+.user-online li + li:before {
+  content: "⬡";
+  color: #DC28E3;
+  margin: 0 10px;
+}
+
+/*
+ * Grille dédiée à l'affichage des stats globaux du site
+ */
+.stats {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/*
+ * Grilles dédiées à l'affichage des factions + description
+ */
+.faction-one {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.faction-two {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.faction-three {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.faction-four {
+  grid-column: 3;
+  grid-row: 2;
 }
 
 /* Footer */
@@ -339,7 +504,6 @@ footer {
   /* structure */
   padding: 10px;
   /* presentation */
-  background-color: #2D2F62;
   text-align: center;
   color: #f3ebdf;
 }

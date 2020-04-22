@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -21,18 +21,44 @@
 </head>
 
 <body>
+  <!-- Début du header -->
   <header role="banner">
+    <!-- nav principale -->
     <nav class="nav" role="navigation">
       <ul>
         <li><a href="#">S'inscrire</a></li>
         <li><a href="#">Se connecter</a></li>
       </ul>
     </nav>
+    <!-- Navigation pour mobiles et tablettes -->
+    <nav class="nav-burger">
+
+    </nav>
     <img src="img/ban.png" alt="Un univers cyberpunk" />
+    <!-- Affichage du logo, entouré par un SVG en forme d'octogone -->
+    <svg class="octogone" width="150" height="150" xml:lang="fr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <!-- Réalisation d'un octogone, qui sera animé au survol
+          et qui englobera le logo du site -->
+      <g id="ext">
+        <!-- Octogone extérieur -->
+        <path d="M 5,35 L 0,50 L 15, 85 L 50,100 L 60, 97" style="fill: none; stroke: #f3ebdf; stroke-width: 2px;" />
+        <path d="M 75,92 L 90, 85 L 100,50 L 97, 40" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+        <path d="M 95,30 L 90,15 L 75,7" style="fill: none; stroke: #f3ebdf; stroke-width: 2px;" />
+        <path d="M 65,5 L 50,0 L 15,15 L 7,27" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+      </g>
+      <g>
+        <!-- Octogone intérieur -->
+        <path d="M 35,12 L 16,20 L 5,50 L 17,80 L 27,85" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+        <path d="M 32,87 L 50,95 L 85,82 L 87,75" style="fill: none; stroke: #f3ebdf; stroke-width: 2px;" />
+        <path d="M 90,65 L 95,50 L 85,17 L 75,12" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+        <path d="M 62,10 L 50,6 L 45,7" style="fill: none; stroke: #f3ebdf; stroke-width: 2px;" />
+      </g>
+    </svg>
     <a href="index.html" title="Retour à l'accueil">
       <img id="logo" src="img/logo.png" alt="Logo" />
     </a>
   </header>
+  <!-- Fin du header -->
   <main>
     <!-- Début de la section #dashboard dédiée à l'affichage du tableau de bord -->
     <section id="dashboard">
@@ -48,7 +74,26 @@
         <a href="#">Context</a>
         <a href="#" title="Description des groupes">Factions</a>
       </p>
-      <!-- Article dédiée à l'affichage des tuiles en CSS grid -->
+      <!-- SVG représenant des "réseaux informatiques" (aspect déco) -->
+      <svg class="paths" width="500" height="150" xml:lang="fr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!-- Décors sous forme de cables informatiques -->
+        <g id="path-1">
+          <!-- Trait n°1 -->
+          <path d="M 0,30 L 100,30 L 150,10 L 250,10 L 350, 20 L 450, 30" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+          <circle cx="450" cy="30" r="8" style="fill: none; stroke: #DC28E3; stroke-width: 2px;"/>
+        </g>
+        <g id="path-2">
+          <!-- Trait n°2 -->
+          <path d="M 0,70 L 100,70 L 150,50 L 250,70 L 350, 60 L 450, 70" style="fill: none; stroke: #5FF5E9; stroke-width: 2px;" />
+          <circle cx="450" cy="70" r="8" style="fill: none; stroke: #5FF5E9; stroke-width: 2px;"/>
+        </g>
+        <g id="path-3">
+          <!-- Trait n°2 -->
+          <line x1="0" y1="120" x2="250" y2="120" stroke="white" stroke-width="2" />
+          <circle cx="250" cy="120" r="8" style="fill: none; stroke: white; stroke-width: 2px;"/>
+        </g>
+      </svg>
+      <!-- Article dédié à l'affichage des tuiles en CSS grid -->
       <article class="dash-grid">
         <!-- Tuile dédiée à l'affichage des derniers posts sur le forum -->
         <article class="grid-lastpost">
@@ -105,46 +150,140 @@
         </article>
       </article>
     </section>
+    <!-- Début de la section #section-list destinée à l'affichage de toutes les sections du site -->
     <section id="section-list">
       <img src="img/frise.jpg" alt="" />
       <h2>Sections</h2>
-      <article>
-        <h3>Cyber Tech Inc.</h3>
-        <img src="img/square.png" alt="" />
-        <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy. Dessert
-          sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</p>
-        <p>LAST POST - Pseudo à 00:00  |   NB DE TOPICS - 30</p>
-      </article><!--
-      --><article>
-      <h3>Lincoln Street</h3>
-      <img src="img/square.png" alt="" />
-      <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy. Dessert
-        sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</p>
-      <p>LAST POST - Pseudo à 00:00  |   NB DE TOPICS - 30</p>
-      </article>
-      <article></article>
-      <article></article>
+        <table>
+          <thead>
+            <tr>
+              <!-- Lien vers l'intérieur de la section -->
+              <th colspan="2"><a href="#">Cyber Tech Inc.</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!-- Description de la section -->
+              <td><img src="img/square.png" alt="" /></td>
+              <td>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
+                Dessert
+                sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <!-- Statistiques de la section -->
+              <td>LAST POST - <a href="#">Pseudo</a> à 00:00</td>
+              <td>NB DE TOPICS - 30</td>
+            </tr>
+          </tfoot>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2"><a href="#">Lincoln Street</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="img/square.png" alt="" /></td>
+              <td>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
+                Dessert
+                sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>LAST POST - <a href="#">Pseudo</a> à 00:00</td>
+              <td>NB DE TOPICS - 30</td>
+            </tr>
+          </tfoot>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2"><a href="#">Naviport</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="img/square.png" alt="" /></td>
+              <td>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
+                Dessert
+                sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>LAST POST - <a href="#">Pseudo</a> à 00:00</td>
+              <td>NB DE TOPICS - 30</td>
+            </tr>
+          </tfoot>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2"><a href="#">Central Park</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="img/square.png" alt="" /></td>
+              <td>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
+                Dessert
+                sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>LAST POST - <a href="#">Pseudo</a> à 00:00</td>
+              <td>NB DE TOPICS - 30</td>
+            </tr>
+          </tfoot>
+        </table>
     </section>
-    <section id="stats">
-      <article>
-        <ul>
-          <li>Nombre d'inscrits</li>
-          <li>Nombre de messages postés</li>
-          <li>Dernier membre inscrit</li>
-        </ul>
-      </article>
-      <article>
-        <h4>Liste des membres connectés</h4>
-        <ul>
-          <li>Membre 1</li>
-          <li>Membre 2</li>
-          <li>Membre 3</li>
-        </ul>
+    <!-- Début de la section #who-online destinée à l'affichage de stats liées aux membres pour montrer l'activité -->
+    <section id="who-online">
+      <img src="img/frise.jpg" alt="" />
+      <h2>Qui est en ligne ?</h2>
+      <article class="dash-grid">
+        <!-- Affichage dynamique de la liste des membres actuellement en ligne -->
+        <article class="user-online">
+          <h3>Membres en ligne</h3>
+          <ul>
+            <li><a href="#">Pseudo 1</a></li>
+            <li><a href="#">Pseudo 2</a></li>
+            <li><a href="#">Pseudo 3</a></li>
+          </ul>
+        </article>
+        <!-- Affichage des stats -->
+        <article class="stats">
+          <h3>Statistiques</h3>
+          <ul>
+            <li>Nombre de membres inscrits : </li>
+            <li>Nombre de messages postés : </li>
+            <li>Membres connectés au cours des dernières 48hr : </li>
+          </ul>
+        </article>
+        <!-- Description dynamique des groupes -->
+        <article class="faction-one">
+          <h3>Humans</h3>
+        </article>
+        <article class="faction-two">
+          <h3>Alchemists</h3>
+        </article>
+        <article class="faction-three">
+          <h3>Mecas</h3>
+        </article>
+        <article class="faction-four">
+          <h3>Cyborgs</h3>
+        </article>
       </article>
     </section>
   </main>
+  <!-- Fin du main body et début du footer -->
   <footer>
-    Mentions légales, blablabla
+    © 2020 - BOUSSER Elodie - Projet pro 3WA
   </footer>
 </body>
 
