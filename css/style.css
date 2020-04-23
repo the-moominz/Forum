@@ -50,7 +50,43 @@ img {
   clear: both;
 }
 
-/* Déclaration des styles pour la mise en forme du HEADER */
+.inline {
+  margin: 0 0 0 40px;
+}
+
+/* Mise en forme des boutons des formulaires */
+.button {
+  /* structure */
+  padding: 10px 15px;
+  /* presentation */
+  opacity: 0.8;
+  border-radius: 5px;
+  font-family: "Megrim";
+  font-size: 1.6rem;
+  color: #2e2947;
+  cursor: pointer;
+}
+
+/*
+ * Bouton de validation d'un formulaire
+*/
+.submit {
+  background-color: #5FF5E9;
+  border: 1px solid #5FF5E9;
+}
+
+/*
+ * Bouton pour annuler
+ */
+.cancel {
+  margin-left: 15px;
+  background-color: #DC28E3;
+  border: 1px solid #DC28E3;
+}
+
+/***********************************************************/
+/******************* Page d'accueil ********************/
+/***********************************************************/
 header {
   position: relative;
 }
@@ -607,6 +643,100 @@ footer {
   /* presentation */
   text-align: center;
   color: #f3ebdf;
+}
+
+/***********************************************************/
+/************* Page de connexion/inscription ***************/
+/***********************************************************/
+#connection {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#connection article {
+  /* structure */
+  position: relative;
+  width: 80%;
+  margin: 40px auto;
+  /* presentation */
+  background-color: rgba(45, 47, 98, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+#connection h2 {
+  font-family: "Megrim";
+  color: #f3ebdf;
+  text-align: center;
+  font-size: 3rem;
+}
+#connection article ul:first-child {
+  display: flex;
+  justify-content: flex-end;
+}
+#connection .fas {
+  /* structure */
+  margin: 10px 20px 0;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 3rem;
+}
+#connection hr {
+  /* structure */
+  width: 90%;
+  height: 1px;
+  margin: 10px auto;
+  /* presentation */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#connection .login-form {
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-bottom: 40px;
+  width: 40%;
+  text-align: center;
+}
+#connection .login-form ul {
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+#connection .login-form li {
+  margin: 5px 0;
+  text-align: left;
+}
+#connection label {
+  /* structure */
+  margin-left: 20px;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 1.8rem;
+}
+#connection input[type=text],
+#connection input[type=password],
+#connection input[type=date],
+#connection input[type=email] {
+  /* structure */
+  width: 100%;
+  padding: 10px;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0;
+}
+#connection a:not(.cancel) {
+  /* structure */
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  /* presentation */
+  font-family: "Megrim";
+  font-size: 2.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

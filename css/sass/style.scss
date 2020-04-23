@@ -58,7 +58,40 @@ img { /* Propriétés pour rendre les images responsive */
   clear: both;
 }
 
-/* Déclaration des styles pour la mise en forme du HEADER */
+.inline {
+  margin: 0 0 0 40px;
+}
+/* Mise en forme des boutons des formulaires */
+.button {
+  /* structure */
+  padding: 10px 15px;
+
+  /* presentation */
+  opacity: 0.8;
+  border-radius: 5px;
+  font-family: $titleFont;
+  font-size: 1.6rem;
+  color: $black;
+  cursor: pointer;
+}
+/*
+ * Bouton de validation d'un formulaire
+*/
+.submit {
+  background-color: $blue;
+  border: 1px solid $blue;
+}
+/*
+ * Bouton pour annuler
+ */
+.cancel {
+  margin-left: 15px;
+  background-color: $pink;
+  border: 1px solid $pink;
+}
+/***********************************************************/
+/******************* Page d'accueil ********************/
+/***********************************************************/
 header {
   position: relative;
 }
@@ -142,7 +175,7 @@ header img {
 #pseudo {
   /* structure */
   margin-left: 15px;
-  
+
   /* presentation */
   font-family: $titleFont;
   text-align: center;
@@ -602,4 +635,107 @@ footer {
   /* presentation */
   text-align: center;
   color: $white;
+}
+
+/***********************************************************/
+/************* Page de connexion/inscription ***************/
+/***********************************************************/
+#connection {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+
+  /* presentation */
+  background : {
+    image: url('../img/bg.jpg');
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+  article {
+    /* structure */
+    position: relative;
+    width: 80%;
+    margin: 40px auto;
+
+    /* presentation */
+    background-color: rgba(45, 47, 98, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+  }
+  h2 {
+    font-family: $titleFont;
+    color: $white;
+    text-align: center;
+    font-size: 3rem;
+  }
+  article ul:first-child {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .fas {
+    /* structure */
+    margin: 10px 20px 0;
+
+    /* presentation */
+    color: $white;
+    font-size: 3rem;
+  }
+  hr {
+    /* structure */
+    width: 90%;
+    height: 1px;
+    margin: 10px auto;
+
+    /* presentation */
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .login-form {
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-bottom: 40px;
+    width: 40%;
+    text-align: center;
+  }
+  .login-form ul {
+    /* flexbox */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  .login-form li {
+    margin: 5px 0;
+    text-align: left;
+  }
+  label {
+    /* structure */
+    margin-left: 20px;
+
+    /* presentation */
+    color: $white;
+    font-size: 1.8rem;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="email"] {
+    /* structure */
+    width: 100%;
+    padding: 10px;
+
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0;
+  }
+  a:not(.cancel) {
+    /* structure */
+    position: absolute;
+    right: 100px;
+    top: 50%;
+
+    /* presentation */
+    font-family: $titleFont;
+    font-size: 2.5rem;
+  }
 }

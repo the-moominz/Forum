@@ -45,20 +45,25 @@
           <li><i class="fas fa-times"></i></li>
         </ul>
         <hr>
-        <h2>Formulaire de connexion</h2>
+        <h2>Formulaire d'inscription</h2>
         <form class="login-form" action="#" method="post">
           <ul>
             <li><label for="pseudo">Pseudo : </label></li>
-            <li><input type="text" name="text" /></li>
+            <li><input type="text" name="text" placeholder="Ex : Aleana Dax"/></li>
+            <li><label for="birthDate">Date de naissance : </label></li>
+            <li><input type="date" name="birthDate" /></li>
+            <li><label for="mail">E-mail : </label></li>
+            <li><input type="email" name="mail" /></li>
             <li><label for="password">Mot de passe : </label></li>
             <li><input type="password" name="password" /></li>
+            <li><label for="passwordConfirm">Confirmation du mot de passe : </label></li>
+            <li><input type="password" name="passwordConfirm" /></li>
           </ul>
           <div class="inline">
-            <button type="submit" class="button submit">Se connecter</button>
+            <button type="submit" class="button submit">S'inscrire</button>
             <a href="index.html" class="button cancel">Annuler</a>
           </div>
         </form>
-        <a href="#">Mot de passe oublié ?</a>
       </article>
     </section>
   </main>
