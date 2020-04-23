@@ -11,6 +11,7 @@ html {
 
 body {
   background-color: #7776B8;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-geometric.png");
   font-family: "Work Sans";
   font-size: 1.4rem;
 }
@@ -84,6 +85,10 @@ header img {
 
 /* Mise en forme de la barre de navigation */
 .nav {
+  /* flexbox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   /* structure */
   width: 100%;
   padding: 10px;
@@ -114,6 +119,11 @@ header img {
 .nav a {
   /* presentation */
   color: #DC28E3;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+.nav a:hover {
+  color: #f3ebdf;
 }
 
 /* Ajout d'un séparateur entre les liens de la navigation */
@@ -125,11 +135,14 @@ header img {
 
 /* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
 #pseudo {
+  /* structure */
+  margin-left: 15px;
   /* presentation */
   font-family: "Megrim";
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
+  color: #f3ebdf;
 }
 
 /****************************** MAIN BODY *********************/
@@ -152,8 +165,8 @@ header img {
 .search-form {
   /* structure */
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: 40px;
+  right: 30px;
 }
 
 .search-form input[type=text] {
@@ -201,6 +214,11 @@ header img {
 }
 .dash-nav a {
   color: #f3ebdf;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.dash-nav a:hover {
+  opacity: 0.5;
 }
 .dash-nav a + a:before {
   content: "⬡";
@@ -272,6 +290,14 @@ header img {
   grid-row: 2;
 }
 
+.grid-weather ul {
+  display: flex;
+  margin-left: -40px;
+}
+.grid-weather ul li {
+  margin: 0 10px;
+}
+
 /*
  * Tuile du dashboard dédiée à l'affichage du membre du mois
  */
@@ -287,7 +313,7 @@ header img {
   width: 100px;
   height: 100px;
   /* presentation */
-  border-radius: 100px;
+  border-radius: 5px;
 }
 
 /*
@@ -297,6 +323,10 @@ header img {
   /* propriétés grid */
   grid-column: 3;
   grid-row: 2;
+}
+
+.grid-news ul {
+  margin-left: -20px;
 }
 
 /* Mise en forme des h2 du tableau de bord */
@@ -343,6 +373,8 @@ header img {
   margin-bottom: 40px;
   margin-right: 10px;
   margin-left: 10px;
+  /* presentation */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Toutes les lignes tr des thead pairs */
@@ -431,18 +463,22 @@ header img {
   padding: 20px;
 }
 
+#who-online .dash-grid img {
+  width: 450px;
+  height: 150px;
+  border-radius: 8px;
+}
+
 .user-online,
 .stats,
 .faction-one,
 .faction-two,
 .faction-three,
 .faction-four {
-  /* structure */
-  padding: 15px;
-  overflow: auto;
   /* presentation */
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
+  border: 1px solid #2D2F62;
   text-align: justify;
 }
 
@@ -453,6 +489,7 @@ header img {
   /* CSS Grid */
   grid-column: 1;
   grid-row: 1;
+  padding: 15px;
 }
 
 .user-online ul {
@@ -474,6 +511,53 @@ header img {
 .stats {
   grid-column: 1;
   grid-row: 2;
+  padding: 15px;
+}
+
+/* Mise en place des éléments pour la flip card */
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  border-radius: 8px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Rotation horizontale au passage de la souris */
+.faction-one:hover .flip-card,
+.faction-two:hover .flip-card,
+.faction-three:hover .flip-card,
+.faction-four:hover .flip-card {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style de la face avant */
+.flip-card-front {
+  background-color: #bbb;
+  color: #2e2947;
+  border-radius: 8px;
+}
+
+/* Style de la face arrière */
+.flip-card-back {
+  /* structure */
+  padding: 10px 0;
+  /* presentation */
+  background-color: #2D2F62;
+  color: #f3ebdf;
+  border-radius: 8px;
+  transform: rotateY(180deg);
 }
 
 /*
@@ -482,21 +566,38 @@ header img {
 .faction-one {
   grid-column: 2;
   grid-row: 1;
+  /* Mise en place de l'effet flip-card (w3schools) */
+  width: 450px;
+  height: 150px;
+  perspective: 1000px;
 }
 
+/* Faction numéro 2 */
 .faction-two {
   grid-column: 2;
   grid-row: 2;
+  /* Mise en place de l'effet flip-card (w3schools) */
+  width: 450px;
+  height: 150px;
+  perspective: 1000px;
 }
 
 .faction-three {
   grid-column: 3;
   grid-row: 1;
+  /* Mise en place de l'effet flip-card (w3schools) */
+  width: 450px;
+  height: 150px;
+  perspective: 1000px;
 }
 
 .faction-four {
   grid-column: 3;
   grid-row: 2;
+  /* Mise en place de l'effet flip-card (w3schools) */
+  width: 450px;
+  height: 150px;
+  perspective: 1000px;
 }
 
 /* Footer */

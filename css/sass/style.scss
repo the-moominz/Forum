@@ -22,6 +22,7 @@ html { /* 1 rem = 10px */
 
 body {
   background-color: $backgroundColor;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-geometric.png");
   font-family: $globalFont;
   font-size: 1.4rem;
 }
@@ -88,6 +89,11 @@ header img {
 }
 /* Mise en forme de la barre de navigation */
 .nav {
+  /* flexbox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   /* structure */
   width: 100%;
   padding: $padding - 10px;
@@ -117,7 +123,14 @@ header img {
 .nav a {
   /* presentation */
   color: $pink;
+  text-transform: uppercase;
+  transition: all 0.5s;
+
+    &:hover {
+      color: $white;
+    }
 }
+
 /* Ajout d'un séparateur entre les liens de la navigation */
 .nav li + li:before {
   content: '|';
@@ -127,11 +140,15 @@ header img {
 
 /* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
 #pseudo {
+  /* structure */
+  margin-left: 15px;
+  
   /* presentation */
   font-family: $titleFont;
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
+  color: $white;
 }
 
 /****************************** MAIN BODY *********************/
@@ -156,8 +173,8 @@ header img {
 .search-form {
   /* structure */
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: 40px;
+  right: 30px;
 }
 .search-form input[type="text"] {
   /* structure */
@@ -203,6 +220,12 @@ header img {
 
   a {
     color: $white;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
   /* Ajout d'un petit octogone rose pour séparer les liens */
   a + a:before {
@@ -276,6 +299,14 @@ header img {
   grid-column: 1;
   grid-row: 2;
 }
+.grid-weather ul {
+  display: flex;
+  margin-left: -40px;
+
+  li {
+    margin: 0 10px;
+  }
+}
 
 /*
  * Tuile du dashboard dédiée à l'affichage du membre du mois
@@ -293,7 +324,7 @@ header img {
   height: 100px;
 
   /* presentation */
-  border-radius: 100px;
+  border-radius: 5px;
 }
 
 /*
@@ -303,6 +334,9 @@ header img {
   /* propriétés grid */
   grid-column: 3;
   grid-row: 2;
+}
+.grid-news ul {
+  margin-left: -20px;
 }
 
 /* Mise en forme des h2 du tableau de bord */
@@ -347,6 +381,9 @@ header img {
   margin-bottom: 40px;
   margin-right: 10px;
   margin-left: 10px;
+
+  /* presentation */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 /* Toutes les lignes tr des thead pairs */
 #section-list table:nth-child(even) thead {
@@ -431,19 +468,21 @@ header img {
   margin-top: -20px;
   padding: 20px;
 }
+#who-online .dash-grid img {
+  width: 450px;
+  height: 150px;
+  border-radius: 8px;
+}
 .user-online,
 .stats,
 .faction-one,
 .faction-two,
 .faction-three,
 .faction-four {
-  /* structure */
-  padding: 15px;
-  overflow: auto;
-
   /* presentation */
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
+  border: 1px solid $primary;
   text-align: justify;
 }
 /*
@@ -453,6 +492,7 @@ header img {
    /* CSS Grid */
    grid-column: 1;
    grid-row: 1;
+   padding: 15px;
  }
  .user-online ul {
    /* Flexbox */
@@ -471,6 +511,48 @@ header img {
   .stats {
     grid-column: 1;
     grid-row: 2;
+    padding: 15px;
+  }
+  /* Mise en place des éléments pour la flip card */
+  .flip-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: justify;
+    border-radius: 8px;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  /* Rotation horizontale au passage de la souris */
+  .faction-one:hover .flip-card,
+  .faction-two:hover .flip-card,
+  .faction-three:hover .flip-card,
+  .faction-four:hover .flip-card {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  /* Style de la face avant */
+ .flip-card-front {
+   background-color: #bbb;
+   color: $black;
+   border-radius: 8px;
+ }
+  /* Style de la face arrière */
+  .flip-card-back {
+    /* structure */
+    padding: 10px 0;
+
+    /* presentation */
+   background-color: $primary;
+   color: $white;
+   border-radius: 8px;
+   transform: rotateY(180deg);
   }
   /*
    * Grilles dédiées à l'affichage des factions + description
@@ -478,18 +560,39 @@ header img {
    .faction-one {
      grid-column: 2;
      grid-row: 1;
+
+     /* Mise en place de l'effet flip-card (w3schools) */
+     width: 450px;
+     height: 150px;
+     perspective: 1000px;
    }
+   /* Faction numéro 2 */
    .faction-two {
      grid-column: 2;
      grid-row: 2;
+
+     /* Mise en place de l'effet flip-card (w3schools) */
+     width: 450px;
+     height: 150px;
+     perspective: 1000px;
    }
    .faction-three {
      grid-column: 3;
      grid-row: 1;
+
+     /* Mise en place de l'effet flip-card (w3schools) */
+     width: 450px;
+     height: 150px;
+     perspective: 1000px;
    }
    .faction-four {
      grid-column: 3;
      grid-row: 2;
+
+     /* Mise en place de l'effet flip-card (w3schools) */
+     width: 450px;
+     height: 150px;
+     perspective: 1000px;
    }
 /* Footer */
 footer {
