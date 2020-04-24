@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CyberPunk Forum RPG</title>
+  <!-- Lien pour l'image Favicon -->
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <!-- Link FontAwesome -->
+  <script src="https://kit.fontawesome.com/0f8b35e999.js" crossorigin="anonymous"></script>
+  <!-- Google Fonts Work Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Google Fonts Megrim -->
+  <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+  <!-- Normalize css -->
+
+  <!-- Lien pour la feuille de style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Début du header -->
+  <header role="banner">
+    <!-- nav principale -->
+    <nav class="nav" role="navigation">
+      <span id="pseudo">Hello, Aleonah !</span>
+      <ul>
+        <li><a href="home_log.html">Accueil</a></li>
+        <li><a href="mp.html">MP</a></li>
+        <li><a href="user-profile.html">Profil</a></li>
+        <li><a href="users.html">Membres</a></li>
+        <li><a href="#">Déconnexion</a></li>
+      </ul>
+    </nav>
+    <!-- Navigation pour mobiles et tablettes -->
+    <nav class="nav-burger">
+
+    </nav>
+    <img src="img/ban.png" alt="Un univers cyberpunk" />
+    <!-- Affichage du logo, entouré par un SVG en forme d'octogone -->
+    <svg class="octogone" width="150" height="150" xml:lang="fr" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+      <!-- Réalisation d'un octogone, qui sera animé au survol
+          et qui englobera le logo du site -->
+      <g id="ext">
+        <!-- Octogone extérieur -->
+        <path d="M 5,35 L 0,50 L 15, 85 L 50,100 L 60, 97" style="fill: none; stroke: #f3ebdf; stroke-width: 2px;" />
+        <path d="M 75,92 L 90, 85 L 100,50 L 97, 40" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+        <path d="M 95,30 L 90,15 L 75,7" style="fill: none; stroke: #f3ebdf; stroke-width: 2px;" />
+        <path d="M 65,5 L 50,0 L 15,15 L 7,27" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+      </g>
+      <g>
+        <!-- Octogone intérieur -->
+        <path d="M 35,12 L 16,20 L 5,50 L 17,80 L 27,85" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+        <path d="M 32,87 L 50,95 L 85,82 L 87,75" style="fill: none; stroke: #f3ebdf; stroke-width: 2px;" />
+        <path d="M 90,65 L 95,50 L 85,17 L 75,12" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+        <path d="M 62,10 L 50,6 L 45,7" style="fill: none; stroke: #f3ebdf; stroke-width: 2px;" />
+      </g>
+    </svg>
+    <a href="index.html" title="Retour à l'accueil">
+      <img id="logo" src="img/logo.png" alt="Logo" />
+    </a>
+  </header>
+  <!-- Fin du header -->
+  <main>
+    <section id="list-users">
+      <img src="img/frise.jpg" alt="" />
+      <h2>Liste des membres</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom & Prénom</th>
+            <th>Date d'inscription</th>
+            <th>MP</th>
+            <th>Profil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pseudo</td>
+            <td>24/04/2020 12:12:12</td>
+            <td><a href="#"><i class="far fa-envelope"></i></a></td>
+            <td><a href="#"><i class="fas fa-address-card"></i></a></td>
+          </tr>
+          <tr>
+            <td>Pseudo</td>
+            <td>24/04/2020 12:12:12</td>
+            <td><a href="#"><i class="far fa-envelope"></i></a></td>
+            <td><a href="#"><i class="fas fa-address-card"></i></a></td>
+          </tr>
+          <tr>
+            <td>Pseudo</td>
+            <td>24/04/2020 12:12:12</td>
+            <td><a href="#"><i class="far fa-envelope"></i></a></td>
+            <td><a href="#"><i class="fas fa-address-card"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <!-- Fin du main body et début du footer -->
+  <footer>
+    © 2020 - BOUSSER Elodie - Projet pro 3WA
+  </footer>
+</body>
+
+</html>

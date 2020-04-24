@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CyberPunk Forum RPG</title>
+  <!-- Lien pour l'image Favicon -->
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <!-- Link FontAwesome -->
+  <script src="https://kit.fontawesome.com/0f8b35e999.js" crossorigin="anonymous"></script>
+  <!-- Google Fonts Work Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Google Fonts Megrim -->
+  <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+  <!-- Normalize css -->
+
+  <!-- Lien pour la feuille de style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Début du header -->
+  <header role="banner">
+    <!-- nav principale -->
+    <nav class="nav" role="navigation">
+      <span id="pseudo">Hello, Aleonah !</span>
+      <ul>
+        <li><a href="home_log.html">Accueil</a></li>
+        <li><a href="mp.html">MP</a></li>
+        <li><a href="user-profile.html">Profil</a></li>
+        <li><a href="users.html">Membres</a></li>
+        <li><a href="#">Déconnexion</a></li>
+      </ul>
+    </nav>
+    <!-- Navigation pour mobiles et tablettes -->
+    <nav class="nav-burger">
+
+    </nav>
+  </header>
+  <!-- Fin du header -->
+  <main>
+    <section id="custom-profile">
+      <article class="profile-container">
+        <ul>
+          <li><input type="text" class="fake-bar" disabled /></li>
+          <li><a href="avatar.html">avatar</a></li>
+          <li>o</li>
+          <li><a href="public-profile.html">profil</a></li>
+          <li><i class="fas fa-minus"></i></li>
+          <li><i class="fas fa-times"></i></li>
+        </ul>
+        <hr>
+        <h2>Personnalisation du profil</h2>
+        <form method="post" action="#" class="profile-form">
+          <article class="profile-grid">
+            <article class="grid-avatar">
+              <h3>Personnage</h3>
+              <img src="img/user.png" alt="Nom du joueur" />
+              <h4>PSEUDO</h4>
+              <hr>
+              <table>
+                  <tr>
+                    <td><label for="age">Âge :</label></td>
+                    <td><input type="text" name="age" /></td>
+                  </tr>
+                  <tr>
+                    <td><label for="origins">Origines :</label></td>
+                    <td><input type="text" name="origins" /></td>
+                  </tr>
+              </table>
+            </article>
+            <article class="grid-life">
+              <h3>Vie privée</h3>
+              <table>
+                <tr>
+                  <td>Sexe :</td>
+                  <td>
+                    <input type="radio" name="sexe" value="female" id="female" /> <label for="female"><i class="fas fa-venus"></i></label>
+                  </td>
+                  <td>
+                    <input type="radio" name="sexe" value="male" id="male" /> <label for="male"><i class="fas fa-mars"></i></label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for="biography">Biographie :</label>
+                  </td>
+                  <td colspan="2">
+                    <textarea name="biography" id="biography" rows="3"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for="relations">Relations :</label>
+                  </td>
+                  <td colspan="2">
+                    <textarea name="relations" id="relations" rows="3"></textarea>
+                  </td>
+                </tr>
+              </table>
+            </article>
+            <article class="grid-stats">
+              <h3>Stats</h3>
+              <table>
+                  <tr>
+                    <td>Faction :</td>
+                    <td>à remplir dynamiquement</td>
+                  </tr>
+                  <tr>
+                    <td>Date d'inscription :</td>
+                    <td>à remplir dynamiquement</td>
+                  </tr>
+                  <tr>
+                    <td>Nombre de messages postés :</td>
+                    <td>à remplir dynamiquement</td>
+                  </tr>
+              </table>
+            </article>
+          </article>
+          <button type="submit">Enregistrer les modifications</button>
+          <div class="clear"></div>
+        </form>
+      </article>
+    </section>
+  </main>
+  <!-- Fin du main body et début du footer -->
+  <footer>
+    © 2020 - BOUSSER Elodie - Projet pro 3WA
+  </footer>
+</body>
+
+</html>

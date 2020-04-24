@@ -90,24 +90,21 @@ img {
 header {
   position: relative;
 }
-
-/* Mise en forme de la bannière du header */
 header img {
+  /* Mise en forme de la bannière du header */
   width: 100%;
   height: 600px;
 }
-
-/* Style de l'octogone qui entoure le logo */
-.octogone {
+header .octogone {
+  /* Style de l'octogone qui entoure le logo */
   /* structure */
   position: absolute;
   left: 45%;
   bottom: -15%;
   z-index: 2;
 }
-
-/* Style du logo */
-#logo {
+header #logo {
+  /* Style du logo */
   /* structure */
   display: none;
   width: 85px;
@@ -118,9 +115,8 @@ header img {
   bottom: -5%;
   z-index: 2;
 }
-
-/* Mise en forme de la barre de navigation */
-.nav {
+header .nav {
+  /* Mise en forme de la barre de navigation */
   /* flexbox */
   display: flex;
   justify-content: space-between;
@@ -136,41 +132,36 @@ header img {
   font-family: "Megrim";
   color: #DC28E3;
 }
-
-/* Mise en forme des liens de la navigation */
-.nav ul {
+header .nav ul {
+  /* Mise en forme des liens de la navigation */
   /* flexbox */
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-right: 50px;
 }
-
-.nav li {
+header .nav li {
   /* presentation */
   list-style-type: none;
   font-size: 2rem;
 }
-
-.nav a {
+header .nav a {
   /* presentation */
   color: #DC28E3;
   text-transform: uppercase;
   transition: all 0.5s;
 }
-.nav a:hover {
+header .nav a:hover {
   color: #f3ebdf;
 }
-
-/* Ajout d'un séparateur entre les liens de la navigation */
-.nav li + li:before {
+header .nav li + li:before {
+  /* Ajout d'un séparateur entre les liens de la navigation */
   content: "|";
   margin: 0 20px;
   color: rgba(255, 255, 255, 0.6);
 }
-
-/* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
-#pseudo {
+header #pseudo {
+  /* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
   /* structure */
   margin-left: 15px;
   /* presentation */
@@ -196,16 +187,21 @@ header img {
   background-size: cover;
   background-position: center;
 }
-
-/* Mise en forme de la barre de recherche */
-.search-form {
+#dashboard h2 {
+  /* Mise en forme des h2 du tableau de bord */
+  /* presentation */
+  font-family: "Megrim";
+  color: #DC28E3;
+  text-align: center;
+}
+#dashboard .search-form {
+  /* Mise en forme de la barre de recherche */
   /* structure */
   position: absolute;
   top: 40px;
   right: 30px;
 }
-
-.search-form input[type=text] {
+#dashboard .search-form input[type=text] {
   /* structure */
   padding: 5px;
   width: 200px;
@@ -215,8 +211,7 @@ header img {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(220, 40, 227, 0.5);
 }
-
-.search-btn {
+#dashboard .search-btn {
   /* structure */
   padding: 5px;
   display: none;
@@ -228,17 +223,15 @@ header img {
   color: #DC28E3;
   cursor: pointer;
 }
-
-/* Mise en forme du SVG des "réseaux informatiques" */
-.paths {
+#dashboard .paths {
+  /* Mise en forme du SVG des "réseaux informatiques" */
   /* structure */
   position: absolute;
   top: 15px;
   left: -10px;
 }
-
-/* Petit menu de navigation sur le tableau de bord pour naviguer sur les topics importants du forum */
-.dash-nav {
+#dashboard .dash-nav {
+  /* Petit menu de navigation sur le tableau de bord pour naviguer sur les topics importants du forum */
   /* structure */
   margin: -10px auto 0;
   /* presentation */
@@ -246,24 +239,24 @@ header img {
   font-family: "Megrim";
   text-align: center;
   font-size: 2rem;
-  /* Ajout d'un petit octogone rose pour séparer les liens */
 }
-.dash-nav a {
+#dashboard .dash-nav a {
   color: #f3ebdf;
   text-transform: uppercase;
   transition: all 0.3s;
 }
-.dash-nav a:hover {
+#dashboard .dash-nav a:hover {
   opacity: 0.5;
 }
-.dash-nav a + a:before {
+#dashboard .dash-nav a + a:before {
+  /* Ajout d'un petit octogone rose pour séparer les liens */
   content: "⬡";
   margin: 0 20px;
   color: #DC28E3;
 }
 
-/* Agencement des tuiles du tableau de bord avec CSS Grid */
 .dash-grid {
+  /* Agencement des tuiles du tableau de bord avec CSS Grid */
   /* Grid */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -271,19 +264,17 @@ header img {
   grid-auto-rows: minmax(100px, auto);
   margin-top: 40px;
 }
-
-/* Mise en forme des titres des tuiles */
 .dash-grid h2 {
+  /* Mise en forme des titres des tuiles */
   /* structure */
   margin-bottom: 10px;
 }
-
-/* Mise en forme globale de toutes les tuiles */
-.grid-context,
-.grid-lastpost,
-.grid-weather,
-.grid-user,
-.grid-news {
+.dash-grid .grid-context,
+.dash-grid .grid-lastpost,
+.dash-grid .grid-weather,
+.dash-grid .grid-user,
+.dash-grid .grid-news {
+  /* Mise en forme globale de toutes les tuiles */
   /* structure */
   padding: 15px;
   overflow: auto;
@@ -292,85 +283,66 @@ header img {
   border-radius: 8px;
   text-align: justify;
 }
-
-/* Disposition de chaque tuile en fonction de la grille parente */
-/*
- * Tuile du dashboard dédiée à l'affichage du synopsis
- */
-.grid-context {
+.dash-grid .grid-context {
+  /*
+   * Tuile du dashboard dédiée à l'affichage du synopsis
+   */
   /* propriétés grid */
   grid-column: 2;
   grid-row: 1/3;
 }
-
-/*
- * Tuile du dashboard dédiée à l'affichage des derniers posts
- */
-.grid-lastpost {
+.dash-grid .grid-lastpost {
+  /*
+   * Tuile du dashboard dédiée à l'affichage des derniers posts
+   */
   /* propriétés grid */
   grid-column: 1;
   grid-row: 1;
-  /* presentation */
 }
-
-.grid-lastpost ul {
+.dash-grid .grid-lastpost ul {
   margin-left: -20px;
 }
-
-/*
- * Tuile du dashboard dédiée à l'affichage de la météo
- */
-.grid-weather {
+.dash-grid .grid-weather {
+  /*
+   * Tuile du dashboard dédiée à l'affichage de la météo
+   */
   /* propriétés grid */
   grid-column: 1;
   grid-row: 2;
 }
-
-.grid-weather ul {
+.dash-grid .grid-weather ul {
   display: flex;
   margin-left: -40px;
 }
-.grid-weather ul li {
+.dash-grid .grid-weather li {
   margin: 0 10px;
 }
-
-/*
- * Tuile du dashboard dédiée à l'affichage du membre du mois
- */
-.grid-user {
+.dash-grid .grid-user {
+  /*
+   * Tuile du dashboard dédiée à l'affichage du membre du mois
+   */
   /* propriétés grid */
   grid-column: 3;
   grid-row: 1;
 }
-
-/* Mise en forme de l'image du membre du mois */
-.grid-user img {
+.dash-grid .grid-user img {
+  /* Mise en forme de l'image du membre du mois */
   /* structure */
   width: 100px;
   height: 100px;
   /* presentation */
   border-radius: 5px;
 }
-
-/*
- * Tuile du dashboard dédiée à l'affichage des nouveautés
- */
-.grid-news {
+.dash-grid .grid-news {
+  /*
+   * Tuile du dashboard dédiée à l'affichage des nouveautés
+   */
   /* propriétés grid */
   grid-column: 3;
   grid-row: 2;
 }
-
-.grid-news ul {
+.dash-grid .grid-news ul {
   margin-left: -20px;
-}
-
-/* Mise en forme des h2 du tableau de bord */
-#dashboard h2 {
-  /* presentation */
-  font-family: "Megrim";
-  color: #DC28E3;
-  text-align: center;
 }
 
 /* SECTION DEUX #section-list */
@@ -379,15 +351,11 @@ header img {
   position: relative;
   text-align: center;
 }
-
-/* Mise en forme uniquement de l'image tout en haut de la section (fond h2) */
-#section-list img:first-child,
-#who-online img:first-child {
+#section-list img:first-child {
   width: 100%;
   height: 100px;
   margin-bottom: 40px;
 }
-
 #section-list h2 {
   /* structure */
   position: absolute;
@@ -399,9 +367,8 @@ header img {
   font-size: 3.5rem;
   text-align: center;
 }
-
-/* Mise en forme globale des articles de la section */
 #section-list table {
+  /* Mise en forme globale des articles de la section */
   /* structure */
   display: inline-block;
   width: 40%;
@@ -412,49 +379,40 @@ header img {
   /* presentation */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
-
-/* Toutes les lignes tr des thead pairs */
 #section-list table:nth-child(even) thead {
+  /* Toutes les lignes tr des thead pairs */
   /* presentation */
   background-color: #A600B3;
   border: 1px solid #A600B3;
 }
-
-/* Toutes les lignes tr des thead impairs */
 #section-list table:nth-child(odd) thead {
+  /* Toutes les lignes tr des thead impairs */
   /* presentation */
   background-color: #5FF5E9;
   border: 1px solid #5FF5E9;
 }
-
 #section-list thead th {
   padding: 5px;
   /* presentation */
   text-align: right;
   font-size: 1.7rem;
 }
-
 #section-list thead a {
   color: #2e2947;
 }
-
-#section-list tbody,
-#section-list tfoot {
+#section-list tbody, #section-list tfoot {
   /* presentation */
   background-color: #2D2F62;
   color: #f3ebdf;
   text-align: justify;
 }
-
 #section-list td {
   padding: 15px;
 }
-
 #section-list tfoot > tr > td {
   width: 50%;
   text-align: center;
 }
-
 #section-list tfoot a {
   color: #f3ebdf;
 }
@@ -464,8 +422,13 @@ header img {
   position: relative;
   /*presentation */
   background-color: #2D2F62;
+  /* Mise en forme du CSS Grid des statistiques */
 }
-
+#who-online img:first-child {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 40px;
+}
 #who-online h2 {
   /* structure */
   position: absolute;
@@ -477,7 +440,6 @@ header img {
   font-size: 3.5rem;
   text-align: center;
 }
-
 #who-online h3 {
   /* structure */
   margin-bottom: 10px;
@@ -487,71 +449,61 @@ header img {
   font-size: 2.5rem;
   text-align: center;
 }
-
 #who-online ul {
   /* retrait de la marge naturelle de l'ul */
   margin-left: -20px;
 }
-
-/* Mise en forme du CSS Grid des statistiques */
 #who-online .dash-grid {
   margin-top: -20px;
   padding: 20px;
 }
-
 #who-online .dash-grid img {
   width: 450px;
   height: 150px;
   border-radius: 8px;
 }
-
-.user-online,
-.stats,
-.faction-one,
-.faction-two,
-.faction-three,
-.faction-four {
+#who-online .user-online,
+#who-online .stats,
+#who-online .faction-one,
+#who-online .faction-two,
+#who-online .faction-three,
+#who-online .faction-four {
   /* presentation */
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   border: 1px solid #2D2F62;
   text-align: justify;
 }
-
-/*
- * Grille dédiée à l'affichage des membres en ligne
- */
-.user-online {
+#who-online .user-online {
+  /*
+   * Grille dédiée à l'affichage des membres en ligne
+   */
   /* CSS Grid */
   grid-column: 1;
   grid-row: 1;
   padding: 15px;
 }
-
-.user-online ul {
+#who-online .user-online ul {
   /* Flexbox */
   /* On met en ligne les li */
   display: flex;
 }
-
-/* On met un séparateur entre les li */
-.user-online li + li:before {
+#who-online .user-online li + li:before {
+  /* On met un séparateur entre les li */
   content: "⬡";
   color: #DC28E3;
   margin: 0 10px;
 }
-
-/*
- * Grille dédiée à l'affichage des stats globaux du site
- */
-.stats {
+#who-online .stats {
+  /*
+   * Grille dédiée à l'affichage des stats globaux du site
+   */
   grid-column: 1;
   grid-row: 2;
   padding: 15px;
 }
-
-/* Mise en place des éléments pour la flip card */
-.flip-card {
+#who-online .flip-card {
+  /* Mise en place des éléments pour la flip card */
   position: relative;
   width: 100%;
   height: 100%;
@@ -560,16 +512,14 @@ header img {
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-
-/* Rotation horizontale au passage de la souris */
-.faction-one:hover .flip-card,
-.faction-two:hover .flip-card,
-.faction-three:hover .flip-card,
-.faction-four:hover .flip-card {
+#who-online .faction-one:hover .flip-card,
+#who-online .faction-two:hover .flip-card,
+#who-online .faction-three:hover .flip-card,
+#who-online .faction-four:hover .flip-card {
+  /* Rotation horizontale au passage de la souris */
   transform: rotateY(180deg);
 }
-
-.flip-card-front, .flip-card-back {
+#who-online .flip-card-front, #who-online .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -577,16 +527,14 @@ header img {
   /* Safari */
   backface-visibility: hidden;
 }
-
-/* Style de la face avant */
-.flip-card-front {
+#who-online .flip-card-front {
+  /* Style de la face avant */
   background-color: #bbb;
   color: #2e2947;
   border-radius: 8px;
 }
-
-/* Style de la face arrière */
-.flip-card-back {
+#who-online .flip-card-back {
+  /* Style de la face arrière */
   /* structure */
   padding: 10px 0;
   /* presentation */
@@ -595,11 +543,7 @@ header img {
   border-radius: 8px;
   transform: rotateY(180deg);
 }
-
-/*
- * Grilles dédiées à l'affichage des factions + description
- */
-.faction-one {
+#who-online .faction-one {
   grid-column: 2;
   grid-row: 1;
   /* Mise en place de l'effet flip-card (w3schools) */
@@ -607,9 +551,7 @@ header img {
   height: 150px;
   perspective: 1000px;
 }
-
-/* Faction numéro 2 */
-.faction-two {
+#who-online .faction-two {
   grid-column: 2;
   grid-row: 2;
   /* Mise en place de l'effet flip-card (w3schools) */
@@ -617,8 +559,7 @@ header img {
   height: 150px;
   perspective: 1000px;
 }
-
-.faction-three {
+#who-online .faction-three {
   grid-column: 3;
   grid-row: 1;
   /* Mise en place de l'effet flip-card (w3schools) */
@@ -626,8 +567,7 @@ header img {
   height: 150px;
   perspective: 1000px;
 }
-
-.faction-four {
+#who-online .faction-four {
   grid-column: 3;
   grid-row: 2;
   /* Mise en place de l'effet flip-card (w3schools) */
@@ -738,5 +678,437 @@ footer {
   font-family: "Megrim";
   font-size: 2.5rem;
 }
+
+/***********************************************************/
+/********** Page de la liste des membres publique **********/
+/***********************************************************/
+#list-users {
+  /* Pour gérer le h2 en absolute */
+  position: relative;
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  /* presentation */
+  background-color: #2D2F62;
+}
+#list-users img:first-child {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 40px;
+}
+#list-users h2 {
+  /* structure */
+  position: absolute;
+  top: 25px;
+  left: 38%;
+  /* presentation */
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 3.5rem;
+  text-align: center;
+}
+#list-users table {
+  /* structure */
+  width: 80%;
+  margin: auto;
+  /* presentation */
+  background-color: #7776B8;
+}
+#list-users table, #list-users tr, #list-users td, #list-users th {
+  /* structure */
+  border-collapse: collapse;
+  border: 1px solid #2e2947;
+  padding: 20px;
+}
+#list-users thead {
+  background-color: #454484;
+}
+#list-users th {
+  /* presentation */
+  font-family: "Megrim";
+  color: #f3ebdf;
+  font-size: 2rem;
+}
+#list-users tbody tr:nth-child(even) {
+  /* changement de la couleur de fond des lignes paires */
+  background-color: #bab9db;
+  transition: all 0.3s;
+}
+#list-users tbody tr:nth-child(even):hover {
+  background-color: #454484;
+}
+#list-users tbody tr:nth-child(odd) {
+  transition: all 0.3s;
+}
+#list-users tbody tr:nth-child(odd):hover {
+  background-color: #454484;
+}
+#list-users td {
+  font-size: 1.8rem;
+}
+#list-users .fas, #list-users .far {
+  font-size: 2rem;
+  transition: all 0.3s;
+}
+#list-users .fas:hover, #list-users .far:hover {
+  color: #DC28E3;
+}
+
+/***********************************************************/
+/*********** Page de la gestion du profil membre ***********/
+/***********************************************************/
+#custom-profile {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#custom-profile .profile-container {
+  /* structure */
+  position: relative;
+  width: 80%;
+  margin: 40px auto;
+  /* presentation */
+  background-color: rgba(45, 47, 98, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+#custom-profile h2 {
+  font-family: "Megrim";
+  color: #f3ebdf;
+  text-align: center;
+  font-size: 3rem;
+}
+#custom-profile article ul:first-child {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+}
+#custom-profile article ul:first-child li {
+  font-size: 1.8rem;
+  color: #f3ebdf;
+}
+#custom-profile article ul:first-child input[type=text] {
+  /* structure */
+  padding: 10px;
+  width: 500px;
+  /* presentation */
+  background-color: #f3ebdf;
+  border: none;
+  border-radius: 5px;
+}
+#custom-profile .fas {
+  /* structure */
+  margin: 10px 20px 0;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 3rem;
+}
+#custom-profile hr {
+  /* structure */
+  width: 90%;
+  height: 1px;
+  margin: 10px auto;
+  /* presentation */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#custom-profile .profile-grid {
+  /* CSS GRID */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  /* structure */
+  padding: 20px;
+}
+#custom-profile .profile-grid label {
+  text-align: center;
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 1.8rem;
+}
+#custom-profile h3 {
+  /* structure */
+  margin-top: -15px;
+  /* presentation */
+  text-align: right;
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 2rem;
+}
+#custom-profile .grid-avatar,
+#custom-profile .grid-life,
+#custom-profile .grid-stats,
+#custom-profile .grid-file {
+  /* presentation */
+  background-color: #2D2F62;
+  border: 1px solid #f3ebdf;
+  border-radius: 8px;
+}
+#custom-profile .grid-avatar {
+  /* Mise en forme de la vignette pour la personnalisation du perso */
+  grid-column: 1;
+  grid-row: 1/3;
+  /* presentation */
+  text-align: center;
+}
+#custom-profile .grid-avatar img {
+  /* structure */
+  width: 200px;
+  height: 320px;
+  margin: 10px 0;
+}
+#custom-profile .grid-avatar h4 {
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 1.8rem;
+}
+#custom-profile .grid-avatar table {
+  margin: 0 auto;
+  color: #f3ebdf;
+}
+#custom-profile .grid-avatar table td {
+  padding: 10px;
+}
+#custom-profile .grid-avatar table tr td:first-child {
+  font-family: "Megrim";
+  font-size: 1.8rem;
+}
+#custom-profile .grid-avatar table input[type=text] {
+  /* structure */
+  padding: 5px;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 5px;
+}
+#custom-profile .grid-life {
+  /* Mise en forme de la vignette pour l'ajout d'éléments sur la vie du personnage */
+  grid-column: 2/4;
+  grid-row: 1;
+}
+#custom-profile .grid-life table {
+  width: 90%;
+  margin: 20px auto 0;
+  /* presentation */
+  color: #f3ebdf;
+}
+#custom-profile .grid-life table tr td:first-child {
+  padding: 10px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-family: "Megrim";
+}
+#custom-profile .grid-life table .fa-venus {
+  color: #DC28E3;
+}
+#custom-profile .grid-life table .fa-mars {
+  color: #5FF5E9;
+}
+#custom-profile .grid-life textarea {
+  /* structure */
+  width: 450px;
+  padding: 10px;
+  resize: vertical;
+  /* presentation */
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+#custom-profile .grid-stats {
+  /* Mise en forme de la vignette d'affichage des stats du joueur */
+  grid-column: 2/4;
+  grid-row: 2;
+}
+#custom-profile .grid-stats table {
+  /* structure */
+  width: 90%;
+  margin: 30px auto 0;
+  /* presentation */
+  color: #f3ebdf;
+}
+#custom-profile .grid-stats table tr td:first-child {
+  font-family: "Megrim";
+  font-size: 1.8rem;
+}
+#custom-profile .grid-file {
+  /* Mise en forme de la vignette pour l'hébergement d'image de profil */
+  /* structure */
+  grid-column: 2/4;
+  grid-row: 1;
+  /* presentation */
+  text-align: center;
+  color: #f3ebdf;
+}
+#custom-profile .grid-file form {
+  margin-top: 30px;
+}
+#custom-profile .grid-file table {
+  margin: 0 auto;
+}
+#custom-profile .grid-file table td {
+  padding: 10px;
+}
+#custom-profile button {
+  /* Bouton pour enregistrer les modifications */
+  /* structure */
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  /* presentation */
+  background-color: transparent;
+  border: none;
+  color: #f3ebdf;
+  font-size: 1.6rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+/***********************************************************/
+/*********** Page de l'intérieur d'une section ***********/
+/***********************************************************/
+#topic-list {
+  /* structure */
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  /* presentation */
+  background-color: #2D2F62;
+  color: #f3ebdf;
+}
+#topic-list table {
+  /* structure */
+  width: 100%;
+  margin: 0 auto;
+}
+#topic-list table thead {
+  /* presentation */
+  font-family: "Megrim";
+  font-size: 1.8rem;
+  text-align: center;
+}
+#topic-list table tbody tr {
+  border-bottom: 1px solid #f3ebdf;
+}
+#topic-list table td, #topic-list table th {
+  padding: 10px;
+  text-align: center;
+}
+#topic-list table, #topic-list td, #topic-list tr, #topic-list th {
+  border-collapse: collapse;
+}
+#topic-list .pagination {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/***********************************************************/
+/*********** Page de l'intérieur d'un topic ***********/
+/***********************************************************/
+#messages-list {
+  /* Affichage de la liste des messages (du + ancien au + récent) */
+  /* structure */
+  margin: 50px auto;
+  width: 80%;
+  /* presentation */
+  color: #f3ebdf;
+}
+#messages-list article {
+  /* structure */
+  margin-bottom: 20px;
+  /* presentation */
+  background-color: #2D2F62;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#messages-list ul {
+  /* flex */
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-image: url("../img/frise.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+#messages-list .profile {
+  /* structure */
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+}
+#messages-list .profile img {
+  width: 200px;
+  height: 300px;
+}
+#messages-list .profile h3 {
+  font-family: "Megrim";
+  color: #f3ebdf;
+  font-size: 2rem;
+}
+#messages-list .content {
+  /* structure */
+  display: inline-block;
+  width: 68%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 20px;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  color: #2e2947;
+}
+#messages-list hr {
+  color: #f3ebdf;
+  opacity: 0.5;
+}
+#messages-list p {
+  padding: 10px;
+}
+
+#create-message {
+  /* Formulaire de rédaction de réponse */
+  /* structure */
+  width: 77%;
+  margin: 0 auto;
+  padding: 20px;
+  /* presentation */
+  background-color: #2D2F62;
+}
+#create-message form {
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#create-message label {
+  /* structure */
+  margin-bottom: 10px;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 3rem;
+  font-family: "Megrim";
+  text-transform: uppercase;
+}
+#create-message textarea {
+  /* structure */
+  padding: 20px;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+}
+#create-message .submit {
+  /* structure */
+  margin-top: 10px;
+}
+
+/***********************************************************/
+/*********** Page d'accueil du back office (admin) ***********/
+/***********************************************************/
 
 /*# sourceMappingURL=style.css.map */

@@ -25,10 +25,13 @@
   <header role="banner">
     <!-- nav principale -->
     <nav class="nav" role="navigation">
-      <p>Logo</p>
+      <span id="pseudo">Hello, Aleonah !</span>
       <ul>
-        <li><a href="signup.html">S'inscrire</a></li>
-        <li><a href="login.html">Se connecter</a></li>
+        <li><a href="home_log.html">Accueil</a></li>
+        <li><a href="mp.html">MP</a></li>
+        <li><a href="user-profile.html">Profil</a></li>
+        <li><a href="users.html">Membres</a></li>
+        <li><a href="#">Déconnexion</a></li>
       </ul>
     </nav>
     <!-- Navigation pour mobiles et tablettes -->
@@ -166,15 +169,15 @@
         </article>
       </article>
     </section>
-    <!-- Début de la section #section-list destinée à l'affichage de toutes les sections du site -->
+    <!-- Début de la section d'affichage des sous-sections  -->
     <section id="section-list">
       <img src="img/frise.jpg" alt="" />
-      <h2>Sections</h2>
+      <h2>Section</h2>
       <table>
         <thead>
           <tr>
             <!-- Lien vers l'intérieur de la section -->
-            <th colspan="2"><a href="login.html">Cyber Tech Inc.</a></th>
+            <th colspan="2"><a href="section.html">Cyber Tech Inc.</a></th>
           </tr>
         </thead>
         <tbody>
@@ -197,11 +200,13 @@
       <table>
         <thead>
           <tr>
-            <th colspan="2"><a href="login.html">Lincoln Street</a></th>
+            <!-- Lien vers l'intérieur de la section -->
+            <th colspan="2"><a href="section.html">Cyber Tech Inc.</a></th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <!-- Description de la section -->
             <td><img src="img/square.png" alt="" /></td>
             <td>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
               Dessert
@@ -210,130 +215,44 @@
         </tbody>
         <tfoot>
           <tr>
-            <td>LAST POST - <a href="login.html">Pseudo</a> à 00:00</td>
-            <td>NB DE TOPICS - 30</td>
-          </tr>
-        </tfoot>
-      </table>
-      <table>
-        <thead>
-          <tr>
-            <th colspan="2"><a href="#">Naviport</a></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><img src="img/square.png" alt="" /></td>
-            <td>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
-              Dessert
-              sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td>LAST POST - <a href="login.html">Pseudo</a> à 00:00</td>
-            <td>NB DE TOPICS - 30</td>
-          </tr>
-        </tfoot>
-      </table>
-      <table>
-        <thead>
-          <tr>
-            <th colspan="2"><a href="#">Central Park</a></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><img src="img/square.png" alt="" /></td>
-            <td>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
-              Dessert
-              sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
+            <!-- Statistiques de la section -->
             <td>LAST POST - <a href="#">Pseudo</a> à 00:00</td>
             <td>NB DE TOPICS - 30</td>
           </tr>
         </tfoot>
       </table>
     </section>
-    <!-- Début de la section #who-online destinée à l'affichage de stats liées aux membres pour montrer l'activité -->
-    <section id="who-online">
-      <img src="img/frise.jpg" alt="" />
-      <h2>Qui est en ligne ?</h2>
-      <article class="dash-grid">
-        <!-- Affichage dynamique de la liste des membres actuellement en ligne -->
-        <article class="user-online">
-          <h3>Membres en ligne</h3>
-          <ul>
-            <li><a href="#">Pseudo 1</a></li>
-            <li><a href="#">Pseudo 2</a></li>
-            <li><a href="#">Pseudo 3</a></li>
-          </ul>
-        </article>
-        <!-- Affichage des stats -->
-        <article class="stats">
-          <h3>Statistiques</h3>
-          <ul>
-            <li>Nombre de membres inscrits : </li>
-            <li>Nombre de messages postés : </li>
-            <li>Membres connectés au cours des dernières 48hr : </li>
-          </ul>
-        </article>
-        <!-- Description dynamique des groupes -->
-        <article class="faction-one">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <img src="img/factions/human.png" alt="" />
-            </div>
-            <div class="flip-card-back">
-              <h3>Humans</h3>
-              <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
-                Dessert
-                sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</p>
-            </div>
-          </div>
-        </article>
-        <article class="faction-two">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <img src="img/factions/alchemist.png" alt="" />
-            </div>
-            <div class="flip-card-back">
-              <h3>Alchemists</h3>
-              <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
-                Dessert
-                sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</p>
-            </div>
-          </div>
-        </article>
-        <article class="faction-three">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <img src="img/factions/meca.png" alt="" />
-            </div>
-            <div class="flip-card-back">
-              <h3>Mecas</h3>
-              <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
-                Dessert
-                sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</p>
-            </div>
-          </div>
-        </article>
-        <article class="faction-four">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <img src="img/factions/cyborg.png" alt="" />
-            </div>
-            <div class="flip-card-back">
-              <h3>Cyborgs</h3>
-              <p>Marzipan sweet bonbon tootsie roll pudding bear claw. Pie candy sweet chupa chups carrot cake jelly beans cotton candy.
-                Dessert
-                sweet toffee donut macaroon. Biscuit marzipan fruitcake caramels cookie. Lemon drops lollipop lollipop muffin biscuit.</p>
-            </div>
-          </div>
-        </article>
+    <!-- Début de la section d'affichage des topics  -->
+    <section id="topic-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Nom du topic</th>
+            <th>Auteur</th>
+            <th>Nombre de messages</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="topic.html">blabla</a></td>
+            <td><a href="public-profile.html">Pseudo</a></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td><a href="topic.html">blabla</a></td>
+            <td><a href="public-profile.html">Pseudo</a></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td><a href="topic.html">blabla</a></td>
+            <td><a href="public-profile.html">Pseudo</a></td>
+            <td>2</td>
+          </tr>
+        </tbody>
+      </table>
+      <article class="pagination">
+        <!-- Mise en place d'une pagination -->
+        <p>< 1 ... 10 ></p>
       </article>
     </section>
   </main>
