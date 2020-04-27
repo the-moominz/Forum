@@ -56,24 +56,25 @@
         </ul>
         <hr>
         <h2>Panneau d'administration</h2>
-        <form method="post" action="#" class="admin-form">
           <article class="admin-grid">
-            <article class="grid-context">
+            <article class="context">
               <!-- Vignette qui permet à l'admin d'éditer la tuile Synopsis sur l'accueil -->
-
+              <h3>Edition du synopsis</h3>
+              <form action="#" method="post">
+                <textarea name="synopsis" rows="10">
+                </textarea>
+                <input type="submit" class="button submit" value="Modifier" />
+              </form>
             </article>
-            <article class="grid-event">
+            <article class="event">
               <!-- Vignette qui permet à l'admin d'éditer la tuile News & Event sur l'accueil -->
 
             </article>
-            <article class="grid-analytics">
+            <article class="analytics">
               <!-- Vignette qui permet à l'admin d'avoir tous les détails statistiques et analytiques de son site -->
 
             </article>
           </article>
-          <button type="submit">Enregistrer les modifications</button>
-          <div class="clear"></div>
-        </form>
       </article>
     </section>
   </main>

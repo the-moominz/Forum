@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CyberPunk Forum RPG</title>
+  <!-- Lien pour l'image Favicon -->
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <!-- Link FontAwesome -->
+  <script src="https://kit.fontawesome.com/0f8b35e999.js" crossorigin="anonymous"></script>
+  <!-- Google Fonts Work Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Google Fonts Megrim -->
+  <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+  <!-- Normalize css -->
+
+  <!-- Lien pour la feuille de style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Début du header -->
+  <header role="banner">
+    <!-- nav principale -->
+    <nav class="nav" role="navigation">
+      <span id="pseudo">Hello, Aleonah !</span>
+      <ul>
+        <li><a href="home_log.html">Accueil</a></li>
+        <li><a href="mp.html">MP</a></li>
+        <li><a href="user-profile.html">Profil</a></li>
+        <li><a href="users.html">Membres</a></li>
+        <li><a href="#">Déconnexion</a></li>
+      </ul>
+    </nav>
+    <!-- Navigation pour mobiles et tablettes -->
+    <nav class="nav-burger">
+
+    </nav>
+  </header>
+  <!-- Fin du header -->
+  <main>
+    <!-- Début de la section dédiée à l'administration du dashboard -->
+    <section id="custom-profile">
+      <article class="profile-container">
+        <ul>
+          <li><input type="text" class="fake-bar" disabled /></li>
+          <li><a href="admin-users.html">users</a></li>
+          <li>o</li>
+          <li><a href="admin.html">admin</a></li>
+          <li>o</li>
+          <li><a href="admin-sections.html">sections</a></li>
+          <li><i class="fas fa-minus"></i></li>
+          <li><i class="fas fa-times"></i></li>
+        </ul>
+        <hr>
+        <h2>Gestion des factions</h2>
+        <a href="add_factions.html" class="new">>> Ajouter une faction</a>
+        <table class="listing">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Total membres</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nom</td>
+              <td>blablabla</td>
+              <td>1</td>
+              <td><a href="edit_faction.html"><i class="fas fa-pen"></i></a></td>
+              <td><i class="fas fa-trash-alt"></i></td>
+            </tr>
+            <tr>
+              <td>Nom</td>
+              <td>blablabla</td>
+              <td>1</td>
+              <td><a href="edit_faction.html"><i class="fas fa-pen"></i></a></td>
+              <td><i class="fas fa-trash-alt"></i></td>
+            </tr>
+            <tr>
+              <td>Nom</td>
+              <td>blablabla</td>
+              <td>1</td>
+              <td><a href="edit_faction.html"><i class="fas fa-pen"></i></a></td>
+              <td><i class="fas fa-trash-alt"></i></td>
+            </tr>
+            <tr>
+              <td>Nom</td>
+              <td>blablabla</td>
+              <td>1</td>
+              <td><a href="edit_faction.html"><i class="fas fa-pen"></i></a></td>
+              <td><i class="fas fa-trash-alt"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+  </main>
+  <!-- Fin du main body et début du footer -->
+  <footer>
+    © 2020 - BOUSSER Elodie - Projet pro 3WA
+  </footer>
+</body>
+
+</html>

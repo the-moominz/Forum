@@ -900,16 +900,17 @@ footer {
       font-family: $titleFont;
       font-size: 1.8rem;
     }
-  }
-  h3 {
-    /* structure */
-    margin-top: -15px;
 
-    /* presentation */
-    text-align: right;
-    color: $white;
-    font-family: $titleFont;
-    font-size: 2rem;
+    h3 {
+      /* structure */
+      margin-top: -15px;
+
+      /* presentation */
+      text-align: right;
+      color: $white;
+      font-family: $titleFont;
+      font-size: 2rem;
+    }
   }
   .grid-avatar,
   .grid-life,
@@ -1214,3 +1215,124 @@ footer {
 /***********************************************************/
 /*********** Page d'accueil du back office (admin) ***********/
 /***********************************************************/
+
+/*
+* CSS Grid pour le tableau de bord du panneau d'admin
+*/
+.admin-grid {
+  /* CSS GRID */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minimax(100px, auto);
+
+  /* structure */
+  padding: $padding;
+
+  h3 {
+    font-family: $titleFont;
+    color: $white;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  .context,
+  .event,
+  .analytics {
+    /* Mise en forme globale de toutes les tuiles */
+    /* structure */
+    padding: 15px;
+    overflow: auto;
+
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    text-align: justify;
+  }
+
+  .context {
+    grid-column: 1/3;
+    grid-row: 1/3;
+
+    h3 {
+      text-align: left;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      textarea {
+        /* structure */
+        resize: vertical;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: $padding - 10px;
+
+        /* presentation */
+        border: none;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .button {
+        width: 150px;
+      }
+    }
+  }
+
+  .event {
+    grid-column: 2;
+  }
+
+  .analytics {
+    grid-column: 3;
+    grid-row: 1/3;
+  }
+}
+/*
+ * Mise en forme du bouton pour ajouter une nouvelle section/faction
+ */
+ .new {
+   /* structure */
+   padding: $padding - 10px;
+   margin-left: 100px;
+
+   /* presentation */
+   font-family: $titleFont;
+   font-size: 2rem;
+   text-transform: uppercase;
+   transition: all 0.5s;
+
+   &:hover {
+     color: $pink;
+   }
+ }
+/*
+ * Mise en forme du tableau de listing
+ */
+ .listing {
+   /* structure */
+   width: 80%;
+   margin: 20px auto;
+   border-collapse: collapse;
+
+   /* presentation */
+   background-color: $primary;
+   color: $white;
+   font-size: 1.6rem;
+
+   tr, td, th {
+     border: 1px solid $black;
+   }
+
+   td, th {
+     padding: $padding - 10px;
+     text-align: center;
+   }
+
+   .fa-pen, .fa-trash-alt {
+     /* Icone pour éditer ou supprimer une ligne */
+     font-size: 0.2rem;
+     cursor: pointer;
+   }
+ }
