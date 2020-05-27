@@ -1,0 +1,40 @@
+<!-- Code HTML pour le formulaire d'upload de nouvelle photo de profil -->
+<section id="custom-profile">
+  <article class="profile-container">
+    <ul>
+      <li><input type="text" class="fake-bar" disabled /></li>
+      <li><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($user['Id']); ?>">profil</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/user/profile/custom?index=<?= intval($user['Id']); ?>">modifier</a></li>
+      <li><i class="fas fa-minus"></i></li>
+      <li><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Changer d'avatar</h2>
+      <article class="profile-grid">
+        <article class="grid-avatar">
+          <h3>Avatar</h3>
+          <img src="<?= $wwwUrl ?>/upload/<?= htmlspecialchars($user['Photo']); ?>" alt="<?= htmlspecialchars($user['Name']); ?>" />
+        </article>
+        <article class="grid-file">
+          <h3>Héberger une image</h3>
+          <form action="<?= $requestUrl ?>/user/profile/avatar" method="post" enctype="multipart/form-data">
+            <table>
+              <tr>
+                <td>
+                  <label for="image-file">Image (PNG, JPG, JPEG, 2Mo max) : </label>
+                  <input type="file" name="image-file" />
+                  <input type="hidden" name="userId" value="<?= intval($user['Id']); ?>" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="submit" value="Envoyer" class="button submit">
+                </td>
+              </tr>
+            </table>
+          </form>
+        </article>
+      </article>
+  </article>
+</section>

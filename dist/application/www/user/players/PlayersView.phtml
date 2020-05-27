@@ -1,0 +1,36 @@
+<!-- Code HTML qui affiche la liste des membres -->
+<section id="list-users">
+  <img src="<?= $wwwUrl ?>/images/frise.jpg" alt="" />
+  <h2>Liste des membres</h2>
+  <!-- Barre de recherche -->
+  <form role="search" class="search-bar" action="<?= $requestUrl ?>/user/players" method="get">
+    <input type="text" name="search" placeholder="Rechercher un membre...">
+    <button type="submit" class="button"><i class="fas fa-search"></i></button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom & Prénom</th>
+        <th class="date">Date d'inscription</th>
+        <th>MP</th>
+        <th>Profil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Début du foreach -->
+      <?php
+        foreach ($users as $user) {
+      ?>
+      <tr>
+        <td><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($user['Id']);?>" style="color: <?= htmlentities($user['Color']); ?>"><?= htmlspecialchars($user['Name']); ?></a></td>
+        <td class="date"><?= htmlentities($user['InscriptionDate']); ?></td>
+        <td><a href="<?= $requestUrl ?>/user/players/mp?index=<?= intval($user['Id']); ?>"><i class="far fa-envelope"></i></a></td>
+        <td><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($user['Id']); ?>"><i class="fas fa-address-card"></i></a></td>
+      </tr>
+      <?php
+      }
+      ?>
+      <!-- Fin du foreach -->
+    </tbody>
+  </table>
+</section>

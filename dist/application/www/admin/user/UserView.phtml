@@ -1,0 +1,60 @@
+<!-- Début de la section dédiée à l'administration du dashboard -->
+<section id="custom-profile">
+  <article class="profile-container">
+    <ul>
+      <li><input type="text" class="fake-bar" disabled /></li>
+      <li><a href="<?= $requestUrl ?>/admin">admin</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin/faction">factions</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin/section">sections</a></li>
+      <li class="hide"><i class="fas fa-minus"></i></li>
+      <li class="hide"><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Gestion des membres</h2>
+    <form action="<?= $requestUrl ?>/admin/user" method="post">
+      <table class="listing">
+        <thead>
+          <tr>
+            <th>Pseudo</th>
+            <th>Mail</th>
+            <th>Date d'inscription</th>
+            <th>Dernière connexion</th>
+            <th>Rôle</th>
+            <th>Faction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Début du foreach pour afficher dynamiquement tous les membres -->
+          <?php
+            foreach ($users as $user) {
+          ?>
+          <tr>
+            <td data-label="Pseudo"><span style="color: <?= htmlentities($user['Color']); ?>"><?= htmlspecialchars($user['Name']); ?></span></td>
+            <td data-label="Mail"><?= htmlspecialchars($user['Email']); ?></td>
+            <td data-label="Date d'inscription"><?= htmlentities($user['InscriptionDate']); ?></td>
+            <td data-label="Dernière connexion"><?= htmlentities($user['LoginDate']); ?></td>
+            <td data-label="Rôle">
+              <?php
+                if (intval($user['Admin']) == 1) {
+                  echo 'Modérateur';
+                } elseif (intval($user['Admin']) == 2) {
+                  echo 'Administrateur';
+                } else {
+                  echo 'Membre';
+                }
+              ?>
+            </td>
+            <td data-label="Faction"><?= htmlspecialchars($user['Faction']); ?></td>
+          </tr>
+          <?php
+          }
+           ?>
+           <!-- Fin du foreach -->
+        </tbody>
+    </table>
+    <div class="clear"></div>
+  </form>
+  </article>
+</section>

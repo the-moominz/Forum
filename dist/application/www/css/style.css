@@ -1,0 +1,2360 @@
+@charset "UTF-8";
+/* On déclare les styles globaux */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* 1 rem = 10px */
+  font-size: 62.5%;
+  /* On fixe le footer en bas de page */
+  height: 100%;
+}
+
+body {
+  /* On fixe le footer en pied de page */
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* presentation */
+  background-color: #7776B8;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-geometric.png");
+  font-family: "Work Sans";
+  font-size: 1.4rem;
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1 {
+  /* structure */
+  padding-top: 50px;
+  /* presentation */
+  font-family: "Megrim";
+  font-size: 5rem;
+  color: #DC28E3;
+  text-align: center;
+  /* effet néon */
+  text-shadow: 0 2px 10px #f3ebdf;
+}
+
+a {
+  /* Retrait du sous-lignage de tous les liens du site */
+  text-decoration: none;
+  color: #f3ebdf;
+}
+
+li {
+  /* Retrait de toutes les puces des listes à puce */
+  list-style-type: none;
+}
+
+img {
+  /* Propriétés pour rendre les images responsive */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hack pour éviter les problèmes liés au float/position */
+.clear {
+  clear: both;
+}
+
+.inline {
+  margin: 0 0 0 40px;
+}
+
+/* Mise en forme des boutons des formulaires */
+.button {
+  /* structure */
+  padding: 10px 15px;
+  /* presentation */
+  opacity: 0.8;
+  border-radius: 5px;
+  font-family: "Megrim";
+  font-size: 1.8rem;
+  color: #2e2947;
+  cursor: pointer;
+}
+
+/*
+ * Bouton de validation d'un formulaire
+*/
+.submit {
+  background-color: #5FF5E9;
+  border: 1px solid #5FF5E9;
+  transition: all 0.5s;
+}
+.submit:hover {
+  color: #5FF5E9;
+  background-color: transparent;
+}
+
+/*
+ * Bouton pour annuler
+ */
+.cancel {
+  margin-left: 15px;
+  background-color: #DC28E3;
+  border: 1px solid #DC28E3;
+  transition: all 0.5s;
+}
+.cancel:hover {
+  color: #DC28E3;
+  background-color: transparent;
+}
+
+/*
+ * Mise en forme du bouton pour ajouter une nouvelle section/faction/topic etc
+ */
+.new {
+  /* structure */
+  padding: 10px;
+  margin-left: 100px;
+  /* presentation */
+  font-family: "Megrim";
+  font-size: 2rem;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+.new:hover {
+  color: #DC28E3;
+}
+
+/*
+ * Tous les éléments span à mettre en gras
+ */
+.bold {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.pink {
+  color: #DC28E3;
+  font-style: italic;
+}
+
+/***********************************************************/
+/******************* Page d'accueil ********************/
+/***********************************************************/
+header {
+  position: relative;
+}
+header .navigation {
+  /* Mise en forme de la barre de navigation */
+  /* flexbox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* structure */
+  width: 100%;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  /* presentation */
+  background-color: #2D2F62;
+  font-family: "Megrim";
+  color: #DC28E3;
+}
+header #pseudo-rwd {
+  /* On masque l'affichage du pseudo pour mobile et tablette */
+  display: none;
+}
+header .navigation ul {
+  /* Mise en forme des liens de la navigation */
+  /* flexbox */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 50px;
+}
+header .navigation li {
+  /* presentation */
+  list-style-type: none;
+  font-size: 2rem;
+}
+header .navigation a {
+  /* presentation */
+  color: #DC28E3;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+header .navigation a:hover {
+  color: #f3ebdf;
+}
+header .navigation li + li:before {
+  /* Ajout d'un séparateur entre les liens de la navigation */
+  content: "|";
+  margin: 0 20px;
+  color: rgba(255, 255, 255, 0.6);
+}
+header #pseudo {
+  /* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
+  /* structure */
+  margin-left: 15px;
+  /* presentation */
+  font-family: "Megrim";
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f3ebdf;
+}
+header .nav-burger-btn {
+  /* On cache le menu burger en mode desktop */
+  display: none;
+}
+
+/****************************** MAIN BODY *********************/
+/* SECTION affichage bannière */
+#banner img {
+  /* Mise en forme de la bannière du header */
+  width: 100%;
+  height: 600px;
+}
+
+/*  SECTION UNE #dashboard */
+#dashboard {
+  /* structure */
+  margin-top: -3px;
+  margin-bottom: -40px;
+  /* on met la section en relative pour que la barre de recherche puisse être positionnée en absolute */
+  position: relative;
+  padding: 20px;
+  /* presentation */
+  background-color: #2D2F62;
+  background-image: url("../images/computer.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#dashboard h2 {
+  /* Mise en forme des h2 du tableau de bord */
+  /* presentation */
+  font-family: "Megrim";
+  color: #DC28E3;
+  text-align: center;
+}
+#dashboard .paths {
+  /* Mise en forme du SVG des "réseaux informatiques" */
+  /* structure */
+  position: absolute;
+  top: 15px;
+  left: -10px;
+}
+#dashboard .dash-nav {
+  /* Petit menu de navigation sur le tableau de bord pour naviguer sur les topics importants du forum */
+  /* structure */
+  margin: -10px auto 0;
+  /* presentation */
+  color: #f3ebdf;
+  font-family: "Megrim";
+  text-align: center;
+  font-size: 2rem;
+}
+#dashboard .dash-nav a {
+  color: #f3ebdf;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+#dashboard .dash-nav a:hover {
+  opacity: 0.5;
+}
+#dashboard .dash-nav a + a:before {
+  /* Ajout d'un petit octogone rose pour séparer les liens */
+  content: "⬡";
+  margin: 0 20px;
+  color: #DC28E3;
+}
+
+.dash-grid {
+  /* Agencement des tuiles du tableau de bord avec CSS Grid */
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  margin-top: 40px;
+}
+.dash-grid h2 {
+  /* Mise en forme des titres des tuiles */
+  /* structure */
+  margin-bottom: 10px;
+  font-size: 3rem;
+}
+.dash-grid .grid-context,
+.dash-grid .grid-lastpost,
+.dash-grid .grid-news,
+.dash-grid .grid-user,
+.dash-grid .grid-weather {
+  /* Mise en forme globale de toutes les tuiles */
+  /* structure */
+  padding: 15px;
+  overflow: auto;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-align: justify;
+  color: #f3ebdf;
+}
+.dash-grid .grid-context {
+  /*
+   * Tuile du dashboard dédiée à l'affichage du synopsis
+   */
+  /* propriétés grid */
+  grid-column: 2;
+  grid-row: 1/3;
+  /* presentation */
+}
+.dash-grid .grid-context p {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  text-indent: 20px;
+}
+.dash-grid .grid-lastpost {
+  /*
+   * Tuile du dashboard dédiée à l'affichage des derniers posts
+   */
+  /* propriétés grid */
+  grid-column: 1;
+  grid-row: 1;
+}
+.dash-grid .grid-lastpost ul {
+  margin-left: -20px;
+  color: #f3ebdf;
+}
+.dash-grid .grid-lastpost ul li {
+  margin-bottom: 5px;
+}
+.dash-grid .grid-weather {
+  /*
+   * Tuile du dashboard dédiée à l'affichage de la date
+   */
+  /* propriétés grid */
+  grid-column: 1;
+  grid-row: 2;
+  /* presentation */
+  text-align: center;
+}
+.dash-grid .grid-weather .fas {
+  color: #5FF5E9;
+  font-size: 3.5rem;
+}
+.dash-grid .grid-weather p {
+  margin-bottom: 10px;
+}
+.dash-grid .grid-user {
+  /*
+   * Tuile du dashboard dédiée à l'affichage du membre du mois
+   */
+  /* propriétés grid */
+  grid-column: 3;
+  grid-row: 1;
+}
+.dash-grid .grid-user a {
+  font-family: "Megrim";
+  font-size: 2rem;
+}
+.dash-grid .grid-user img {
+  /* Mise en forme de l'image du membre du mois */
+  /* structure */
+  width: 150px;
+  height: 200px;
+  /* presentation */
+  border-radius: 5px;
+}
+.dash-grid .grid-user td {
+  padding-left: 20px;
+}
+.dash-grid .grid-news {
+  /*
+   * Tuile du dashboard dédiée à l'affichage des nouveautés
+   */
+  /* propriétés grid */
+  grid-column: 3;
+  grid-row: 2;
+}
+.dash-grid .grid-news ul {
+  margin-left: -20px;
+}
+
+/* SECTION DEUX #section-list */
+#section-list {
+  /* Pour gérer le h2 en absolute */
+  position: relative;
+  margin-top: 40px;
+  text-align: center;
+  /* flexbox */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+#section-list img:first-child {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 40px;
+}
+#section-list h2 {
+  /* structure */
+  position: absolute;
+  top: 25px;
+  left: 45%;
+  /* presentation */
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 3.5rem;
+  text-align: center;
+}
+#section-list table {
+  /* Mise en forme globale des articles de la section */
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* structure */
+  width: 40%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  margin-right: 15px;
+  margin-left: 15px;
+  /* presentation */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+#section-list table:nth-child(even) thead {
+  /* Toutes les lignes tr des thead pairs */
+  /* presentation */
+  background-color: #A600B3;
+  border: 1px solid #A600B3;
+}
+#section-list table:nth-child(odd) thead {
+  /* Toutes les lignes tr des thead impairs */
+  /* presentation */
+  background-color: #5FF5E9;
+  border: 1px solid #5FF5E9;
+}
+#section-list thead th {
+  padding: 5px;
+  /* presentation */
+  text-align: right;
+  font-size: 1.7rem;
+}
+#section-list thead a {
+  color: #2e2947;
+  transition: all 0.5s;
+}
+#section-list thead a:hover {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  color: #f3ebdf;
+}
+#section-list tbody tr {
+  /* flexbox */
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+#section-list tbody tr td:last-child {
+  flex: 1;
+}
+#section-list tbody,
+#section-list tfoot {
+  /* presentation */
+  background-color: #2D2F62;
+  color: #f3ebdf;
+  text-align: justify;
+}
+#section-list td {
+  padding: 15px;
+}
+#section-list tfoot tr {
+  /* flexbox */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* presentation */
+  border-top: 1px dotted #f3ebdf;
+}
+#section-list tfoot a {
+  color: #f3ebdf;
+}
+
+/* SECTION DEUX #who-online */
+#who-online {
+  position: relative;
+  padding-bottom: 5rem;
+  /*presentation */
+  background-color: #2D2F62;
+  /* Mise en forme du CSS Grid des statistiques */
+}
+#who-online img:first-child {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 40px;
+}
+#who-online h2 {
+  /* structure */
+  position: absolute;
+  top: 25px;
+  left: 40%;
+  /* presentation */
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 3.5rem;
+  text-align: center;
+}
+#who-online h3 {
+  /* structure */
+  margin-bottom: 10px;
+  /* presentation */
+  font-family: "Megrim";
+  color: #f3ebdf;
+  font-size: 2.5rem;
+  text-align: center;
+}
+#who-online ul {
+  /* retrait de la marge naturelle de l'ul */
+  margin-left: -20px;
+}
+#who-online .dash-grid {
+  margin-top: -20px;
+  padding: 20px;
+}
+#who-online .dash-grid img {
+  width: 450px;
+  height: 150px;
+  border-radius: 8px;
+}
+#who-online .faction-four,
+#who-online .faction-one,
+#who-online .faction-three,
+#who-online .faction-two,
+#who-online .stats,
+#who-online .user-online {
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  border: 1px solid #2D2F62;
+  text-align: justify;
+}
+#who-online .user-online {
+  /*
+    * Grille dédiée à l'affichage des membres en ligne
+    */
+  /* CSS Grid */
+  grid-column: 1;
+  grid-row: 1;
+  padding: 15px;
+}
+#who-online .user-online ul {
+  /* Flexbox */
+  /* On met en ligne les li */
+  display: flex;
+}
+#who-online .user-online li + li:before {
+  /* On met un séparateur entre les li */
+  content: "⬡";
+  color: #DC28E3;
+  margin: 0 10px;
+}
+#who-online .stats {
+  /*
+     * Grille dédiée à l'affichage des stats globaux du site
+     */
+  grid-column: 1;
+  grid-row: 2;
+  padding: 15px;
+  color: #f3ebdf;
+}
+#who-online .flip-card {
+  /* Mise en place des éléments pour la flip card */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: justify;
+  border-radius: 8px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+#who-online .faction-four:hover .flip-card,
+#who-online .faction-one:hover .flip-card,
+#who-online .faction-three:hover .flip-card,
+#who-online .faction-two:hover .flip-card {
+  /* Rotation horizontale au passage de la souris */
+  transform: rotateY(180deg);
+}
+#who-online .flip-card-back,
+#who-online .flip-card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+#who-online .flip-card-front {
+  /* Style de la face avant */
+  background-color: #bbb;
+  color: #2e2947;
+  border-radius: 8px;
+}
+#who-online .flip-card-back {
+  /* Style de la face arrière */
+  /* structure */
+  padding: 10px 0;
+  overflow: auto;
+  /* presentation */
+  background-color: #2D2F62;
+  color: #f3ebdf;
+  border-radius: 8px;
+  transform: rotateY(180deg);
+}
+#who-online .faction-one {
+  grid-column: 2;
+  grid-row: 1;
+  /* Mise en place de l'effet flip-card (w3schools) */
+  width: 450px;
+  height: 150px;
+  perspective: 1000px;
+}
+#who-online .faction-two {
+  grid-column: 2;
+  grid-row: 2;
+  /* Mise en place de l'effet flip-card (w3schools) */
+  width: 450px;
+  height: 150px;
+  perspective: 1000px;
+}
+#who-online .faction-three {
+  grid-column: 3;
+  grid-row: 1;
+  /* Mise en place de l'effet flip-card (w3schools) */
+  width: 450px;
+  height: 150px;
+  perspective: 1000px;
+}
+#who-online .faction-four {
+  grid-column: 3;
+  grid-row: 2;
+  /* Mise en place de l'effet flip-card (w3schools) */
+  width: 450px;
+  height: 150px;
+  perspective: 1000px;
+}
+
+/* Footer */
+footer {
+  /* flexbox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* structure */
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* presentation */
+  background-color: #7776B8;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-geometric.png");
+  text-align: center;
+  color: #f3ebdf;
+}
+footer button {
+  border: none;
+  background-color: transparent;
+}
+footer button .fas {
+  font-size: 3rem;
+  color: #5FF5E9;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+footer button .fas:hover {
+  color: #DC28E3;
+}
+
+/***********************************************************/
+/************* Page de connexion/inscription/oubli mot de passe ***************/
+/***********************************************************/
+#connection {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background-image: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#connection small {
+  /* Mise en forme des petites mentions en dessous des champs */
+  color: #f3ebdf;
+  margin-left: 50px;
+}
+#connection aside {
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 1.8rem;
+}
+#connection article {
+  /* structure */
+  width: 80%;
+  margin: 40px auto;
+  padding-bottom: 20px;
+  /* presentation */
+  background-color: rgba(45, 47, 98, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-align: center;
+}
+#connection h2 {
+  font-family: "Megrim";
+  color: #f3ebdf;
+  text-align: center;
+  font-size: 3rem;
+}
+#connection article ul:first-child {
+  display: flex;
+  justify-content: flex-end;
+}
+#connection .fas {
+  /* structure */
+  margin: 10px 20px 0;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 3rem;
+}
+#connection hr {
+  /* structure */
+  width: 90%;
+  height: 1px;
+  margin: 10px auto;
+  /* presentation */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#connection .login-form {
+  margin-top: 20px;
+  margin-left: 100px;
+  width: 80%;
+  text-align: center;
+}
+#connection .login-form p {
+  color: #DC28E3;
+}
+#connection .login-form ul {
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+#connection .login-form ul li:last-child {
+  text-align: center;
+  margin: 10px 0 0 -30px;
+}
+#connection .login-form li {
+  margin: 5px 0;
+  text-align: left;
+}
+#connection label {
+  /* structure */
+  margin-left: 20px;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 1.8rem;
+}
+#connection input[type=text],
+#connection input[type=password],
+#connection input[type=date],
+#connection input[type=email] {
+  /* structure */
+  width: 100%;
+  padding: 10px;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0;
+}
+#connection .forgot-password {
+  font-family: "Megrim";
+  font-size: 2rem;
+  transition: all 0.5s;
+}
+#connection .forgot-password:hover {
+  color: #DC28E3;
+}
+
+/***********************************************************/
+/********** Page de la liste des membres publique **********/
+/***********************************************************/
+#list-users {
+  /* Pour gérer le h2 en absolute */
+  position: relative;
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  /* presentation */
+  background-color: #2D2F62;
+}
+#list-users .search-bar {
+  /* Mise en forme du formulaire de recherche d'un membre */
+  text-align: left;
+  width: 80%;
+  margin: auto;
+}
+#list-users .search-bar input[type=text] {
+  /* structure */
+  width: 60%;
+  margin-bottom: 40px;
+  padding: 10px;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  border: none;
+}
+#list-users .search-bar button {
+  /* structure */
+  padding: 10px;
+  /* presentation */
+  background-color: transparent;
+  border: none;
+  color: #f3ebdf;
+  transition: all 0.3s;
+}
+#list-users .search-bar button:hover {
+  color: #DC28E3;
+}
+#list-users .search-bar button .fas {
+  font-size: 2.5rem;
+}
+#list-users img:first-child {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 40px;
+}
+#list-users h2 {
+  /* structure */
+  position: absolute;
+  top: 25px;
+  left: 38%;
+  /* presentation */
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 3.5rem;
+  text-align: center;
+}
+#list-users table {
+  /* structure */
+  width: 80%;
+  margin: auto;
+  /* presentation */
+  background-color: #7776B8;
+}
+#list-users table,
+#list-users td,
+#list-users th,
+#list-users tr {
+  /* structure */
+  border-collapse: collapse;
+  border: 1px solid #2e2947;
+  padding: 20px;
+}
+#list-users thead {
+  background-color: #7776B8;
+}
+#list-users tbody {
+  background-color: #454484;
+}
+#list-users th {
+  /* presentation */
+  font-family: "Megrim";
+  color: #f3ebdf;
+  font-size: 2.5rem;
+}
+#list-users td {
+  font-size: 1.8rem;
+}
+#list-users .far,
+#list-users .fas {
+  font-size: 3rem;
+  transition: all 0.3s;
+}
+#list-users .far:hover,
+#list-users .fas:hover {
+  color: #DC28E3;
+}
+
+/***********************************************************/
+/*********** Page de la gestion du profil membre ***********/
+/***********************************************************/
+#custom-profile {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background-image: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#custom-profile .profile-container {
+  /* structure */
+  position: relative;
+  width: 80%;
+  margin: 40px auto;
+  /* presentation */
+  background-color: rgba(45, 47, 98, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+#custom-profile h2 {
+  font-family: "Megrim";
+  color: #f3ebdf;
+  text-align: center;
+  font-size: 3rem;
+}
+#custom-profile article ul:first-child {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+}
+#custom-profile article ul:first-child li {
+  font-size: 1.8rem;
+  color: #f3ebdf;
+}
+#custom-profile article ul:first-child input[type=text] {
+  /* structure */
+  padding: 10px;
+  width: 500px;
+  /* presentation */
+  background-color: #f3ebdf;
+  border: none;
+  border-radius: 5px;
+}
+#custom-profile article ul:first-child .fas {
+  /* structure */
+  margin: 10px 20px 0;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 3rem;
+}
+#custom-profile hr {
+  /* structure */
+  width: 90%;
+  height: 1px;
+  margin: 10px auto;
+  /* presentation */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#custom-profile .profile-grid {
+  /* CSS GRID */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  /* structure */
+  padding: 20px;
+}
+#custom-profile .profile-grid label {
+  text-align: center;
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 1.8rem;
+}
+#custom-profile .profile-grid h3 {
+  /* structure */
+  margin-top: -15px;
+  /* presentation */
+  text-align: right;
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 2rem;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+}
+#custom-profile .grid-avatar,
+#custom-profile .grid-file,
+#custom-profile .grid-life,
+#custom-profile .grid-stats {
+  /* presentation */
+  background-color: #2D2F62;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+}
+#custom-profile .grid-avatar {
+  /* Mise en forme de la vignette pour la personnalisation du perso */
+  grid-column: 1;
+  grid-row: 1/3;
+  /* presentation */
+  text-align: center;
+}
+#custom-profile .grid-avatar img {
+  /* structure */
+  width: 200px;
+  height: 320px;
+  margin: 10px 0;
+}
+#custom-profile .grid-avatar h4 {
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 1.8rem;
+}
+#custom-profile .grid-avatar table {
+  margin: 0 auto;
+  color: #f3ebdf;
+}
+#custom-profile .grid-avatar table td {
+  padding: 10px;
+}
+#custom-profile .grid-avatar table tr td:first-child {
+  font-family: "Megrim";
+  font-size: 1.8rem;
+}
+#custom-profile .grid-avatar table input[type=text] {
+  /* structure */
+  padding: 5px;
+  width: 100%;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 5px;
+}
+#custom-profile .grid-life {
+  /* Mise en forme de la vignette pour l'ajout d'éléments sur la vie du personnage */
+  grid-column: 2/4;
+  grid-row: 1;
+}
+#custom-profile .grid-life table {
+  width: 90%;
+  margin: 20px auto 0;
+  /* presentation */
+  color: #f3ebdf;
+}
+#custom-profile .grid-life table tr td:first-child {
+  padding: 15px;
+  text-align: left;
+  font-size: 1.8rem;
+  font-family: "Megrim";
+}
+#custom-profile .grid-life table .fa-venus {
+  color: #DC28E3;
+}
+#custom-profile .grid-life table .fa-mars {
+  color: #5FF5E9;
+}
+#custom-profile .grid-life textarea {
+  /* structure */
+  width: 100%;
+  padding: 10px;
+  resize: vertical;
+  /* presentation */
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+#custom-profile .grid-stats {
+  /* Mise en forme de la vignette d'affichage des stats du joueur */
+  grid-column: 2/4;
+  grid-row: 2;
+}
+#custom-profile .grid-stats table {
+  /* structure */
+  width: 90%;
+  margin: 30px auto 0;
+  /* presentation */
+  color: #f3ebdf;
+}
+#custom-profile .grid-stats table tr td:first-child {
+  font-family: "Megrim";
+  font-size: 1.8rem;
+}
+#custom-profile .grid-file {
+  /* Mise en forme de la vignette pour l'hébergement d'image de profil */
+  /* structure */
+  grid-column: 2/4;
+  grid-row: 1;
+  /* presentation */
+  text-align: center;
+  color: #f3ebdf;
+}
+#custom-profile .grid-file form {
+  margin-top: 30px;
+}
+#custom-profile .grid-file table {
+  margin: 0 auto;
+}
+#custom-profile .grid-file table td {
+  padding: 10px;
+}
+#custom-profile button {
+  /* Bouton pour enregistrer les modifications */
+  /* structure */
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  /* presentation */
+  background-color: #5FF5E9;
+  border: none;
+  border-radius: 8px;
+  color: #2e2947;
+  font-size: 1.6rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#custom-profile button:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) inset;
+}
+#custom-profile .form-status {
+  /* Mise en forme simple du formulaire réservé à l'admin pour changer le statut du membre */
+  margin-left: 50px;
+  margin-top: 30px;
+}
+#custom-profile .form-status input[type=submit] {
+  /* presentation */
+  border: none;
+  background-color: transparent;
+  color: #DC28E3;
+  text-transform: uppercase;
+  font-family: "Megrim";
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/***********************************************************/
+/*********** Page de l'intérieur d'une section ***********/
+/***********************************************************/
+#topic-list {
+  /* structure */
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  /* presentation */
+  background-color: #2D2F62;
+  color: #f3ebdf;
+}
+#topic-list .new {
+  margin-left: 0;
+}
+#topic-list table {
+  /* structure */
+  width: 100%;
+  margin: 20px auto 0;
+  font-size: 1.6rem;
+}
+#topic-list table thead {
+  /* presentation */
+  font-family: "Megrim";
+  font-size: 2rem;
+  text-align: center;
+}
+#topic-list table tbody tr {
+  border-bottom: 1px solid #f3ebdf;
+}
+#topic-list table td,
+#topic-list table th {
+  padding: 10px;
+  text-align: center;
+}
+#topic-list table,
+#topic-list td,
+#topic-list th,
+#topic-list tr {
+  border-collapse: collapse;
+}
+#topic-list .pagination {
+  /* flexbox */
+  display: flex;
+  justify-content: space-between;
+  /* structure */
+  margin-top: 10px;
+  font-size: 1.8rem;
+}
+#topic-list .pagination a {
+  transition: all 0.3s;
+}
+#topic-list .pagination a:hover {
+  color: #DC28E3;
+}
+
+/***********************************************************/
+/*********** Page de l'intérieur d'un topic ***********/
+/***********************************************************/
+#messages-list {
+  /* Affichage de la liste des messages (du + ancien au + récent) */
+  /* structure */
+  margin: 50px auto;
+  width: 80%;
+  /* presentation */
+  color: #f3ebdf;
+}
+#messages-list article {
+  /* structure */
+  margin-bottom: 20px;
+  /* presentation */
+  background-color: #2D2F62;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#messages-list ul {
+  /* flex */
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-image: url("../images/frise.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+#messages-list ul .fas, #messages-list ul .far {
+  font-size: 2.5rem;
+  transition: all 0.3s;
+}
+#messages-list ul .fas:hover, #messages-list ul .far:hover {
+  color: #DC28E3;
+}
+#messages-list .profile {
+  /* structure */
+  display: inline-block;
+  width: 25%;
+  padding-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+#messages-list .profile img {
+  width: 200px;
+  height: 300px;
+  border: 1px dotted rgba(255, 255, 255, 0.5);
+}
+#messages-list .profile h3 {
+  /* presentation */
+  font-family: "Megrim";
+  color: #f3ebdf;
+  font-size: 2rem;
+}
+#messages-list .content {
+  /* structure */
+  display: inline-block;
+  width: 68%;
+  padding: 20px;
+  margin: 40px auto;
+  vertical-align: top;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  color: #2e2947;
+}
+#messages-list hr {
+  color: #f3ebdf;
+  opacity: 0.5;
+}
+#messages-list p {
+  padding: 10px;
+}
+
+#create-message {
+  /* Formulaire de rédaction de réponse */
+  /* structure */
+  width: 77%;
+  margin: 0 auto;
+  padding: 20px;
+  /* presentation */
+  background-color: #2D2F62;
+}
+#create-message form {
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#create-message label {
+  /* structure */
+  margin-bottom: 10px;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 3rem;
+  font-family: "Megrim";
+  text-transform: uppercase;
+}
+#create-message textarea {
+  /* structure */
+  padding: 20px;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+}
+#create-message .submit {
+  /* structure */
+  margin-top: 10px;
+}
+#create-message p {
+  /* Mise en forme du message d'erreur, qui invite à se connecter pour répondre au topic */
+  color: #f3ebdf;
+  text-align: center;
+}
+#create-message p a {
+  color: #DC28E3;
+}
+
+/***********************************************************/
+/*********** Page de création d'un topic ***********/
+/***********************************************************/
+#new-topic {
+  margin-top: 40px;
+}
+#new-topic img:first-child {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 40px;
+}
+#new-topic h2 {
+  /* structure */
+  position: absolute;
+  top: 70px;
+  left: 42%;
+  /* presentation */
+  color: #f3ebdf;
+  font-family: "Megrim";
+  font-size: 3.5rem;
+  text-align: center;
+}
+#new-topic fieldset {
+  /* structure */
+  width: 80%;
+  margin: 5px auto;
+  /* presentation */
+  background-color: #2D2F62;
+  color: #f3ebdf;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+}
+#new-topic legend {
+  /* presentation */
+  font-family: "Megrim";
+  font-size: 2.5rem;
+}
+#new-topic label {
+  font-size: 1.8rem;
+}
+#new-topic input[type=text],
+#new-topic textarea {
+  /* structure */
+  width: 95%;
+  padding: 10px;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  border: none;
+}
+#new-topic textarea {
+  resize: vertical;
+}
+#new-topic li {
+  text-align: left;
+  margin-bottom: 10px;
+}
+#new-topic li:last-child {
+  text-align: center;
+}
+
+/***********************************************************/
+/*********** Page d'accueil du back office (admin) ***********/
+/***********************************************************/
+/*
+* CSS Grid pour le tableau de bord du panneau d'admin
+*/
+.admin-grid {
+  /* CSS GRID */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  /* structure */
+  padding: 20px;
+}
+.admin-grid h3 {
+  font-family: "Megrim";
+  color: #f3ebdf;
+  font-size: 1.8rem;
+  text-align: left;
+}
+.admin-grid .news,
+.admin-grid .context,
+.admin-grid .event {
+  /* Mise en forme globale de toutes les tuiles */
+  /* structure */
+  padding: 15px;
+  overflow: auto;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-align: justify;
+}
+.admin-grid .context {
+  grid-column: 1/3;
+  grid-row: 1/3;
+}
+.admin-grid .context h3 {
+  text-align: left;
+}
+.admin-grid .context form {
+  display: flex;
+  flex-direction: column;
+}
+.admin-grid .context form textarea {
+  /* structure */
+  resize: vertical;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  /* presentation */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.admin-grid .context form .button {
+  width: 150px;
+}
+.admin-grid .event {
+  grid-column: 1/4;
+}
+.admin-grid .event form {
+  display: flex;
+  flex-direction: column;
+}
+.admin-grid .event form textarea {
+  /* structure */
+  resize: vertical;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  /* presentation */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.admin-grid .event form .button {
+  width: 150px;
+}
+.admin-grid .news {
+  grid-column: 3;
+  grid-row: 1/3;
+  overflow: auto;
+}
+.admin-grid .news table {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+}
+.admin-grid .news table td {
+  padding: 5px;
+  letter-spacing: 0.2rem;
+  text-align: left;
+}
+.admin-grid .news table .fas {
+  font-size: 2.5rem;
+  transition: all 0.3s;
+}
+.admin-grid .news table .fas:hover {
+  color: #5FF5E9;
+}
+
+/*
+ * Mise en forme du tableau de listing
+ */
+.listing {
+  /* structure */
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  /* presentation */
+  background-color: #2D2F62;
+  color: #f3ebdf;
+  font-size: 1.6rem;
+}
+.listing td,
+.listing th,
+.listing tr {
+  border: 1px solid #2e2947;
+}
+.listing td,
+.listing th {
+  padding: 10px;
+  text-align: center;
+}
+.listing .fa-pen,
+.listing .fa-trash-alt {
+  /* Icone pour éditer ou supprimer une ligne */
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/*
+ * Mise en forme du formulaire pour l'ajout/édition des sections/factions
+ */
+#custom-admin {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background-image: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#custom-admin .add-container {
+  /* structure */
+  position: relative;
+  width: 80%;
+  margin: 40px auto;
+  /* presentation */
+  background-color: rgba(45, 47, 98, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+#custom-admin .add-container h2 {
+  font-family: "Megrim";
+  color: #f3ebdf;
+  text-align: center;
+  font-size: 3rem;
+}
+#custom-admin .add-container ul:not(.add-form):first-child {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+}
+#custom-admin .add-container ul:not(.add-form):first-child li {
+  font-size: 1.8rem;
+  color: #f3ebdf;
+}
+#custom-admin .add-container ul:not(.add-form):first-child input[type=text] {
+  /* structure */
+  padding: 10px;
+  width: 500px;
+  /* presentation */
+  background-color: #f3ebdf;
+  border: none;
+  border-radius: 5px;
+}
+#custom-admin .add-container .fas {
+  /* structure */
+  margin: 10px 20px 0;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 3rem;
+}
+#custom-admin .add-container hr {
+  /* structure */
+  width: 90%;
+  height: 1px;
+  margin: 10px auto;
+  /* presentation */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#custom-admin form .add-form {
+  /* presentation */
+  color: #f3ebdf;
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* structure */
+  width: 80%;
+  margin: 20px auto;
+}
+#custom-admin form .add-form li {
+  margin-bottom: 10px;
+}
+#custom-admin form .add-form label {
+  font-size: 1.6rem;
+}
+#custom-admin form .add-form input[type=text],
+#custom-admin form .add-form textarea {
+  /* structure */
+  padding: 10px;
+  width: 100%;
+  margin: 15px 0;
+  /* presentation */
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 5px;
+}
+#custom-admin form .add-form textarea {
+  resize: vertical;
+}
+
+/*
+ * Mise en forme de la boîte de messagerie privée
+ */
+#mps {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background-image: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#mps .mp-container {
+  /* structure */
+  position: relative;
+  width: 80%;
+  margin: 40px auto;
+  /* presentation */
+  background-color: rgba(45, 47, 98, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+#mps .mp-container h2 {
+  font-family: "Megrim";
+  color: #f3ebdf;
+  text-align: center;
+  font-size: 3rem;
+}
+#mps .mp-container ul:not(.add-form):first-child {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+}
+#mps .mp-container ul:not(.add-form):first-child li {
+  font-size: 1.8rem;
+  color: #f3ebdf;
+}
+#mps .mp-container ul:not(.add-form):first-child input[type=text] {
+  /* structure */
+  padding: 10px;
+  width: 500px;
+  /* presentation */
+  background-color: #f3ebdf;
+  border: none;
+  border-radius: 5px;
+}
+#mps .mp-container .fas {
+  /* structure */
+  margin: 10px 20px 0;
+  /* presentation */
+  color: #f3ebdf;
+  font-size: 3rem;
+}
+#mps .mp-container hr {
+  /* structure */
+  width: 90%;
+  height: 1px;
+  margin: 10px auto;
+  /* presentation */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#mps table {
+  /* Tableau contenant la liste des messages privés */
+  /* structure */
+  width: 90%;
+  margin: 20px auto;
+  /* presentation */
+  color: #f3ebdf;
+  border-collapse: collapse;
+}
+#mps table table, #mps table tr, #mps table td {
+  border: 1px solid #f3ebdf;
+}
+#mps table thead {
+  /* presentation */
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  background-color: #2D2F62;
+}
+#mps table td {
+  padding: 10px;
+}
+#mps table tbody td:last-child {
+  background-color: #DC28E3;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Megrim";
+  font-size: 1.6rem;
+}
+
+/***********************************************************/
+/******************** MEDIA QUERIES ************************/
+/***********************************************************/
+@media screen and (max-width: 1024px) {
+  /* Responsive pour les tablettes */
+  .button {
+    font-size: 2rem;
+  }
+
+  /* Page d'accueil */
+  header {
+    /* presentation */
+    background-color: #2D2F62;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    /* ANIMATION */
+  }
+  header #pseudo-rwd {
+    display: block;
+    font-size: 3rem;
+    color: #f3ebdf;
+    font-family: "Megrim";
+  }
+  header .navigation {
+    display: none;
+    position: inherit;
+  }
+  header .navigation #pseudo {
+    display: none;
+  }
+  header .navigation ul {
+    display: flex;
+    flex-direction: column;
+  }
+  header .navigation li {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 3rem;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+  }
+  header .navigation li + li:before {
+    /* Ajout d'un séparateur entre les liens de la navigation */
+    content: "";
+    margin: 0;
+  }
+  header .nav-burger-btn {
+    /* flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* structure */
+    position: relative;
+    width: 40px;
+    height: 40px;
+    /* presentation */
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+  }
+  header .nav-burger {
+    /* structure */
+    width: 40px;
+    height: 5px;
+    /* presentation */
+    background: #f3ebdf;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+  }
+  header .nav-burger::before,
+header .nav-burger::after {
+    /* structure */
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 5px;
+    /* presentation */
+    background: #f3ebdf;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+  }
+  header .nav-burger::before {
+    transform: translateY(-14px);
+  }
+  header .nav-burger::after {
+    transform: translateY(14px);
+  }
+  header .nav-burger-btn.open .nav-burger {
+    transform: translateX(-50px);
+    background: transparent;
+  }
+  header .nav-burger-btn.open .nav-burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+  }
+  header .nav-burger-btn.open .nav-burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+  }
+
+  #banner img {
+    /* Mise en forme de la bannière du header */
+    width: 100%;
+    height: auto;
+  }
+
+  #dashboard {
+    /* DASHBOARD */
+  }
+  #dashboard .search-form {
+    display: none;
+  }
+  #dashboard .paths {
+    /* On fait disparaître le svg */
+    display: none;
+  }
+  #dashboard .dash-grid {
+    /* Agencement des tuiles du tableau de bord avec CSS Grid */
+    /* Grid */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    margin-top: 40px;
+  }
+  #dashboard .dash-grid h2 {
+    /* Mise en forme des titres des tuiles */
+    /* structure */
+    margin-bottom: 10px;
+  }
+  #dashboard .dash-grid .grid-context,
+#dashboard .dash-grid .grid-lastpost,
+#dashboard .dash-grid .grid-news,
+#dashboard .dash-grid .grid-user,
+#dashboard .dash-grid .grid-weather {
+    /* Mise en forme globale de toutes les tuiles */
+    /* structure */
+    padding: 15px;
+    overflow: auto;
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    text-align: justify;
+  }
+  #dashboard .dash-grid .grid-context {
+    /*
+     * Tuile du dashboard dédiée à l'affichage du synopsis
+     */
+    /* propriétés grid */
+    grid-column: 1/3;
+    grid-row: 1;
+  }
+  #dashboard .dash-grid .grid-lastpost {
+    /*
+     * Tuile du dashboard dédiée à l'affichage des derniers posts
+     */
+    /* propriétés grid */
+    grid-column: 1/2;
+    grid-row: 2;
+  }
+  #dashboard .dash-grid .grid-lastpost ul {
+    margin-left: -20px;
+    color: #f3ebdf;
+  }
+  #dashboard .dash-grid .grid-lastpost ul li {
+    margin-bottom: 5px;
+  }
+  #dashboard .dash-grid .grid-weather {
+    /*
+     * Tuile du dashboard dédiée à l'affichage de la météo
+     */
+    /* propriétés grid */
+    grid-column: 1;
+    grid-row: 3;
+  }
+  #dashboard .dash-grid .grid-weather ul {
+    display: flex;
+    margin-left: -40px;
+  }
+  #dashboard .dash-grid .grid-weather li {
+    margin: 0 10px;
+  }
+  #dashboard .dash-grid .grid-user {
+    /*
+     * Tuile du dashboard dédiée à l'affichage du membre du mois
+     */
+    /* propriétés grid */
+    grid-column: 2;
+    grid-row: 3;
+  }
+  #dashboard .dash-grid .grid-user img {
+    /* Mise en forme de l'image du membre du mois */
+    /* structure */
+    width: 100px;
+    height: 100px;
+    /* presentation */
+    border-radius: 5px;
+  }
+  #dashboard .dash-grid .grid-news {
+    /*
+     * Tuile du dashboard dédiée à l'affichage des nouveautés
+     */
+    /* propriétés grid */
+    grid-column: 2;
+    grid-row: 2;
+  }
+  #dashboard .dash-grid .grid-news ul {
+    margin-left: -20px;
+  }
+
+  #section-list {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  #section-list h2 {
+    left: 35%;
+  }
+  #section-list table {
+    width: 80%;
+  }
+
+  #who-online {
+    /* Mise en forme du CSS Grid des statistiques */
+  }
+  #who-online h2 {
+    left: 35%;
+  }
+  #who-online .dash-grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: -20px;
+    padding: 20px;
+  }
+  #who-online .dash-grid img {
+    width: 450px;
+    height: 150px;
+    border-radius: 8px;
+  }
+  #who-online .faction-four,
+#who-online .faction-one,
+#who-online .faction-three,
+#who-online .faction-two {
+    display: none;
+  }
+  #who-online .user-online {
+    /*
+      * Grille dédiée à l'affichage des membres en ligne
+      */
+    /* CSS Grid */
+    grid-column: 1;
+    grid-row: 1;
+    padding: 15px;
+  }
+  #who-online .user-online ul {
+    /* Flexbox */
+    /* On met en ligne les li */
+    display: flex;
+  }
+  #who-online .user-online li + li:before {
+    /* On met un séparateur entre les li */
+    content: "⬡";
+    color: #DC28E3;
+    margin: 0 10px;
+  }
+  #who-online .stats {
+    /*
+       * Grille dédiée à l'affichage des stats globaux du site
+       */
+    grid-column: 2;
+    grid-row: 1;
+    padding: 15px;
+    color: #f3ebdf;
+  }
+
+  #new-topic fieldset {
+    width: 90%;
+  }
+  #new-topic h2 {
+    top: 10%;
+    left: 35%;
+  }
+
+  #messages-list {
+    width: 90%;
+  }
+  #messages-list .profile {
+    margin-left: 20px;
+  }
+  #messages-list .content {
+    margin-left: 5px;
+  }
+
+  #create-message {
+    width: 90%;
+  }
+
+  #list-users table {
+    width: 90%;
+  }
+
+  #mps .mp-container {
+    width: 100%;
+  }
+  #mps .mp-container ul:not(.add-form):first-child input[type=text] {
+    /* structure */
+    padding: 10px;
+    width: 300px;
+    /* presentation */
+    background-color: #f3ebdf;
+    border: none;
+    border-radius: 5px;
+  }
+  #mps .mp-container h2 {
+    font-size: 2.5rem;
+  }
+  #mps table thead {
+    font-size: 1.6rem;
+  }
+
+  #custom-profile .profile-container {
+    width: 100%;
+  }
+  #custom-profile article ul:first-child input[type=text] {
+    width: 300px;
+  }
+  #custom-profile .grid-avatar table tr td:first-child,
+#custom-profile .grid-life table tr td:first-child,
+#custom-profile .grid-stats table tr td:first-child {
+    font-size: 1.6rem;
+  }
+
+  #connection article {
+    width: 100%;
+  }
+  #connection .login-form {
+    width: 80%;
+    margin-left: 40px;
+  }
+
+  #custom-admin .add-container ul:not(.add-form):first-child input[type=text] {
+    width: 100px;
+  }
+  #custom-admin form .add-form {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 767px) {
+  /* Responsive design pour les mobiles */
+  header #pseudo-rwd {
+    /* On réduit la taille du pseudo sous mobile */
+    font-size: 2.5rem;
+  }
+  header a {
+    /* On réduit la taille des liens de la navigation */
+    font-size: 2.5rem;
+  }
+
+  #banner {
+    /* On cache la bannière en mode mobile */
+    display: none;
+  }
+
+  #dashboard .dash-nav {
+    margin-top: 10px;
+  }
+  #dashboard .dash-nav a {
+    /* On réduit la taille des liens du tableau de bord */
+    font-size: 1.8rem;
+  }
+  #dashboard .dash-nav a + a:before {
+    /* Ajout d'un petit octogone rose pour séparer les liens */
+    content: "⬡";
+    margin: 0 10px;
+  }
+  #dashboard .dash-grid {
+    /* Agencement des tuiles du tableau de bord avec CSS Grid */
+    /* Grid */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    margin-top: 40px;
+  }
+  #dashboard .dash-grid h2 {
+    /* Mise en forme des titres des tuiles */
+    /* structure */
+    margin-bottom: 10px;
+  }
+  #dashboard .dash-grid .grid-news,
+#dashboard .dash-grid .grid-weather {
+    /* Mise en forme globale de toutes les tuiles */
+    /* structure */
+    padding: 15px;
+    overflow: auto;
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    text-align: justify;
+  }
+  #dashboard .dash-grid .grid-context, #dashboard .dash-grid .grid-lastpost, #dashboard .dash-grid .grid-user {
+    display: none;
+  }
+  #dashboard .dash-grid .grid-weather {
+    /*
+     * Tuile du dashboard dédiée à l'affichage de la météo
+     */
+    /* propriétés grid */
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #dashboard .dash-grid .grid-weather ul {
+    display: flex;
+    margin-left: -40px;
+  }
+  #dashboard .dash-grid .grid-weather li {
+    margin: 0 10px;
+  }
+  #dashboard .dash-grid .grid-news {
+    /*
+     * Tuile du dashboard dédiée à l'affichage des nouveautés
+     */
+    /* propriétés grid */
+    grid-column: 1;
+    grid-row: 2;
+  }
+  #dashboard .dash-grid .grid-news ul {
+    margin-left: -20px;
+  }
+
+  #section-list h2 {
+    font-size: 2.5rem;
+  }
+  #section-list thead {
+    text-transform: uppercase;
+  }
+  #section-list tbody tr {
+    display: flex;
+    flex-direction: column;
+  }
+  #section-list tbody tr img {
+    display: none;
+  }
+  #section-list tfoot tr {
+    display: flex;
+    flex-direction: column;
+  }
+  #section-list tfoot tr td:last-child {
+    display: none;
+  }
+
+  #who-online {
+    /* Mise en forme du CSS Grid des statistiques */
+  }
+  #who-online h2 {
+    top: 10%;
+    left: 25%;
+    font-size: 2.5rem;
+  }
+  #who-online .dash-grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: -20px;
+    padding: 20px;
+  }
+  #who-online .dash-grid img {
+    width: 450px;
+    height: 150px;
+    border-radius: 8px;
+  }
+  #who-online .faction-four,
+#who-online .faction-one,
+#who-online .faction-three,
+#who-online .faction-two {
+    display: none;
+  }
+  #who-online .user-online {
+    /*
+      * Grille dédiée à l'affichage des membres en ligne
+      */
+    /* CSS Grid */
+    grid-column: 1;
+    grid-row: 1;
+    padding: 15px;
+  }
+  #who-online .user-online ul {
+    /* Flexbox */
+    /* On met en ligne les li */
+    display: flex;
+  }
+  #who-online .user-online li + li:before {
+    /* On met un séparateur entre les li */
+    content: "⬡";
+    color: #DC28E3;
+    margin: 0 10px;
+  }
+  #who-online .stats {
+    /*
+       * Grille dédiée à l'affichage des stats globaux du site
+       */
+    grid-column: 1;
+    grid-row: 2;
+    padding: 15px;
+    color: #f3ebdf;
+  }
+
+  footer {
+    position: inherit;
+  }
+
+  #topic-list thead tr th:last-child, #topic-list tbody tr td:last-child {
+    display: none;
+  }
+  #topic-list .pagination {
+    flex-direction: column;
+    text-align: center;
+  }
+  #topic-list .pagination p {
+    font-size: 2.5rem;
+  }
+
+  #messages-list .profile {
+    display: block;
+    margin: 0 auto 10px;
+    width: 90%;
+  }
+  #messages-list .content {
+    display: block;
+    width: 90%;
+    margin: 0 auto 10px;
+  }
+
+  #create-message label {
+    font-size: 2rem;
+  }
+
+  #new-topic h2 {
+    /* On ajuste la taille du titre au mobile */
+    font-size: 2.5rem;
+    top: 15%;
+    left: 25%;
+  }
+  #new-topic fieldset {
+    width: 90%;
+  }
+  #new-topic legend {
+    /* On cache le titre du formulaire, qui prend trop de place et n'est pas nécessaire sur mobile */
+    display: none;
+  }
+  #new-topic ul {
+    margin-left: -20px;
+  }
+  #new-topic li {
+    font-size: 1.6rem;
+  }
+
+  #list-users h2 {
+    /* On ajuste la taille du titre au mobile */
+    font-size: 2.5rem;
+    top: 5.5%;
+    left: 20%;
+  }
+  #list-users table th {
+    font-size: 1.6rem;
+    padding: 5px;
+  }
+  #list-users table td {
+    font-size: 1.4rem;
+    padding: 5px;
+  }
+  #list-users table .date {
+    /* On masque la colonne date d'inscription, qui est moins essentielle sur mobile */
+    display: none;
+  }
+
+  #mps {
+    margin-bottom: 0;
+  }
+  #mps .mp-container h2 {
+    font-size: 2rem;
+    left: 25%;
+  }
+  #mps .mp-container ul:not(.add-form):first-child li {
+    font-size: 1.8rem;
+    color: #f3ebdf;
+  }
+  #mps .mp-container ul:not(.add-form):first-child input[type=text] {
+    /* on le masque pour les mobiles */
+    display: none;
+  }
+  #mps .mp-container .fas {
+    font-size: 2.5rem;
+    margin-left: 5px;
+  }
+  #mps .mp-container .hide {
+    /* Toutes les colonnes avec cette classe seront cachées sur mobile pour plus de lisibilité */
+    display: none;
+  }
+
+  #custom-profile article ul:first-child input[type=text] {
+    display: none;
+  }
+  #custom-profile article ul:first-child .fas {
+    font-size: 2.5rem;
+  }
+  #custom-profile .profile-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  #custom-profile .profile-grid .grid-avatar,
+#custom-profile .profile-grid .grid-life,
+#custom-profile .profile-grid .grid-stats {
+    padding-bottom: 10px;
+  }
+
+  #connection h2 {
+    font-size: 2rem;
+  }
+  #connection .login-form {
+    margin: auto;
+    width: 90%;
+  }
+  #connection .login-form ul {
+    margin-left: -30px;
+  }
+  #connection .login-form ul li:last-child {
+    width: 100%;
+    text-align: center;
+    margin: 20px auto 0;
+  }
+
+  .new {
+    margin-left: 0;
+  }
+
+  .profile-container .hide {
+    display: none;
+  }
+
+  .admin-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .listing {
+    width: 100%;
+  }
+  .listing thead {
+    display: none;
+  }
+  .listing tr {
+    display: block;
+    margin-bottom: 40px;
+  }
+  .listing td {
+    display: block;
+    text-align: right;
+  }
+  .listing td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  .listing .fa-pen, .listing .fa-trash-alt {
+    font-size: 3rem;
+  }
+
+  #custom-admin .hide {
+    display: none;
+  }
+  #custom-admin .add-container {
+    width: 100%;
+  }
+  #custom-admin .add-container h2 {
+    font-size: 2rem;
+  }
+  #custom-admin form .add-form {
+    width: 100%;
+    margin-left: -20px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

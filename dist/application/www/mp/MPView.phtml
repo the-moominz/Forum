@@ -1,0 +1,58 @@
+<!-- Code HTML destinée à la boite de messages privés reçus -->
+<section id="mps">
+  <article class="mp-container">
+    <ul>
+      <li><input type="text" class="fake-bar" disabled /></li>
+      <li><a href="<?= $requestUrl ?>/mp/new?index=<?= intval($userSession->getUserId()); ?>">nouveau</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/mp/send?index=<?= intval($userSession->getUserId()); ?>">envoyés</a></li>
+      <li><i class="fas fa-minus"></i></li>
+      <li><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Messages Reçus</h2>
+    <article class="mailbox">
+      <!-- Liste des messages privés -->
+      <table>
+        <thead>
+          <!-- On change le style du border-left du tr si message lu ou non -->
+          <tr>
+            <th>Sujet</th>
+            <th>Auteur</th>
+            <th class="hide">Envoyé le</th>
+            <th class="hide">Destinataire</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Début du foreach -->
+          <?php
+            foreach($mps->listAllReceivedMp($userSession->getUserId()) as $mp) {
+
+              if($mp['Consulted'] == 0) {
+                // Si le message est non lu
+          ?>
+          <tr style="border-left: 5px solid #DC28E3;">
+          <?php
+              } elseif ($mp['Consulted'] == 1) {
+                // Au contraire, si le message est lu, la couleur change
+          ?>
+          <tr style="border-left: 5px solid #5FF5E9;">
+          <?php
+              }
+          ?>
+            <td><a href="<?= $requestUrl ?>/mp/details?index=<?= intval($mp['Conversation_Id']); ?>&amp;send=<?= intval($mp['Sender']); ?>"><?= htmlspecialchars($mp['Title']); ?></a></td>
+            <td><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($mp['Sender']); ?>"><?= htmlspecialchars($mp['SenderName']); ?></a></td>
+            <td class="hide"><?= htmlentities($mp['CreationDate']); ?></td>
+            <td class="hide"><?= htmlspecialchars($mp['Name']); ?></td>
+            <td><a href="<?= $requestUrl ?>/mp/answer?index=<?= intval($mp['Sender']); ?>&amp;mp=<?= intval($mp['Id']); ?>">Répondre</a></td>
+          </tr>
+          <?php
+            }
+           ?>
+          <!-- Fin du foreach -->
+        </tbody>
+      </table>
+    </article>
+  </article>
+</section>

@@ -1,0 +1,29 @@
+<!-- Code HTML dédié au formulaire de réponse à un message privé -->
+<section id="new-topic">
+  <img src="<?= $wwwUrl ?>/images/frise.jpg" alt="" />
+  <h2>Nouveau MP</h2>
+  <form action="<?= $requestUrl ?>/mp/answer" method="post">
+    <fieldset>
+      <legend>Formulaire de création d'un nouveau message privé</legend>
+      <ul>
+        <li><label for="title">Sujet du message :</label></li>
+        <li><input type="text" name="title" value="<?= htmlspecialchars($mpTitle['Title']); ?>"/></li>
+        <li><label for="addressee">Destinataire du message :</label></li>
+        <li>
+          <select name="addressee">
+            <option value="<?= intval($mpTitle['UserId']); ?>" selected><?= htmlspecialchars($mpTitle['Name']); ?></option>
+            <!-- Fin du foreach -->
+          </select>
+        </li>
+        <li><label for="content">Contenu du message :</label></li>
+        <li><textarea name="content" rows="15" cols="80"></textarea></li>
+        <li><input type="hidden" name="senderId" value="<?= intval($userSession->getUserId()); ?>" /></li>
+        <li><input type="hidden" name="conversationId" value="<?= intval($mpTitle['Conversation_Id']); ?>" /></li>
+        <li>
+          <button type="submit" class="button submit">Envoyer</button>
+          <a href="<?= $requestUrl ?>/mp?index=<?= intval($userSession->getUserId()); ?>" class="button cancel">Annuler</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+</section>

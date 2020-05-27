@@ -1,0 +1,45 @@
+<!-- Code HTML destinée à la boite de messages privés envoyés -->
+<section id="mps">
+  <article class="mp-container">
+    <ul>
+      <li><input type="text" class="fake-bar" disabled /></li>
+      <li><a href="<?= $requestUrl ?>/mp/new?index=<?= intval($userSession->getUserId()); ?>">nouveau</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/mp?index=<?= intval($userSession->getUserId()); ?>">réception</a></li>
+      <li><i class="fas fa-minus"></i></li>
+      <li><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Messages Envoyés</h2>
+    <article class="mailbox">
+      <!-- Liste des messages privés -->
+      <table>
+        <thead>
+          <!-- On change le style du border-left du tr si message lu ou non -->
+          <tr>
+            <th>Sujet</th>
+            <th class="hide">Auteur</th>
+            <th>Envoyé le</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Début du foreach -->
+          <?php
+            foreach($mps->listAllSendMp($userSession->getUserId()) as $mp) {
+          ?>
+          <tr style="border-left: 5px solid #ccc;">
+            <td><a href="<?= $requestUrl ?>/mp/details?index=<?= intval($mp['Conversation_Id']); ?>&amp;send=<?= intval($mp['Sender']); ?>"><?= htmlspecialchars($mp['Title']); ?></a></td>
+            <td class="hide"><?= htmlspecialchars($userSession->getFullName()); ?></td>
+            <td><?= htmlentities($mp['CreationDate']); ?></td>
+            <td><a href="<?= $requestUrl ?>/mp/delete?index=<?= intval($mp['Id']); ?>&amp;send=<?= intval($mp['Sender']); ?>"><i class="fas fa-trash-alt"></i></a></td>
+          </tr>
+          <?php
+            }
+           ?>
+          <!-- Fin du foreach -->
+        </tbody>
+      </table>
+    </article>
+  </article>
+</section>

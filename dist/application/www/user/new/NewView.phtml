@@ -1,0 +1,27 @@
+<!-- Code HTML pour le formulaire permettant de changer le mot de passe du membre -->
+<section id="connection">
+  <article>
+    <ul>
+      <li><i class="fas fa-minus"></i></li>
+      <li><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Récupération du mot de passe</h2>
+    <form class="login-form" action="<?= $requestUrl ?>/user/new?index=<?= intval($_GET['index']); ?>" method="post">
+      <p><?= $errorMessage; ?></p>
+      <aside class="errors"></aside>
+      <ul>
+        <li><label for="password">Nouveau mot de passe : </label></li>
+        <li><input type="password" class="password" name="password" data-name="Mot de passe" data-length="8" /></li>
+        <li><label for="passwordConfirm">Confirmation du nouveau mot de passe : </label></li>
+        <li><input type="password" class="passwordConfirm" name="passwordConfirm" data-name="confirmation du mot de passe" /></li>
+        <li><input type="hidden" name="userId" value="<?= intval($_GET['index']); ?>" /></li>
+        <li>
+          <button type="submit" id="submitForm" class="button submit">Envoyer</button>
+          <a href="<?= $requestUrl ?>" class="button cancel">Annuler</a>
+        </li>
+      </ul>
+    </form>
+  </article>
+</section>
+<script src="<?= $wwwUrl ?>/js/PasswordValidator.js"></script>

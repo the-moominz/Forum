@@ -1,0 +1,43 @@
+<!-- Code HTML destiné à l'affichage d'un MP et de ses réponses (à l'image d'une boîte mail)-->
+<section id="messages-list">
+  <!-- Début du foreach -->
+  <?php
+      foreach($mps as $mp) {
+   ?>
+  <article>
+    <ul>
+      <li><?= htmlspecialchars($mp['Title']); ?></li>
+    </ul>
+    <aside class="profile">
+      <!-- Rajouter un container pour faire en sorte qu'au hover on ait plus de détails => flip-card -->
+      <img src="<?= $wwwUrl ?>/upload/<?= htmlspecialchars($mp['Photo']); ?>" alt="<?= htmlspecialchars($mp['Name']); ?>">
+      <h3><a href="<?= intval($mp['UserId']); ?>"><?= htmlspecialchars($mp['Name']); ?></a></h3>
+    </aside>
+    <article class="content">
+      <p><?= nl2br(htmlspecialchars($mp['Content'])); ?></p>
+    </article>
+    <hr>
+    <p>Envoyé le  <?= htmlentities($mp['CreationDate']); ?></p>
+  </article>
+  <?php
+      }
+  ?>
+  <!-- Fin du foreach-->
+  <p class="pagination">
+    <!-- Mise en place d'une pagination si on dépasse un certain nombre de messages -->
+    <a href="<?= $requestUrl ?>/mp?index=<?= intval($userSession->getUserId()); ?>">>> Retour</a>
+  </p>
+</section>
+<!-- Début de la section dédiée au formulaire d'envoi de message -->
+<section id="create-message">
+  <form action="<?= $requestUrl ?>/mp/details" method="post" class="message-form">
+    <label for="content">Poster une réponse</label>
+    <textarea name="content" rows="8" cols="80">Ecrire votre réponse...</textarea>
+    <!-- Envoi en caché de l'Id de l'expéditeur, l'Id du destinataire, Id de la conversation et le titre du MP -->
+    <input type="hidden" name="senderId" value="<?= intval($userSession->getUserId()); ?>" />
+    <input type="hidden" name="addressee" value="<?= intval($_GET['send']); ?>" />
+    <input type="hidden" name="conversationId" value="<?= intval($mp['Conversation_Id']); ?>" />
+    <input type="hidden" name="title" value="<?= htmlspecialchars($mp['Title']); ?>" />
+    <input type="submit" value="Répondre" class="button submit" />
+  </form>
+</section>

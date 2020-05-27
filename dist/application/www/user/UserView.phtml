@@ -1,0 +1,34 @@
+<!-- Code HTML pour le formulaire d'inscription du membre -->
+<section id="connection">
+  <article>
+    <ul>
+      <li><i class="fas fa-minus"></i></li>
+      <li><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Formulaire d'inscription</h2>
+    <form class="login-form" action="<?= $requestUrl ?>/user" method="post">
+      <p><?= $errorMessage; ?></p>
+      <aside class="errors"></aside>
+      <ul>
+        <li><label for="pseudo">Pseudo : </label></li>
+        <li><input type="text" class="pseudo" name="pseudo" placeholder="Ex : Aleana Dax" data-name="Pseudo" data-type="string" /></li>
+        <li><small>Le pseudo doit être composé d'un prénom et d'un nom.</small></li>
+        <li><label for="birthDate">Date de naissance : </label></li>
+        <li><input type="date" class="birthDate" name="birthDate" /></li>
+        <li><small>La date de naissance doit correspondre à celle de votre personnage.</small></li>
+        <li><label for="mail">E-mail : </label></li>
+        <li><input type="email" class="mail" name="mail" data-name="Mail" /></li>
+        <li><label for="password">Mot de passe : </label></li>
+        <li><input type="password" class="password" name="password" data-name="Mot de passe" data-length="8" /></li>
+        <li><label for="passwordConfirm">Confirmation du mot de passe : </label></li>
+        <li><input type="password" class="passwordConfirm" name="passwordConfirm" data-name="confirmation du mot de passe" /></li>
+        <li>
+          <button type="submit" id="submitForm" class="button submit">S'inscrire</button>
+          <a href="<?= $requestUrl ?>" class="button cancel">Annuler</a>
+        </li>
+      </ul>
+    </form>
+  </article>
+</section>
+<script src="<?= $wwwUrl ?>/js/LoginValidator.js"></script>

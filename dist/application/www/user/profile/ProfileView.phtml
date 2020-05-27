@@ -1,0 +1,129 @@
+<!-- Code HTML destiné à afficher le contenu du profil public du membre -->
+<section id="custom-profile">
+  <article class="profile-container">
+    <ul>
+      <li><input type="text" class="fake-bar" disabled /></li>
+      <?php
+        if($userSession->getUserId() == $_GET['index']) {
+          // Si vous n'êtes pas le propriétaire de ce profil, vous ne verrez pas les liens modifier & avatar
+      ?>
+      <li><a href="<?= $requestUrl ?>/user/profile/avatar?index=<?= intval($user['Id']); ?>">avatar</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/user/profile/custom?index=<?= intval($user['Id']); ?>">modifier</a></li>
+      <?php
+    } else {
+      ?>
+      <li>profil public</li>
+      <?php
+    }
+      ?>
+      <li><i class="fas fa-minus"></i></li>
+      <li><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Profil</h2>
+      <article class="profile-grid">
+        <article class="grid-avatar">
+          <h3>Personnage</h3>
+          <img src="<?= $wwwUrl ?>/upload/<?= htmlspecialchars($user['Photo']); ?>" alt="<?= htmlspecialchars($user['Name']); ?>" />
+          <h4><span style="color: <?= htmlentities($user['Color']); ?>"><?= htmlspecialchars($user['Name']); ?></span></h4>
+          <hr>
+          <table>
+              <tr>
+                <td>Date de naissance</td>
+                <td><?= htmlentities($user['Birthday']); ?></td>
+              </tr>
+              <tr>
+                <td>Origines</td>
+                <td><?= htmlspecialchars($user['Origins']); ?></td>
+              </tr>
+          </table>
+        </article>
+        <article class="grid-life">
+          <h3>Vie privée</h3>
+          <table>
+            <tr>
+              <td>Sexe</td>
+              <td>
+                <!-- Début du if -->
+                <?php
+                if ($user['Gender'] == 1) {
+                ?>
+                <i class="fas fa-mars"></i>
+                <?php
+                } elseif ($user['Gender'] == 2) {
+                ?>
+                <i class="fas fa-venus"></i>
+                <?php
+                }
+                ?>
+                <!-- Fin du if -->
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Biographie
+              </td>
+              <td colspan="2">
+                <?= nl2br(htmlspecialchars($user['Biography'])); ?>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Relations
+              </td>
+              <td colspan="2">
+                <?= nl2br(htmlspecialchars($user['Relationships'])); ?>
+              </td>
+            </tr>
+          </table>
+        </article>
+        <article class="grid-stats">
+          <h3>Stats</h3>
+          <table>
+              <tr>
+                <td>Faction</td>
+                <td><?= htmlspecialchars($user['Faction']); ?></td>
+              </tr>
+              <tr>
+                <td>Date d'inscription</td>
+                <td><?= htmlentities($user['InscriptionDate']); ?></td>
+              </tr>
+              <tr>
+                <td>Nombre de messages postés</td>
+                <td><?= intval($userMessages['NbMessages']); ?></td>
+              </tr>
+              <tr>
+                <td>Statut</td>
+                <td>
+                  <?php
+                    if (intval($user['Admin']) == 1) {
+                      echo 'Modérateur';
+                    } elseif (intval($user['Admin']) == 2) {
+                      echo 'Administrateur';
+                    } else {
+                      echo 'Membre';
+                    }
+                  ?>
+                </td>
+              </tr>
+          </table>
+          <?php
+            if($userSession->isAdmin()) {
+          ?>
+          <form class="form-status" action="<?= $requestUrl ?>/user/profile" method="post">
+            <select name="status">
+              <option value="0">Membre</option>
+              <option value="1">Modérateur</option>
+              <option value="2">Administrateur</option>
+            </select>
+            <input type="hidden" name="userId" value="<?= intval($user['Id']); ?>">
+            <input type="submit" value="Modifier" />
+          </form>
+          <?php
+            }
+          ?>
+        </article>
+      </article>
+  </article>
+</section>

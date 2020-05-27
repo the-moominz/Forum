@@ -1,0 +1,46 @@
+<!-- Début de la section dédiée à l'administration du dashboard -->
+<section id="custom-profile">
+  <article class="profile-container">
+    <ul>
+      <li><input type="text" class="fake-bar" disabled /></li>
+      <li><a href="<?= $requestUrl ?>/admin/user">users</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin/faction">factions</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin">admin</a></li>
+      <li class="hide"><i class="fas fa-minus"></i></li>
+      <li class="hide"><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Gestion des sections</h2>
+    <a href="<?= $requestUrl ?>/admin/section/add" class="new">>> Ajouter une section</a>
+    <table class="listing">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Catégorie</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Début de la boucle -->
+        <?php
+          foreach ($sections as $section) {
+        ?>
+        <tr>
+          <td data-label="Nom"><?= htmlspecialchars($section['Name']); ?></td>
+          <td data-label="Description"><?= substr(htmlspecialchars($section['Description']), 0, 50); ?></td>
+          <td data-label="Catégorie"><?= htmlspecialchars($section['Category']); ?></td>
+          <td><a href="<?= $requestUrl ?>/admin/section/edit?index=<?= intval($section['Id']); ?>"><i class="fas fa-pen"></i></a></td>
+          <td><a href="<?= $requestUrl ?>/admin/section/delete?index=<?= intval($section['Id']); ?>"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+        <?php
+        }
+        ?>
+        <!-- Fin de la boucle -->
+      </tbody>
+    </table>
+  </article>
+</section>

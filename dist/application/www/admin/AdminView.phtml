@@ -1,0 +1,58 @@
+<!-- Code HTML à insérer pour afficher la page d'accueil du panneau d'administration -->
+<!-- Début de la section dédiée à l'administration du dashboard -->
+<section id="custom-profile">
+  <article class="profile-container">
+    <ul>
+      <li><input type="text" class="fake-bar" disabled /></li>
+      <li><a href="<?= $requestUrl ?>/admin/user">users</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin/faction">factions</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin/section">sections</a></li>
+      <li class="hide"><i class="fas fa-minus"></i></li>
+      <li class="hide"><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Panneau d'administration</h2>
+      <article class="admin-grid">
+        <article class="context">
+          <!-- Vignette qui permet à l'admin d'éditer la tuile Synopsis sur l'accueil -->
+          <h3>Edition du synopsis</h3>
+          <form action="<?= $requestUrl ?>/admin" method="post">
+            <textarea name="synopsis" rows="10">
+              <?= nl2br(htmlspecialchars($context['Content'])); ?>
+            </textarea>
+            <input type="hidden" name="contextId" value="<?= intval($context['Id']); ?>">
+            <input type="submit" class="button submit" value="Modifier" />
+          </form>
+        </article>
+        <article class="event">
+          <!-- Vignette qui permet à l'admin d'éditer la tuile News & Event sur l'accueil -->
+          <h3>Edition des News & Events</h3>
+          <form action="<?= $requestUrl ?>/admin/add" method="post">
+            <textarea name="news" rows="5">
+            </textarea>
+            <input type="submit" class="button submit" value="Ajouter" />
+          </form>
+        </article>
+        <article class="news">
+          <h3>News à supprimer</h3>
+          <!-- Vignette qui permet de voir les news et d'en supprimer -->
+          <table>
+            <!-- Début de la boucle foreach -->
+            <?php
+                foreach($news as $new) {
+            ?>
+            <tr>
+              <td># <?= htmlspecialchars($new['Content']); ?></td>
+              <td><a href="<?= $requestUrl ?>/admin/delete?index=<?= intval($new['Id']); ?>"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+            <?php
+                }
+            ?>
+            <!-- Fin de la boucle -->
+          </table>
+        </article>
+      </article>
+  </article>
+</section>

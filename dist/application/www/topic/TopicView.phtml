@@ -1,0 +1,113 @@
+<!-- Code HTML dédié à l'affichage de l'intérieur d'un topic et formulaire pour poster des messages dans le sujet -->
+<!-- Début de la section dédiée à l'affichage des messages des membres -->
+<section id="messages-list">
+  <article>
+    <ul>
+      <li><?= htmlspecialchars($topic['Title']); ?></li>
+      <li>
+        <?php
+         if ($userSession->getUserId() == $topic['user_Id'] OR $userSession->isAdmin() OR $userSession->isModo()) {
+           // Si l'ID du membre connecté est le même que l'ID de l'auteur du message, on lui laisse la possibilité d'éditer le message
+        ?>
+        <a href="<?= $requestUrl ?>/topic/edit?index=<?= intval($topic['Id']); ?>"><i class="fas fa-edit"></i></a>
+        <?php
+          }
+        if ($userSession->isAdmin() OR $userSession->isModo()) {
+        ?>
+        o <a href="<?= $requestUrl ?>/topic/delete?index=<?= intval($topic['Id']); ?>&amp;section=<?= intval($topic['section_Id']); ?>"><i class="far fa-trash-alt"></i></a>
+        <?php
+            // Si le topic n'est pas verrouillé, on laisse la possibilité à un admin ou à un modo de le faire
+            if ($topic['Locked'] == 0) {
+        ?>
+        o <a href="<?= $requestUrl ?>/topic/lock?index=<?= intval($topic['Id']); ?>"><i class="fas fa-lock"></i></a>
+        <?php
+            // Mais si le topic est verrouillé, on doit laisser la possibilité aux admins et modos de le déverrouiller
+          } elseif($topic['Locked'] == 1) {
+        ?>
+        o <a href="<?= $requestUrl ?>/topic/unlock?index=<?= intval($topic['Id']); ?>"><i class="fas fa-lock-open"></i></i></a>
+        <?php
+            }
+          }
+        ?>
+      </li>
+    </ul>
+    <aside class="profile">
+      <!-- Rajouter un container pour faire en sorte qu'au hover on ait plus de détails => flip-card -->
+      <img src="<?= $wwwUrl ?>/upload/<?= htmlspecialchars($topic['Photo']); ?>" alt="<?= htmlspecialchars($topic['Name']); ?>">
+      <h3><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($topic['user_Id']); ?>" style="color: <?= htmlentities($topic['Color']); ?>"><?= htmlspecialchars($topic['Name']); ?></a></h3>
+    </aside>
+    <article class="content">
+      <p><?= nl2br(htmlspecialchars($topic['Content'])); ?></p>
+    </article>
+    <hr>
+    <p>Posté <?= htmlentities($topic['CreationDate']); ?> ⬡ <?= htmlentities($topic['EditDate']); ?></p>
+  </article>
+  <!-- Début de la boucle foreach -->
+  <?php
+    foreach ($messages as $message) {
+  ?>
+  <article>
+    <ul>
+      <li><?= htmlspecialchars($topic['Title']); ?></li>
+      <li>
+        <?php
+         if ($userSession->getUserId() == $message['user_Id'] OR $userSession->isAdmin() OR $userSession->isModo()) {
+           // Si l'ID du membre connecté est le même que l'ID de l'auteur du message, on lui laisse la possibilité d'éditer le message
+        ?>
+        <a href="<?= $requestUrl ?>/messages/edit?index=<?= intval($message['Id']); ?>"><i class="fas fa-edit"></i></a>
+        <?php
+          }
+        if ($userSession->isAdmin() OR $userSession->isModo()) {
+        ?>
+        o <a href="<?= $requestUrl ?>/messages/delete?index=<?= intval($message['Id']); ?>&amp;topic=<?= intval($message['topic_Id']); ?>"><i class="far fa-trash-alt"></i></a>
+        <?php
+      }
+        ?>
+      </li>
+    </ul>
+    <aside class="profile">
+      <!-- Rajouter un container pour faire en sorte qu'au hover on ait plus de détails => flip-card -->
+      <img src="<?= $wwwUrl ?>/upload/<?= htmlspecialchars($message['Photo']); ?>" alt="<?= htmlspecialchars($message['Name']); ?>">
+      <h3><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($message['user_Id']); ?>" style="color: <?= htmlentities($message['Color']); ?>"><?= htmlspecialchars($message['Name']); ?></a></h3>
+    </aside>
+    <article class="content">
+      <p><?= nl2br(htmlspecialchars($message['Post'])); ?></p>
+    </article>
+    <hr>
+    <p>Posté <?= htmlentities($message['CreationDate']); ?> ⬡ <?= htmlentities($message['EditDate']); ?></p>
+  </article>
+  <?php
+    }
+  ?>
+  <!-- Fin de la boucle foreach -->
+  <p class="pagination">
+    <a href="<?= $requestUrl ?>/section?index=<?= intval($topic['section_Id']); ?>">>> Retour</a>
+  </p>
+</section>
+<!-- Début de la section dédiée au formulaire d'envoi de message -->
+<section id="create-message">
+  <?php
+      if ($userSession->isAuthenticated() && $topic['Locked'] == 0){
+        // Si l'utilisateur est connecté, il peut répondre
+  ?>
+  <form action="<?= $requestUrl ?>/topic" method="post" class="message-form">
+    <label for="message">Poster une réponse</label>
+    <textarea name="message" rows="8" cols="80"></textarea>
+    <input type="hidden" name="userId" value="<?= intval($userSession->getUserId()); ?>" />
+    <input type="hidden" name="topicId" value="<?= intval($topic['Id']); ?>" />
+    <input type="submit" value="Poster un message" class="button submit" />
+  </form>
+  <?php
+    } elseif (!$userSession->isAuthenticated()) {
+  // Sinon, il doit se connecter
+
+  ?>
+  <p>Vous devez être <a href="<?= $requestUrl ?>/user/login">connecté</a> pour pouvoir répondre.</p>
+  <?php
+} elseif ($topic['Locked'] == 1) {
+  ?>
+  <p>Ce topic est verrouillé, vous ne pouvez pas y répondre.</p>
+  <?php
+    }
+  ?>
+</section>

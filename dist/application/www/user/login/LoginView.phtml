@@ -1,0 +1,25 @@
+<!-- Code HTMl pour le formulaire de connexion -->
+<section id="connection">
+  <article>
+    <ul>
+      <li><i class="fas fa-minus"></i></li>
+      <li><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Formulaire de connexion</h2>
+    <form class="login-form" action="<?= $requestUrl ?>/user/login" method="post">
+      <p><?= $errorMessage; ?></p>
+      <ul>
+        <li><label for="pseudo">Pseudo : </label></li>
+        <li><input type="text" name="pseudo" /></li>
+        <li><label for="password">Mot de passe : </label></li>
+        <li><input type="password" name="password" /></li>
+        <li>
+          <button type="submit" class="button submit">Connexion</button>
+          <a href="<?= $requestUrl ?>" class="button cancel">Annuler</a>
+        </li>
+      </ul>
+    </form>
+    <a href="<?= $requestUrl ?>/user/password" class="forgot-password">Mot de passe oublié ?</a>
+  </article>
+</section>

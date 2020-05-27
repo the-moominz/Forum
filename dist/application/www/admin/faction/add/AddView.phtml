@@ -1,0 +1,29 @@
+<!-- Code HTML pour la page de formulaire servant à ajouter les détails d'une nouvelle faction -->
+<section id="custom-admin">
+  <article class="add-container">
+    <ul>
+      <li class="hide"><input type="text" class="fake-bar" disabled /></li>
+      <li><a href="<?= $requestUrl ?>/admin/user">users</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin">admin</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin/section">sections</a></li>
+      <li class="hide"><i class="fas fa-minus"></i></li>
+      <li class="hide"><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Ajouter une faction</h2>
+      <form action="<?= $requestUrl ?>/admin/faction/add" method="post">
+          <ul class="add-form">
+            <li><label for="name">Nom de la faction :</label></li>
+            <li><input type="text" name="name" /></li>
+            <li><label for="description">Description de la faction :</label></li>
+            <li><textarea name="description" rows="8" cols="80"></textarea></li>
+            <li>
+              <input type="submit" class="button submit" value="Ajouter">
+              <a href="<?= $requestUrl ?>/admin/faction" class="button cancel">Annuler</a>
+            </li>
+          </ul>
+      </form>
+  </article>
+</section>

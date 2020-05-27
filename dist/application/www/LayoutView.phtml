@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" description="Forum RPG se déroulant dans l'univers Cyberpunk.">
+    <title>Cyberpunk 2022</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="<?= $wwwUrl ?>/images/logo.png" />
+    <!-- Link FontAwesome -->
+    <script src="https://kit.fontawesome.com/0f8b35e999.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts Megrim -->
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+    <!-- Google Fonts Work Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Normalize.css -->
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/normalize-3.0.3.min.css">
+    <!-- Feuilles de styles de l'application -->
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/style.css">
+    <!-- JavaScript de l'application -->
+    <script src="<?= $wwwUrl ?>/js/utilities.js"></script>
+    <!-- Fichier jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+</head>
+<body>
+    <!-- En-tête commune -->
+    <header role="banner">
+      <nav class="nav-burger-btn">
+        <!-- Navigation pour mobiles et tablettes -->
+        <div class="nav-burger"></div>
+      </nav>
+      <span id="pseudo-rwd">Hello,
+        <?php
+        if (!$userSession->isAuthenticated()) {
+        ?>
+        Invité
+        <?php
+      } else {
+        echo $userSession->getFullName();
+      }
+      ?>
+      </span>
+        <!-- Nav principale -->
+        <nav class="navigation" role="navigation">
+          <!-- Si le membre est connecté, on affiche son pseudo -->
+          <span id="pseudo">Hello,
+            <?php
+            if (!$userSession->isAuthenticated()) {
+            ?>
+            Invité
+            <?php
+          } else {
+            echo $userSession->getFullName();
+          }
+          ?>
+          </span>
+          <ul>
+            <!-- Si le membre a le statut d'admin, on lui donne un accès au panneau d'administration -->
+            <?php
+              if ($userSession->isAdmin()) {
+            ?>
+            <li><a href="<?= $requestUrl ?>/admin"><i class="fas fa-user-cog"></i></a></li>
+            <?php
+            }
+            ?>
+            <li><a href="<?= $requestUrl ?>">Accueil</a></li>
+            <?php
+            if ($userSession->isAuthenticated()) {
+            ?>
+            <!-- Si le membre est connecté, il a accès à une barre de navigation complète -->
+            <li><a href="<?= $requestUrl ?>/mp?index=<?= intval($userSession->getUserId()); ?>">MP</a></li>
+            <li><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($userSession->getUserId()); ?>">Profil</a></li>
+            <li><a href="<?= $requestUrl ?>/user/players">Membres</a></li>
+            <li><a href="<?= $requestUrl ?>/user/logout">Déconnexion</a></li>
+            <?php
+          } else {
+            ?>
+            <!-- Mais si le membre n'est pas connecté, il doit s'inscrire ou se connecter -->
+            <li><a href="<?= $requestUrl ?>/user">S'inscrire</a></li>
+            <li><a href="<?= $requestUrl ?>/user/login">Se connecter</a></li>
+            <?php
+          }
+             ?>
+          </ul>
+        </nav>
+    </header>
+    <!-- Fin du header -->
+<main role="main">
+    <!-- Affichage du template lié à la vue -->
+    <?php include $this->viewData['template'] ?>
+</main>
+
+<!-- Fin du main body et début du footer -->
+<footer role="contentinfo">
+  <p>© 2020 - BOUSSER Elodie - Projet pro 3WA</p>
+  <button class="backToTop" title="Retour en haut de la page"><i class="fas fa-arrow-up"></i></button>
+</footer>
+
+<!-- Code principal JavaScript de l'application -->
+<script src="<?= $wwwUrl ?>/js/main.js"></script>
+<script src="<?= $wwwUrl ?>/js/animation.js"></script>
+</body>
+</html>

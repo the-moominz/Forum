@@ -1,0 +1,255 @@
+<!-- Code HTML à intégrer pour afficher le contenu de la page d'accueil -->
+<section id="banner">
+  <!-- Section pour afficher la bannière d'accueil -->
+  <img src="<?= $wwwUrl ?>/images/ban.png" alt="Un univers cyberpunk" />
+  </a>
+</section>
+<!-- Début de la section #dashboard dédiée à l'affichage du tableau de bord -->
+<section id="dashboard">
+  <!-- Titre du forum -->
+  <h1>Cyberpunk 2022</h1>
+  <p class="dash-nav">
+    <a href="<?= $requestUrl ?>/topic?index=6" title="Règles du forum">Rules</a>
+    <a href="<?= $requestUrl ?>/topic?index=7">Context</a>
+    <a href="<?= $requestUrl ?>/topic?index=8" title="Description des groupes">Factions</a>
+  </p>
+  <!-- SVG représenant des "réseaux informatiques" (aspect déco) -->
+  <svg class="paths" width="500" height="150" xml:lang="fr" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Décors sous forme de cables informatiques -->
+    <g id="path-1">
+      <!-- Trait n°1 -->
+      <path d="M 0,30 L 100,30 L 150,10 L 250,10 L 350, 20 L 450, 30" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+      <circle cx="450" cy="30" r="8" style="fill: none; stroke: #DC28E3; stroke-width: 2px;" />
+    </g>
+    <g id="path-2">
+      <!-- Trait n°2 -->
+      <path d="M 0,70 L 100,70 L 150,50 L 250,70 L 350, 60 L 450, 70" style="fill: none; stroke: #5FF5E9; stroke-width: 2px;" />
+      <circle cx="450" cy="70" r="8" style="fill: none; stroke: #5FF5E9; stroke-width: 2px;" />
+    </g>
+    <g id="path-3">
+      <!-- Trait n°2 -->
+      <line x1="0" y1="120" x2="250" y2="120" stroke="white" stroke-width="2" />
+      <circle cx="250" cy="120" r="8" style="fill: none; stroke: white; stroke-width: 2px;" />
+    </g>
+  </svg>
+  <!-- Article dédié à l'affichage des tuiles en CSS grid -->
+  <article class="dash-grid">
+    <!-- Tuile dédiée à l'affichage des derniers posts sur le forum -->
+    <article class="grid-lastpost">
+      <h2>Derniers topics</h2>
+      <ul>
+        <!-- Début du foreach -->
+        <?php
+          foreach ($lastPosts as $lastPost) {
+        ?>
+        <li><h4><a href="<?= $requestUrl ?>/topic?index=<?= intval($lastPost['Id']); ?>"><?= htmlspecialchars($lastPost['Title']); ?></a></h4>
+          <ul>
+            <li>Posté par <a href="<?= $requestUrl ?>/user/profile?index=<?= intval($lastPost['user_Id']); ?>" style="color: <?= htmlentities($lastPost['Color']); ?>"><?= htmlspecialchars($lastPost['User']); ?></a> le <span class="underline"><?= htmlentities($lastPost['CreationDate']); ?></span></li>
+            <li>Dans <a href="<?= $requestUrl?>/section?index=<?= intval($lastPost['section_Id']); ?>"><?= htmlspecialchars($lastPost['Section']); ?></a></li>
+          </ul>
+        </li>
+        <?php
+          }
+        ?>
+        <!-- Fin du foreach -->
+      </ul>
+    </article>
+    <!-- Tuile dédiée à l'affichage de la météo et date du jour -->
+    <article class="grid-weather">
+      <h2>Date du jour</h2>
+          <p><i class="fas fa-calendar-alt"></i></p>
+          <p>
+            <strong>Nous sommes le :</strong>
+            <?php
+              // Affichage dynamique de la date du jour
+              setlocale(LC_TIME, "fr_FR");
+              echo '<span class="pink">' . strftime("%A %d %B %Y", strtotime('+ 336 year')) . '</span>';
+            ?>
+          </p>
+    </article>
+    <!-- Tuile dédiée à l'affichage du contexte -->
+    <article class="grid-context">
+      <h2>Synopsis</h2>
+      <p><?= nl2br(htmlspecialchars($context['Content'])); ?></p>
+    </article>
+    <!-- Tuile dédiée à l'affichage du membre du mois -->
+    <article class="grid-user">
+      <h2>Membre du mois</h2>
+      <table>
+        <tr>
+          <td rowspan="2"><img src="<?= $wwwUrl ?>/upload/<?= htmlentities($monthUser['Avatar']); ?>" alt="<?= htmlspecialchars($monthUser['Name']); ?>" /></td>
+          <td>
+            <a href="<?= $requestUrl ?>/user/profile?index=<?= intval($monthUser['UserId']); ?>" style="color: <?= htmlentities($monthUser['Color']); ?>"><?= htmlspecialchars($monthUser['Name']); ?></a>
+            <p><span class="bold">Total de points :</span> <?= intval($monthUser['MaxPoints']); ?></p>
+          </td>
+        </tr>
+      </table>
+    </article>
+    <!-- Tuile dédiée à l'affichage des news et derniers events -->
+    <article class="grid-news">
+      <h2>News & Events</h2>
+      <ul>
+        <!-- Boucle foreach -->
+        <?php
+          if (empty($news)) {
+        ?>
+        <li>Aucune news pour le moment.</li>
+        <?php
+          } else {
+            foreach($news as $new) {
+        ?>
+        <li> * <?= htmlspecialchars($new['Content']); ?></li>
+        <?php
+          }
+        }
+        ?>
+        <!-- Fin boucle foreach -->
+      </ul>
+    </article>
+  </article>
+</section>
+<!-- Début de la section #section-list destinée à l'affichage de toutes les sections du site -->
+<section id="section-list">
+  <img src="<?= $wwwUrl ?>/images/frise.jpg" alt="" />
+  <h2>Sections</h2>
+  <!-- Début de la boucle foreach -->
+  <?php
+    foreach($sections as $section) {
+      // On utilise la méthode howManyUnreadTopic pour voir dans la section combien de topics n'ont pas été visité
+      $countTopics = $topicModel->howManyUnreadTopic($section['Id']);
+  ?>
+  <table>
+    <thead>
+      <tr>
+        <!-- Lien vers l'intérieur de la section -->
+        <th colspan="2"><a href="<?= $requestUrl ?>/section?index=<?= intval($section['Id']); ?>"><?= htmlspecialchars($section['Name']); ?></a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- Description de la section -->
+        <td>
+          <?php
+            if (!$userSession->isAuthenticated()) {
+              // Si l'utilisateur n'est pas connecté, l'image est normale
+            ?>
+            <a href="<?= $requestUrl ?>/section?index=<?= intval($section['Id']); ?>"><img src="<?= $wwwUrl ?>/images/buttons/normal.png" alt="<?= htmlspecialchars($section['Name']); ?>" /></a>
+            <?php
+          } else if ($countTopics == 0) {
+            // Si tout a été lu par l'utilisateur dans une section, on affiche l'image "old"
+            ?>
+            <a href="<?= $requestUrl ?>/section?index=<?= intval($section['Id']); ?>"><img src="<?= $wwwUrl ?>/images/buttons/old.png" alt="<?= htmlspecialchars($section['Name']); ?>" /></a>
+            <?php
+          } else if ($countTopics != 0) {
+            // Mais s'il reste encore des topics non lus, on affiche l'image "new"
+            ?>
+            <a href="<?= $requestUrl ?>/section?index=<?= intval($section['Id']); ?>"><img src="<?= $wwwUrl ?>/images/buttons/new.png" alt="<?= htmlspecialchars($section['Name']); ?>" /></a>
+            <?php
+          }
+          ?>
+        </td>
+        <td><?= nl2br(htmlspecialchars($section['Description'])); ?></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <!-- Statistiques de la section -->
+        <td><span class="bold">LAST POST - </span>
+          <?php
+            if ($messagesModel->lastPost($section['Id'])['id'] == 0) {
+          ?>
+          Pas de message
+          <?php
+            } else {
+          ?>
+            <a href="<?= $requestUrl ?>/user/profile?index=<?= intval($messagesModel->lastPost($section['Id'])['id']); ?>" style="color: <?= htmlentities($messagesModel->lastPost($section['Id'])['color']); ?>"><?= htmlspecialchars($messagesModel->lastPost($section['Id'])['name']); ?></a> <?= htmlentities($messagesModel->lastPost($section['Id'])['CreationDate']); ?>
+          <?php
+            }
+          ?>
+        </td>
+        <td><span class="bold">NB DE TOPICS -</span> <?= intval($topicModel->countTopics($section['Id'])); ?></td>
+      </tr>
+    </tfoot>
+  </table>
+  <?php
+    }
+  ?>
+  <!-- Fin de la boucle foreach -->
+</section>
+<!-- Début de la section #who-online destinée à l'affichage de stats liées aux membres pour montrer l'activité -->
+<section id="who-online">
+  <img src="<?= $wwwUrl ?>/images/frise.jpg" alt="" />
+  <h2>Qui est en ligne ?</h2>
+  <article class="dash-grid">
+    <!-- Affichage dynamique de la liste des membres actuellement en ligne -->
+    <article class="user-online">
+      <h3>Membres en ligne</h3>
+      <ul>
+        <!-- Début du foreach -->
+        <?php
+          foreach ($onlineUsers as $onlineUser) {
+        ?>
+        <li><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($onlineUser['Id']); ?>" style="color: <?= htmlentities($onlineUser['Color']); ?>"><?= htmlspecialchars($onlineUser['Name']); ?></a></li>
+        <?php
+          }
+        ?>
+        <!-- Fin du foreach -->
+      </ul>
+    </article>
+    <!-- Affichage des stats -->
+    <article class="stats">
+      <h3>Statistiques</h3>
+      <ul>
+        <li><span class="bold">Nombre de membres inscrits :</span> <?= intval($userModel->countUsers()[0]['NbUsers']); ?></li>
+        <li><span class="bold">Nombre de messages postés :</span> <?= intval($messagesModel->allMessages()[0]['NbMessages']); ?></li>
+        <li><span class="bold">Dernier membre inscrit : </span><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($lastUser['Id']); ?>" style="color: <?= htmlentities($lastUser['Color']); ?>"><?= htmlspecialchars($lastUser['Name']); ?></a></li>
+      </ul>
+    </article>
+    <!-- Description dynamique des groupes -->
+    <article class="faction-one">
+      <div class="flip-card">
+        <div class="flip-card-front">
+          <img src="<?= $wwwUrl ?>/images/factions/<?= htmlspecialchars($factions[0]['Photo']); ?>" alt="<?=  htmlspecialchars($factions[0]['Name']); ?>" />
+        </div>
+        <div class="flip-card-back">
+          <h3><span style="color: <?= htmlentities($factions[0]['Color']); ?>"><?=  htmlspecialchars($factions[0]['Name']); ?></span></h3>
+          <p><?= nl2br(htmlspecialchars($factions[0]['Description'])); ?></p>
+        </div>
+      </div>
+    </article>
+    <article class="faction-two">
+      <div class="flip-card">
+        <div class="flip-card-front">
+          <img src="<?= $wwwUrl ?>/images/factions/<?= htmlspecialchars($factions[1]['Photo']); ?>" alt="<?=  htmlspecialchars($factions[1]['Name']); ?>" />
+        </div>
+        <div class="flip-card-back">
+          <h3><span style="color: <?= htmlentities($factions[1]['Color']); ?>"><?=  htmlspecialchars($factions[1]['Name']); ?></span></h3>
+          <p><?= nl2br(htmlspecialchars($factions[1]['Description'])); ?></p>
+        </div>
+      </div>
+    </article>
+    <article class="faction-three">
+      <div class="flip-card">
+        <div class="flip-card-front">
+          <img src="<?= $wwwUrl ?>/images/factions/<?= htmlspecialchars($factions[2]['Photo']); ?>" alt="<?=  htmlspecialchars($factions[2]['Name']); ?>" />
+        </div>
+        <div class="flip-card-back">
+          <h3><span style="color: <?= htmlentities($factions[2]['Color']); ?>"><?=  htmlspecialchars($factions[2]['Name']); ?></span></h3>
+          <p><?= nl2br(htmlspecialchars($factions[2]['Description'])); ?></p>
+        </div>
+      </div>
+    </article>
+    <article class="faction-four">
+      <div class="flip-card">
+        <div class="flip-card-front">
+          <img src="<?= $wwwUrl ?>/images/factions/<?= htmlspecialchars($factions[3]['Photo']); ?>" alt="<?=  htmlspecialchars($factions[3]['Name']); ?>" />
+        </div>
+        <div class="flip-card-back">
+          <h3><span style="color: <?= htmlentities($factions[3]['Color']); ?>"><?=  htmlspecialchars($factions[3]['Name']); ?></span></h3>
+          <p><?= nl2br(htmlspecialchars($factions[3]['Description'])); ?></p>
+        </div>
+      </div>
+    </article>
+  </article>
+</section>

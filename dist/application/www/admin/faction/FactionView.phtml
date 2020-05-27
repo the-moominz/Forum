@@ -1,0 +1,46 @@
+<!-- Début de la section dédiée à l'administration du dashboard -->
+<section id="custom-profile">
+  <article class="profile-container">
+    <ul>
+      <li><input type="text" class="fake-bar" disabled /></li>
+      <li><a href="<?= $requestUrl ?>/admin/user">users</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin">admin</a></li>
+      <li>o</li>
+      <li><a href="<?= $requestUrl ?>/admin/section">sections</a></li>
+      <li class="hide"><i class="fas fa-minus"></i></li>
+      <li class="hide"><i class="fas fa-times"></i></li>
+    </ul>
+    <hr>
+    <h2>Gestion des factions</h2>
+    <a href="<?= $requestUrl ?>/admin/faction/add" class="new">>> Ajouter une faction</a>
+    <table class="listing">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Total membres</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Début du foreach pour afficher dynamiquement le contenu de la table faction -->
+        <?php
+          foreach($factions as $faction) {
+        ?>
+        <tr>
+          <td data-label="Nom"><span style="color: <?= htmlentities($faction['Color']); ?>"><?= htmlspecialchars($faction['Name']); ?></span></td>
+          <td data-label="Description"><?= substr(htmlspecialchars($faction['Description']), 0, 50); ?></td>
+          <td data-label="Membres"><?= intval($userModel->countUsersFaction($faction['Id'])); ?></td>
+          <td><a href="<?= $requestUrl ?>/admin/faction/edit?index=<?= intval($faction['Id']); ?>"><i class="fas fa-pen"></i></a></td>
+          <td><a href="<?= $requestUrl ?>/admin/faction/delete?index=<?= intval($faction['Id']); ?>"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+        <?php
+        }
+        ?>
+        <!-- Fin du foreach -->
+      </tbody>
+    </table>
+  </article>
+</section>

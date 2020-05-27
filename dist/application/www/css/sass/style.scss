@@ -1,0 +1,2668 @@
+$black: #2e2947;
+$white: #f3ebdf;
+$pink: #DC28E3;
+$blue: #5FF5E9;
+$primary: #2D2F62;
+$backgroundColor: #7776B8;
+$padding: 20px;
+$globalFont: 'Work Sans';
+$titleFont: 'Megrim'; /* On déclare les styles globaux */
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* 1 rem = 10px */
+  font-size: 62.5%;
+  /* On fixe le footer en bas de page */
+  height: 100%;
+}
+
+body {
+  /* On fixe le footer en pied de page */
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* presentation */
+  background-color: $backgroundColor;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-geometric.png");
+  font-family: $globalFont;
+  font-size: 1.4rem;
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1 {
+  /* structure */
+  padding-top: 50px;
+  /* presentation */
+  font-family: $titleFont;
+  font-size: 5rem;
+  color: $pink;
+  text-align: center;
+  /* effet néon */
+  text-shadow: 0 2px 10px $white;
+}
+
+a {
+  /* Retrait du sous-lignage de tous les liens du site */
+  text-decoration: none;
+  color: $white;
+}
+
+li {
+  /* Retrait de toutes les puces des listes à puce */
+  list-style-type: none;
+}
+
+img {
+  /* Propriétés pour rendre les images responsive */
+  max-width: 100%;
+  height: auto;
+}
+/* Hack pour éviter les problèmes liés au float/position */
+
+.clear {
+  clear: both;
+}
+
+.inline {
+  margin: 0 0 0 40px;
+}
+/* Mise en forme des boutons des formulaires */
+
+.button {
+  /* structure */
+  padding: 10px 15px;
+  /* presentation */
+  opacity: 0.8;
+  border-radius: 5px;
+  font-family: $titleFont;
+  font-size: 1.8rem;
+  color: $black;
+  cursor: pointer;
+}
+/*
+ * Bouton de validation d'un formulaire
+*/
+
+.submit {
+  background-color: $blue;
+  border: 1px solid $blue;
+  transition: all 0.5s;
+
+  &:hover {
+    color: $blue;
+    background-color: transparent;
+  }
+}
+/*
+ * Bouton pour annuler
+ */
+
+.cancel {
+  margin-left: 15px;
+  background-color: $pink;
+  border: 1px solid $pink;
+  transition: all 0.5s;
+
+  &:hover {
+    color: $pink;
+    background-color: transparent;
+  }
+}
+/*
+ * Mise en forme du bouton pour ajouter une nouvelle section/faction/topic etc
+ */
+.new {
+  /* structure */
+  padding: $padding - 10px;
+  margin-left: 100px;
+  /* presentation */
+  font-family: $titleFont;
+  font-size: 2rem;
+  text-transform: uppercase;
+  transition: all 0.5s;
+
+  &:hover {
+    color: $pink;
+  }
+}
+/*
+ * Tous les éléments span à mettre en gras
+ */
+.bold {
+  font-weight: bold;
+}
+.underline {
+  text-decoration: underline;
+}
+.pink {
+  color: $pink;
+  font-style: italic;
+}
+
+/***********************************************************/
+/******************* Page d'accueil ********************/
+/***********************************************************/
+
+header {
+  position: relative;
+
+  .navigation {
+    /* Mise en forme de la barre de navigation */
+    /* flexbox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* structure */
+    width: 100%;
+    padding: $padding - 10px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    /* presentation */
+    background-color: $primary;
+    font-family: $titleFont;
+    color: $pink;
+
+  }
+
+  #pseudo-rwd {
+    /* On masque l'affichage du pseudo pour mobile et tablette */
+    display: none;
+  }
+
+  .navigation ul {
+    /* Mise en forme des liens de la navigation */
+    /* flexbox */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 50px;
+  }
+
+  .navigation li {
+    /* presentation */
+    list-style-type: none;
+    font-size: 2rem;
+  }
+
+  .navigation a {
+    /* presentation */
+    color: $pink;
+    text-transform: uppercase;
+    transition: all 0.5s;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  .navigation li + li:before {
+    /* Ajout d'un séparateur entre les liens de la navigation */
+    content: '|';
+    margin: 0 20px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  #pseudo {
+    /* Mise en forme de l'encart destiné à afficher le pseudo du membre connecté */
+    /* structure */
+    margin-left: 15px;
+    /* presentation */
+    font-family: $titleFont;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: $white;
+  }
+  .nav-burger-btn {
+    /* On cache le menu burger en mode desktop */
+    display: none;
+  }
+}
+/****************************** MAIN BODY *********************/
+/* SECTION affichage bannière */
+
+#banner {
+  img {
+    /* Mise en forme de la bannière du header */
+    width: 100%;
+    height: 600px;
+  }
+}
+/*  SECTION UNE #dashboard */
+
+#dashboard {
+  /* structure */
+  margin-top: -3px;
+  margin-bottom: -40px;
+  /* on met la section en relative pour que la barre de recherche puisse être positionnée en absolute */
+  position: relative;
+  padding: $padding;
+  /* presentation */
+  background-color: $primary;
+  background: {
+    image: url("../images/computer.png");
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+
+  h2 {
+    /* Mise en forme des h2 du tableau de bord */
+    /* presentation */
+    font-family: $titleFont;
+    color: $pink;
+    text-align: center;
+  }
+  .paths {
+    /* Mise en forme du SVG des "réseaux informatiques" */
+    /* structure */
+    position: absolute;
+    top: 15px;
+    left: -10px;
+  }
+
+  .dash-nav {
+    /* Petit menu de navigation sur le tableau de bord pour naviguer sur les topics importants du forum */
+    /* structure */
+    margin: -10px auto 0;
+    /* presentation */
+    color: $white;
+    font-family: $titleFont;
+    text-align: center;
+    font-size: 2rem;
+
+    a {
+      color: $white;
+      text-transform: uppercase;
+      transition: all 0.3s;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    a + a:before {
+      /* Ajout d'un petit octogone rose pour séparer les liens */
+      content: '\002B21';
+      margin: 0 20px;
+      color: $pink;
+    }
+  }
+}
+
+.dash-grid {
+  /* Agencement des tuiles du tableau de bord avec CSS Grid */
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  margin-top: 40px;
+
+  h2 {
+    /* Mise en forme des titres des tuiles */
+    /* structure */
+    margin-bottom: 10px;
+    font-size: 3rem;
+  }
+
+  .grid-context,
+  .grid-lastpost,
+  .grid-news,
+  .grid-user,
+  .grid-weather {
+    /* Mise en forme globale de toutes les tuiles */
+    /* structure */
+    padding: 15px;
+    overflow: auto;
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    text-align: justify;
+    color: $white;
+  }
+
+  .grid-context {
+    /*
+     * Tuile du dashboard dédiée à l'affichage du synopsis
+     */
+    /* propriétés grid */
+    grid-column: 2;
+    grid-row: 1 / 3;
+
+    /* presentation */
+    p {
+      font-size: 1.6rem;
+      line-height: 2rem;
+      text-indent: 20px;
+    }
+  }
+
+  .grid-lastpost {
+    /*
+     * Tuile du dashboard dédiée à l'affichage des derniers posts
+     */
+    /* propriétés grid */
+    grid-column: 1;
+    grid-row: 1;
+
+    ul {
+      margin-left: -20px;
+      color: $white;
+
+      li {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .grid-weather {
+    /*
+     * Tuile du dashboard dédiée à l'affichage de la date
+     */
+    /* propriétés grid */
+    grid-column: 1;
+    grid-row: 2;
+
+    /* presentation */
+    text-align: center;
+
+    .fas {
+      color: $blue;
+      font-size: 3.5rem;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
+  .grid-user {
+    /*
+     * Tuile du dashboard dédiée à l'affichage du membre du mois
+     */
+    /* propriétés grid */
+    grid-column: 3;
+    grid-row: 1;
+
+    a {
+      font-family: $titleFont;
+      font-size: 2rem;
+    }
+
+    img {
+      /* Mise en forme de l'image du membre du mois */
+      /* structure */
+      width: 150px;
+      height: 200px;
+      /* presentation */
+      border-radius: 5px;
+    }
+    td {
+      padding-left: 20px;
+    }
+  }
+
+  .grid-news {
+    /*
+     * Tuile du dashboard dédiée à l'affichage des nouveautés
+     */
+    /* propriétés grid */
+    grid-column: 3;
+    grid-row: 2;
+
+    ul {
+      margin-left: -20px;
+    }
+  }
+}
+/* SECTION DEUX #section-list */
+
+#section-list {
+  /* Pour gérer le h2 en absolute */
+  position: relative;
+  margin-top: 40px;
+  text-align: center;
+
+  /* flexbox */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  img:first-child {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    /* structure */
+    position: absolute;
+    top: 25px;
+    left: 45%;
+    /* presentation */
+    color: $white;
+    font-family: $titleFont;
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  table {
+    /* Mise en forme globale des articles de la section */
+    /* flexbox */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    /* structure */
+    width: 40%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    margin-right: 15px;
+    margin-left: 15px;
+    /* presentation */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  table:nth-child(even) thead {
+    /* Toutes les lignes tr des thead pairs */
+    /* presentation */
+    background-color: #A600B3;
+    border: 1px solid #A600B3;
+  }
+
+  table:nth-child(odd) thead {
+    /* Toutes les lignes tr des thead impairs */
+    /* presentation */
+    background-color: $blue;
+    border: 1px solid $blue;
+  }
+
+  thead th {
+    padding: $padding - 15px;
+    /* presentation */
+    text-align: right;
+    font-size: 1.7rem;
+  }
+
+  thead a {
+    color: $black;
+    transition: all 0.5s;
+
+    &:hover {
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      color: $white;
+    }
+  }
+
+  tbody tr {
+    /* flexbox */
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+
+    td:last-child {
+      flex: 1;
+    }
+  }
+
+  tbody,
+  tfoot {
+    /* presentation */
+    background-color: $primary;
+    color: $white;
+    text-align: justify;
+  }
+
+  td {
+    padding: $padding - 5px;
+  }
+
+  tfoot tr {
+    /* flexbox */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    /* presentation */
+    border-top: 1px dotted $white;
+  }
+
+  tfoot a {
+    color: $white;
+  }
+}
+/* SECTION DEUX #who-online */
+
+#who-online {
+  position: relative;
+  padding-bottom: 5rem;
+  /*presentation */
+  background-color: $primary;
+
+  img:first-child {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    /* structure */
+    position: absolute;
+    top: 25px;
+    left: 40%;
+    /* presentation */
+    color: $white;
+    font-family: $titleFont;
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  h3 {
+    /* structure */
+    margin-bottom: 10px;
+    /* presentation */
+    font-family: $titleFont;
+    color: $white;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  ul {
+    /* retrait de la marge naturelle de l'ul */
+    margin-left: -20px;
+  }
+  /* Mise en forme du CSS Grid des statistiques */
+  .dash-grid {
+    margin-top: -20px;
+    padding: 20px;
+
+    img {
+      width: 450px;
+      height: 150px;
+      border-radius: 8px;
+    }
+  }
+
+  .faction-four,
+  .faction-one,
+  .faction-three,
+  .faction-two,
+  .stats,
+  .user-online {
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    border: 1px solid $primary;
+    text-align: justify;
+  }
+
+  .user-online {
+    /*
+      * Grille dédiée à l'affichage des membres en ligne
+      */
+    /* CSS Grid */
+    grid-column: 1;
+    grid-row: 1;
+    padding: 15px;
+
+    ul {
+      /* Flexbox */
+      /* On met en ligne les li */
+      display: flex;
+    }
+
+    li + li:before {
+      /* On met un séparateur entre les li */
+      content: '⬡';
+      color: $pink;
+      margin: 0 10px;
+    }
+  }
+
+  .stats {
+    /*
+       * Grille dédiée à l'affichage des stats globaux du site
+       */
+    grid-column: 1;
+    grid-row: 2;
+    padding: 15px;
+
+    color: $white;
+  }
+
+  .flip-card {
+    /* Mise en place des éléments pour la flip card */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: justify;
+    border-radius: 8px;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .faction-four:hover .flip-card,
+  .faction-one:hover .flip-card,
+  .faction-three:hover .flip-card,
+  .faction-two:hover .flip-card {
+    /* Rotation horizontale au passage de la souris */
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-back,
+  .flip-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+  }
+
+  .flip-card-front {
+    /* Style de la face avant */
+    background-color: #bbb;
+    color: $black;
+    border-radius: 8px;
+  }
+
+  .flip-card-back {
+    /* Style de la face arrière */
+    /* structure */
+    padding: 10px 0;
+    overflow: auto;
+
+    /* presentation */
+    background-color: $primary;
+    color: $white;
+    border-radius: 8px;
+    transform: rotateY(180deg);
+  }
+
+  .faction-one {
+    grid-column: 2;
+    grid-row: 1;
+    /* Mise en place de l'effet flip-card (w3schools) */
+    width: 450px;
+    height: 150px;
+    perspective: 1000px;
+  }
+
+  .faction-two {
+    grid-column: 2;
+    grid-row: 2;
+    /* Mise en place de l'effet flip-card (w3schools) */
+    width: 450px;
+    height: 150px;
+    perspective: 1000px;
+  }
+
+  .faction-three {
+    grid-column: 3;
+    grid-row: 1;
+    /* Mise en place de l'effet flip-card (w3schools) */
+    width: 450px;
+    height: 150px;
+    perspective: 1000px;
+  }
+
+  .faction-four {
+    grid-column: 3;
+    grid-row: 2;
+    /* Mise en place de l'effet flip-card (w3schools) */
+    width: 450px;
+    height: 150px;
+    perspective: 1000px;
+  }
+}
+/* Footer */
+
+footer {
+  /* flexbox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* structure */
+  padding: $padding - 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  /* presentation */
+  background-color: $backgroundColor;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-geometric.png");
+  text-align: center;
+  color: $white;
+
+  button {
+    border: none;
+    background-color: transparent;
+
+    .fas {
+      font-size: 3rem;
+      color: $blue;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+}
+/***********************************************************/
+/************* Page de connexion/inscription/oubli mot de passe ***************/
+/***********************************************************/
+
+#connection {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background: {
+    image: url("../images/bg.jpg");
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+
+  small {
+    /* Mise en forme des petites mentions en dessous des champs */
+    color: $white;
+    margin-left: 50px;
+  }
+  aside {
+    // Mise en forme de l'affichage des erreurs
+    /* presentation */
+    color: $white;
+    font-size: 1.8rem;
+  }
+
+  article {
+    /* structure */
+    width: 80%;
+    margin: 40px auto;
+    padding-bottom: 20px;
+    /* presentation */
+    background-color: rgba(45, 47, 98, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  h2 {
+    font-family: $titleFont;
+    color: $white;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  article ul:first-child {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .fas {
+    /* structure */
+    margin: 10px 20px 0;
+    /* presentation */
+    color: $white;
+    font-size: 3rem;
+  }
+
+  hr {
+    /* structure */
+    width: 90%;
+    height: 1px;
+    margin: 10px auto;
+    /* presentation */
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .login-form {
+    margin-top: 20px;
+    margin-left: 100px;
+    width: 80%;
+    text-align: center;
+
+    p {
+      color: $pink;
+    }
+  }
+
+  .login-form ul {
+    /* flexbox */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    li:last-child {
+      text-align: center;
+      margin: 10px 0 0 -30px;
+    }
+  }
+
+  .login-form li {
+    margin: 5px 0;
+    text-align: left;
+  }
+
+  label {
+    /* structure */
+    margin-left: 20px;
+    /* presentation */
+    color: $white;
+    font-size: 1.8rem;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="email"] {
+    /* structure */
+    width: 100%;
+    padding: 10px;
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0;
+  }
+  .forgot-password {
+    font-family: $titleFont;
+    font-size: 2rem;
+    transition: all 0.5s;
+
+    &:hover {
+      color: $pink;
+    }
+  }
+}
+/***********************************************************/
+/********** Page de la liste des membres publique **********/
+/***********************************************************/
+#list-users {
+  /* Pour gérer le h2 en absolute */
+  position: relative;
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: $padding + 20px;
+  /* presentation */
+  background-color: $primary;
+
+  .search-bar {
+    /* Mise en forme du formulaire de recherche d'un membre */
+    text-align: left;
+    width: 80%;
+    margin: auto;
+
+    input[type="text"] {
+      /* structure */
+      width: 60%;
+      margin-bottom: 40px;
+      padding: 10px;
+
+      /* presentation */
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      /* structure */
+      padding: 10px;
+
+      /* presentation */
+      background-color: transparent;
+      border: none;
+      color: $white;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+    button .fas {
+      font-size: 2.5rem;
+    }
+  }
+
+  img:first-child {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    /* structure */
+    position: absolute;
+    top: 25px;
+    left: 38%;
+    /* presentation */
+    color: $white;
+    font-family: $titleFont;
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  table {
+    /* structure */
+    width: 80%;
+    margin: auto;
+    /* presentation */
+    background-color: $backgroundColor;
+  }
+
+  table,
+  td,
+  th,
+  tr {
+    /* structure */
+    border-collapse: collapse;
+    border: 1px solid $black;
+    padding: $padding;
+  }
+
+  thead {
+    background-color: $backgroundColor;
+  }
+  tbody {
+    background-color: darken($backgroundColor, 20%);
+  }
+  th {
+    /* presentation */
+    font-family: $titleFont;
+    color: $white;
+    font-size: 2.5rem;
+  }
+  td {
+    font-size: 1.8rem;
+  }
+
+  .far,
+  .fas {
+    font-size: 3rem;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $pink;
+    }
+  }
+}
+/***********************************************************/
+/*********** Page de la gestion du profil membre ***********/
+/***********************************************************/
+
+#custom-profile {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background: {
+    image: url("../images/bg.jpg");
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+
+  .profile-container {
+    /* structure */
+    position: relative;
+    width: 80%;
+    margin: 40px auto;
+    /* presentation */
+    background-color: rgba(45, 47, 98, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+  }
+
+  h2 {
+    font-family: $titleFont;
+    color: $white;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  article ul:first-child {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
+
+    li {
+      font-size: 1.8rem;
+      color: $white;
+    }
+
+    input[type="text"] {
+      /* structure */
+      padding: $padding - 10px;
+      width: 500px;
+      /* presentation */
+      background-color: $white;
+      border: none;
+      border-radius: 5px;
+    }
+    .fas {
+      /* structure */
+      margin: 10px 20px 0;
+      /* presentation */
+      color: $white;
+      font-size: 3rem;
+    }
+  }
+
+  hr {
+    /* structure */
+    width: 90%;
+    height: 1px;
+    margin: 10px auto;
+    /* presentation */
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .profile-grid {
+    /* CSS GRID */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    /* structure */
+    padding: $padding;
+
+    label {
+      text-align: center;
+      color: $white;
+      font-family: $titleFont;
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      /* structure */
+      margin-top: -15px;
+      /* presentation */
+      text-align: right;
+      color: $white;
+      font-family: $titleFont;
+      font-size: 2rem;
+      text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .grid-avatar,
+  .grid-file,
+  .grid-life,
+  .grid-stats {
+    /* presentation */
+    background-color: $primary;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+  }
+
+  .grid-avatar {
+    /* Mise en forme de la vignette pour la personnalisation du perso */
+    grid-column: 1;
+    grid-row: 1/3;
+    /* presentation */
+    text-align: center;
+
+    img {
+      /* structure */
+      width: 200px;
+      height: 320px;
+      margin: 10px 0;
+    }
+
+    h4 {
+      color: $white;
+      font-family: $titleFont;
+      font-size: 1.8rem;
+    }
+
+    table {
+      margin: 0 auto;
+      color: $white;
+
+      td {
+        padding: 10px;
+      }
+
+      tr td:first-child {
+        font-family: $titleFont;
+        font-size: 1.8rem;
+      }
+
+      input[type="text"] {
+        /* structure */
+        padding: 5px;
+        width: 100%;
+        /* presentation */
+        background-color: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .grid-life {
+    /* Mise en forme de la vignette pour l'ajout d'éléments sur la vie du personnage */
+    grid-column: 2/4;
+    grid-row: 1;
+
+    table {
+      width: 90%;
+      margin: 20px auto 0;
+      /* presentation */
+      color: $white;
+
+      tr td:first-child {
+        padding: 15px;
+        text-align: left;
+        font-size: 1.8rem;
+        font-family: $titleFont;
+      }
+
+      .fa-venus {
+        color: $pink;
+      }
+
+      .fa-mars {
+        color: $blue;
+      }
+    }
+
+    textarea {
+      /* structure */
+      width: 100%;
+      padding: 10px;
+      resize: vertical;
+      /* presentation */
+      border-radius: 5px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .grid-stats {
+    /* Mise en forme de la vignette d'affichage des stats du joueur */
+    grid-column: 2/4;
+    grid-row: 2;
+
+    table {
+      /* structure */
+      width: 90%;
+      margin: 30px auto 0;
+      /* presentation */
+      color: $white;
+
+      tr td:first-child {
+        font-family: $titleFont;
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  .grid-file {
+    /* Mise en forme de la vignette pour l'hébergement d'image de profil */
+    /* structure */
+    grid-column: 2/4;
+    grid-row: 1;
+    /* presentation */
+    text-align: center;
+    color: $white;
+
+    form {
+      margin-top: 30px;
+    }
+
+    table {
+      margin: 0 auto;
+
+      td {
+        padding: 10px;
+      }
+    }
+  }
+
+  button {
+    /* Bouton pour enregistrer les modifications */
+    /* structure */
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    /* presentation */
+    background-color: $blue;
+    border: none;
+    border-radius: 8px;
+    color: $black;
+    font-size: 1.6rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) inset;
+    }
+  }
+
+  .form-status {
+    /* Mise en forme simple du formulaire réservé à l'admin pour changer le statut du membre */
+    margin-left: 50px;
+    margin-top: 30px;
+
+    input[type="submit"] {
+
+      /* presentation */
+      border: none;
+      background-color: transparent;
+      color: $pink;
+      text-transform: uppercase;
+      font-family: $titleFont;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+  }
+}
+/***********************************************************/
+/*********** Page de l'intérieur d'une section ***********/
+/***********************************************************/
+
+#topic-list {
+  /* structure */
+  width: 80%;
+  margin: 0 auto;
+  padding: $padding;
+  /* presentation */
+  background-color: $primary;
+  color: $white;
+
+  .new {
+    margin-left: 0;
+  }
+
+  table {
+    /* structure */
+    width: 100%;
+    margin: 20px auto 0;
+    font-size: 1.6rem;
+
+    thead {
+      /* presentation */
+      font-family: $titleFont;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid $white;
+    }
+
+    td,
+    th {
+      padding: $padding - 10px;
+      text-align: center;
+    }
+  }
+
+  table,
+  td,
+  th,
+  tr {
+    border-collapse: collapse;
+  }
+
+  .pagination {
+    /* flexbox */
+    display: flex;
+    justify-content: space-between;
+
+    /* structure */
+    margin-top: 10px;
+    font-size: 1.8rem;
+
+    a {
+      transition: all 0.3s;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+
+  }
+}
+/***********************************************************/
+/*********** Page de l'intérieur d'un topic ***********/
+/***********************************************************/
+
+#messages-list {
+  /* Affichage de la liste des messages (du + ancien au + récent) */
+  /* structure */
+  margin: 50px auto;
+  width: 80%;
+  /* presentation */
+  color: $white;
+
+  article {
+    /* structure */
+    margin-bottom: $padding;
+    /* presentation */
+    background-color: $primary;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  ul {
+    /* flex */
+    display: flex;
+    justify-content: space-between;
+    padding: $padding - 10px;
+    background: {
+      image: url("../images/frise.jpg");
+      repeat: no-repeat;
+      size: cover;
+      position: bottom;
+    }
+    .fas, .far {
+      font-size: 2.5rem;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+
+  .profile {
+    /* structure */
+    display: inline-block;
+    width: 25%;
+    padding-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+
+    img {
+      width: 200px;
+      height: 300px;
+      border: 1px dotted rgba(255, 255, 255, 0.5);
+    }
+
+    h3 {
+      /* presentation */
+      font-family: $titleFont;
+      color: $white;
+      font-size: 2rem;
+    }
+  }
+
+  .content {
+    /* structure */
+    display: inline-block;
+    width: 68%;
+    padding: $padding;
+    margin: 40px auto;
+    vertical-align: top;
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    color: $black;
+  }
+
+  hr {
+    color: $white;
+    opacity: 0.5;
+  }
+
+  p {
+    padding: $padding - 10px;
+  }
+}
+
+#create-message {
+  /* Formulaire de rédaction de réponse */
+  /* structure */
+  width: 77%;
+  margin: 0 auto;
+  padding: $padding;
+  /* presentation */
+  background-color: $primary;
+
+  form {
+    /* flex */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  label {
+    /* structure */
+    margin-bottom: 10px;
+    /* presentation */
+    color: $white;
+    font-size: 3rem;
+    font-family: $titleFont;
+    text-transform: uppercase;
+  }
+
+  textarea {
+    /* structure */
+    padding: $padding;
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+  }
+
+  .submit {
+    /* structure */
+    margin-top: 10px;
+  }
+
+  p {
+    /* Mise en forme du message d'erreur, qui invite à se connecter pour répondre au topic */
+    color: $white;
+    text-align: center;
+
+    a {
+      color: $pink;
+    }
+  }
+}
+
+/***********************************************************/
+/*********** Page de création d'un topic ***********/
+/***********************************************************/
+#new-topic {
+  margin-top: 40px;
+  img:first-child {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    /* structure */
+    position: absolute;
+    top: 70px;
+    left: 42%;
+    /* presentation */
+    color: $white;
+    font-family: $titleFont;
+    font-size: 3.5rem;
+    text-align: center;
+  }
+  fieldset {
+    /* structure */
+    width: 80%;
+    margin: 5px auto;
+
+    /* presentation */
+    background-color: $primary;
+    color: $white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+  }
+  legend {
+    /* presentation */
+    font-family: $titleFont;
+    font-size: 2.5rem;
+  }
+  label {
+    font-size: 1.8rem;
+  }
+  input[type="text"],
+  textarea {
+    /* structure */
+    width: 95%;
+    padding: $padding - 10px;
+
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    border: none;
+  }
+  textarea {
+    resize: vertical;
+  }
+  li {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  li:last-child {
+    text-align: center;
+  }
+}
+
+/***********************************************************/
+/*********** Page d'accueil du back office (admin) ***********/
+/***********************************************************/
+/*
+* CSS Grid pour le tableau de bord du panneau d'admin
+*/
+.admin-grid {
+  /* CSS GRID */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  /* structure */
+  padding: $padding;
+
+  h3 {
+    font-family: $titleFont;
+    color: $white;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  .news,
+  .context,
+  .event {
+    /* Mise en forme globale de toutes les tuiles */
+    /* structure */
+    padding: 15px;
+    overflow: auto;
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    text-align: justify;
+  }
+
+  .context {
+    grid-column: 1/3;
+    grid-row: 1/3;
+
+    h3 {
+      text-align: left;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      textarea {
+        /* structure */
+        resize: vertical;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: $padding - 10px;
+        /* presentation */
+        border: none;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .button {
+        width: 150px;
+      }
+    }
+  }
+
+  .event {
+    grid-column: 1/4;
+    form {
+      display: flex;
+      flex-direction: column;
+
+      textarea {
+        /* structure */
+        resize: vertical;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: $padding - 10px;
+        /* presentation */
+        border: none;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .button {
+        width: 150px;
+      }
+    }
+  }
+
+  .news {
+    grid-column: 3;
+    grid-row: 1/3;
+
+    overflow: auto;
+
+    table {
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: $padding - 10px;
+
+      td {
+        padding: 5px;
+        letter-spacing: 0.2rem;
+        text-align: left;
+      }
+      .fas {
+        font-size: 2.5rem;
+        transition: all 0.3s;
+
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+
+/*
+ * Mise en forme du tableau de listing
+ */
+.listing {
+  /* structure */
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  /* presentation */
+  background-color: $primary;
+  color: $white;
+  font-size: 1.6rem;
+
+  td,
+  th,
+  tr {
+    border: 1px solid $black;
+  }
+
+  td,
+  th {
+    padding: $padding - 10px;
+    text-align: center;
+  }
+
+  .fa-pen,
+  .fa-trash-alt {
+    /* Icone pour éditer ou supprimer une ligne */
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+/*
+ * Mise en forme du formulaire pour l'ajout/édition des sections/factions
+ */
+#custom-admin {
+  /* structure */
+  margin-top: 40px;
+  padding: 40px 20px;
+  /* presentation */
+  background: {
+    image: url("../images/bg.jpg");
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+
+  .add-container {
+    /* structure */
+    position: relative;
+    width: 80%;
+    margin: 40px auto;
+    /* presentation */
+    background-color: rgba(45, 47, 98, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+
+    h2 {
+      font-family: $titleFont;
+      color: $white;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    ul:not(.add-form):first-child {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 10px;
+
+      li {
+        font-size: 1.8rem;
+        color: $white;
+      }
+
+      input[type="text"] {
+        /* structure */
+        padding: $padding - 10px;
+        width: 500px;
+        /* presentation */
+        background-color: $white;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+
+    .fas {
+      /* structure */
+      margin: 10px 20px 0;
+      /* presentation */
+      color: $white;
+      font-size: 3rem;
+    }
+
+    hr {
+      /* structure */
+      width: 90%;
+      height: 1px;
+      margin: 10px auto;
+      /* presentation */
+      border: none;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  form {
+    .add-form {
+      /* presentation */
+      color: $white;
+      /* flex */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      /* structure */
+      width: 80%;
+      margin: 20px auto;
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      label {
+        font-size: 1.6rem;
+      }
+
+      input[type="text"],
+      textarea {
+        /* structure */
+        padding: 10px;
+        width: 100%;
+        margin: 15px 0;
+        /* presentation */
+        background-color: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 5px;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    }
+  }
+}
+/*
+ * Mise en forme de la boîte de messagerie privée
+ */
+ #mps {
+   /* structure */
+   margin-top: 40px;
+   padding: 40px 20px;
+   /* presentation */
+   background: {
+     image: url("../images/bg.jpg");
+     repeat: no-repeat;
+     size: cover;
+     position: center;
+   }
+
+   .mp-container {
+     /* structure */
+     position: relative;
+     width: 80%;
+     margin: 40px auto;
+     /* presentation */
+     background-color: rgba(45, 47, 98, 0.7);
+     border: 1px solid rgba(255, 255, 255, 0.5);
+     border-radius: 10px;
+
+     h2 {
+       font-family: $titleFont;
+       color: $white;
+       text-align: center;
+       font-size: 3rem;
+     }
+
+     ul:not(.add-form):first-child {
+       display: flex;
+       justify-content: space-around;
+       align-items: center;
+       padding-top: 10px;
+
+       li {
+         font-size: 1.8rem;
+         color: $white;
+       }
+
+       input[type="text"] {
+         /* structure */
+         padding: $padding - 10px;
+         width: 500px;
+         /* presentation */
+         background-color: $white;
+         border: none;
+         border-radius: 5px;
+       }
+     }
+
+     .fas {
+       /* structure */
+       margin: 10px 20px 0;
+       /* presentation */
+       color: $white;
+       font-size: 3rem;
+     }
+
+     hr {
+       /* structure */
+       width: 90%;
+       height: 1px;
+       margin: 10px auto;
+       /* presentation */
+       border: none;
+       background-color: rgba(255, 255, 255, 0.5);
+     }
+   }
+   table {
+     /* Tableau contenant la liste des messages privés */
+     /* structure */
+     width: 90%;
+     margin: 20px auto;
+
+     /* presentation */
+     color: $white;
+     border-collapse: collapse;
+
+     table, tr, td {
+       border: 1px solid $white;
+     }
+
+     thead {
+       /* presentation */
+       font-size: 1.8rem;
+       text-transform: uppercase;
+       background-color: $primary;
+     }
+
+     td {
+       padding: $padding - 10px;
+     }
+     tbody td:last-child {
+       background-color: $pink;
+       text-transform: uppercase;
+       text-align: center;
+       font-family: $titleFont;
+       font-size: 1.6rem;
+     }
+   }
+
+ }
+
+ /***********************************************************/
+ /******************** MEDIA QUERIES ************************/
+ /***********************************************************/
+@media screen and (max-width: 1024px) {
+  /* Responsive pour les tablettes */
+
+  .button {
+    font-size: 2rem;
+  }
+    /* Page d'accueil */
+    header {
+      /* presentation */
+      background-color: $primary;
+      padding: $padding;
+      display: flex;
+      justify-content: space-between;
+
+      #pseudo-rwd {
+        display: block;
+        font-size: 3rem;
+        color: $white;
+        font-family: $titleFont;
+      }
+
+      .navigation {
+        display: none;
+        position: inherit;
+
+        #pseudo {
+          display: none;
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+        }
+
+        li {
+          width: 100%;
+          padding: $padding - 10px;
+          margin-top: 10px;
+          font-size: 3rem;
+          border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+        }
+
+        li + li:before {
+          /* Ajout d'un séparateur entre les liens de la navigation */
+          content: '';
+          margin: 0;
+        }
+      }
+      .nav-burger-btn {
+        /* flexbox */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* structure */
+        position: relative;
+        width: 40px;
+        height: 40px;
+
+        /* presentation */
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+      }
+      .nav-burger {
+        /* structure */
+        width: 40px;
+        height: 5px;
+
+        /* presentation */
+        background: $white;
+        border-radius: 5px;
+        transition: all .5s ease-in-out;
+      }
+      .nav-burger::before,
+      .nav-burger::after {
+          /* structure */
+          content: '';
+          position: absolute;
+          width: 40px;
+          height: 5px;
+
+          /* presentation */
+          background: $white;
+          border-radius: 5px;
+          transition: all .5s ease-in-out;
+      }
+      .nav-burger::before {
+          transform: translateY(-14px);
+      }
+      .nav-burger::after {
+          transform: translateY(14px);
+      }
+      /* ANIMATION */
+      .nav-burger-btn.open .nav-burger {
+          transform: translateX(-50px);
+          background: transparent;
+
+      }
+      .nav-burger-btn.open .nav-burger::before {
+          transform: rotate(45deg) translate(35px, -35px);
+      }
+      .nav-burger-btn.open .nav-burger::after {
+          transform: rotate(-45deg) translate(35px, 35px);
+      }
+  }
+
+    #banner {
+      img {
+        /* Mise en forme de la bannière du header */
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    #dashboard {
+      /* DASHBOARD */
+
+      .search-form {
+        display: none;
+      }
+
+      .paths {
+        /* On fait disparaître le svg */
+        display: none;
+      }
+      .dash-grid {
+        /* Agencement des tuiles du tableau de bord avec CSS Grid */
+        /* Grid */
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px;
+        grid-auto-rows: minmax(100px, auto);
+        margin-top: 40px;
+
+        h2 {
+          /* Mise en forme des titres des tuiles */
+          /* structure */
+          margin-bottom: 10px;
+        }
+
+        .grid-context,
+        .grid-lastpost,
+        .grid-news,
+        .grid-user,
+        .grid-weather {
+          /* Mise en forme globale de toutes les tuiles */
+          /* structure */
+          padding: 15px;
+          overflow: auto;
+          /* presentation */
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 8px;
+          text-align: justify;
+        }
+
+        .grid-context {
+          /*
+           * Tuile du dashboard dédiée à l'affichage du synopsis
+           */
+          /* propriétés grid */
+          grid-column: 1/3;
+          grid-row: 1;
+        }
+
+        .grid-lastpost {
+          /*
+           * Tuile du dashboard dédiée à l'affichage des derniers posts
+           */
+          /* propriétés grid */
+          grid-column: 1/2;
+          grid-row: 2;
+
+          ul {
+            margin-left: -20px;
+            color: $white;
+
+            li {
+              margin-bottom: 5px;
+            }
+          }
+        }
+
+        .grid-weather {
+          /*
+           * Tuile du dashboard dédiée à l'affichage de la météo
+           */
+          /* propriétés grid */
+          grid-column: 1;
+          grid-row: 3;
+
+          ul {
+            display: flex;
+            margin-left: -40px;
+          }
+
+          li {
+            margin: 0 10px;
+          }
+        }
+
+        .grid-user {
+          /*
+           * Tuile du dashboard dédiée à l'affichage du membre du mois
+           */
+          /* propriétés grid */
+          grid-column: 2;
+          grid-row: 3;
+
+          img {
+            /* Mise en forme de l'image du membre du mois */
+            /* structure */
+            width: 100px;
+            height: 100px;
+            /* presentation */
+            border-radius: 5px;
+          }
+        }
+
+        .grid-news {
+          /*
+           * Tuile du dashboard dédiée à l'affichage des nouveautés
+           */
+          /* propriétés grid */
+          grid-column: 2;
+          grid-row: 2;
+
+          ul {
+            margin-left: -20px;
+          }
+        }
+      }
+    }
+    #section-list {
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: nowrap;
+
+      h2 {
+        left: 35%;
+      }
+      table {
+        width: 80%;
+      }
+    }
+    #who-online {
+      h2 {
+        left: 35%;
+      }
+      /* Mise en forme du CSS Grid des statistiques */
+      .dash-grid {
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: -20px;
+        padding: 20px;
+
+        img {
+          width: 450px;
+          height: 150px;
+          border-radius: 8px;
+        }
+      }
+
+      .faction-four,
+      .faction-one,
+      .faction-three,
+      .faction-two {
+        display: none;
+      }
+
+      .user-online {
+        /*
+          * Grille dédiée à l'affichage des membres en ligne
+          */
+        /* CSS Grid */
+        grid-column: 1;
+        grid-row: 1;
+        padding: 15px;
+
+        ul {
+          /* Flexbox */
+          /* On met en ligne les li */
+          display: flex;
+        }
+
+        li + li:before {
+          /* On met un séparateur entre les li */
+          content: '⬡';
+          color: $pink;
+          margin: 0 10px;
+        }
+      }
+
+      .stats {
+        /*
+           * Grille dédiée à l'affichage des stats globaux du site
+           */
+        grid-column: 2;
+        grid-row: 1;
+        padding: 15px;
+
+        color: $white;
+      }
+    }
+
+    #new-topic {
+      fieldset {
+        width: 90%;
+      }
+      h2 {
+        top: 10%;
+        left: 35%;
+      }
+    }
+
+    #messages-list {
+      width: 90%;
+
+      .profile {
+        margin-left: 20px;
+      }
+      .content {
+        margin-left: 5px;
+      }
+    }
+    #create-message {
+      width: 90%;
+    }
+    #list-users {
+      table {
+        width: 90%;
+      }
+    }
+    #mps {
+      .mp-container {
+        width: 100%;
+
+        ul:not(.add-form):first-child {
+          input[type="text"] {
+            /* structure */
+            padding: $padding - 10px;
+            width: 300px;
+            /* presentation */
+            background-color: $white;
+            border: none;
+            border-radius: 5px;
+          }
+        }
+
+        h2 {
+          font-size: 2.5rem;
+        }
+      }
+      table thead {
+        font-size: 1.6rem;
+      }
+    }
+    #custom-profile {
+      .profile-container {
+        width: 100%;
+      }
+      article ul:first-child input[type=text] {
+        width: 300px;
+      }
+      .grid-avatar table tr td:first-child,
+      .grid-life table tr td:first-child,
+      .grid-stats table tr td:first-child {
+        font-size: 1.6rem;
+      }
+    }
+    #connection {
+      article {
+        width: 100%;
+      }
+      .login-form {
+        width: 80%;
+        margin-left: 40px;
+      }
+    }
+    #custom-admin {
+      .add-container ul:not(.add-form):first-child input[type=text] {
+        width: 100px;
+      }
+      form .add-form {
+        width: 90%;
+      }
+    }
+}
+@media screen and (max-width: 767px) {
+    /* Responsive design pour les mobiles */
+    header {
+
+      #pseudo-rwd {
+        /* On réduit la taille du pseudo sous mobile */
+        font-size: 2.5rem;
+      }
+      a {
+        /* On réduit la taille des liens de la navigation */
+        font-size: 2.5rem;
+      }
+    }
+
+    #banner {
+      /* On cache la bannière en mode mobile */
+      display: none;
+    }
+
+    #dashboard {
+
+      .dash-nav {
+        margin-top: 10px;
+      }
+      .dash-nav a {
+        /* On réduit la taille des liens du tableau de bord */
+        font-size: 1.8rem;
+      }
+
+      .dash-nav a + a:before {
+        /* Ajout d'un petit octogone rose pour séparer les liens */
+        content: "⬡";
+        margin: 0 10px;
+      }
+      .dash-grid {
+        /* Agencement des tuiles du tableau de bord avec CSS Grid */
+        /* Grid */
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px;
+        grid-auto-rows: minmax(100px, auto);
+        margin-top: 40px;
+
+        h2 {
+          /* Mise en forme des titres des tuiles */
+          /* structure */
+          margin-bottom: 10px;
+        }
+
+        .grid-news,
+        .grid-weather {
+          /* Mise en forme globale de toutes les tuiles */
+          /* structure */
+          padding: 15px;
+          overflow: auto;
+          /* presentation */
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 8px;
+          text-align: justify;
+        }
+
+        .grid-context, .grid-lastpost, .grid-user {
+          display: none;
+        }
+
+        .grid-weather {
+          /*
+           * Tuile du dashboard dédiée à l'affichage de la météo
+           */
+          /* propriétés grid */
+          grid-column: 1;
+          grid-row: 1;
+
+          ul {
+            display: flex;
+            margin-left: -40px;
+          }
+
+          li {
+            margin: 0 10px;
+          }
+        }
+
+        .grid-news {
+          /*
+           * Tuile du dashboard dédiée à l'affichage des nouveautés
+           */
+          /* propriétés grid */
+          grid-column: 1;
+          grid-row: 2;
+
+          ul {
+            margin-left: -20px;
+          }
+        }
+      }
+    }
+    #section-list {
+      h2 {
+        font-size: 2.5rem;
+      }
+      thead {
+        text-transform: uppercase;
+      }
+      tbody tr {
+        display: flex;
+        flex-direction: column;
+
+        img {
+          display: none;
+        }
+      }
+      tfoot tr {
+          display: flex;
+          flex-direction: column;
+
+          td:last-child {
+            display: none;
+          }
+      }
+    }
+    #who-online {
+      h2 {
+        top: 10%;
+        left: 25%;
+        font-size: 2.5rem;
+      }
+      /* Mise en forme du CSS Grid des statistiques */
+      .dash-grid {
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: -20px;
+        padding: 20px;
+
+        img {
+          width: 450px;
+          height: 150px;
+          border-radius: 8px;
+        }
+      }
+
+      .faction-four,
+      .faction-one,
+      .faction-three,
+      .faction-two {
+        display: none;
+      }
+
+      .user-online {
+        /*
+          * Grille dédiée à l'affichage des membres en ligne
+          */
+        /* CSS Grid */
+        grid-column: 1;
+        grid-row: 1;
+        padding: 15px;
+
+        ul {
+          /* Flexbox */
+          /* On met en ligne les li */
+          display: flex;
+        }
+
+        li + li:before {
+          /* On met un séparateur entre les li */
+          content: '⬡';
+          color: $pink;
+          margin: 0 10px;
+        }
+      }
+
+      .stats {
+        /*
+           * Grille dédiée à l'affichage des stats globaux du site
+           */
+        grid-column: 1;
+        grid-row: 2;
+        padding: 15px;
+
+        color: $white;
+      }
+    }
+    footer {
+      position: inherit;
+    }
+    #topic-list {
+        thead tr th:last-child, tbody tr td:last-child {
+          display: none;
+        }
+        .pagination {
+          flex-direction: column;
+          text-align: center;
+
+          p {
+            font-size: 2.5rem;
+          }
+        }
+      }
+    #messages-list {
+      .profile {
+        display: block;
+        margin: 0 auto 10px;
+        width: 90%;
+      }
+      .content {
+        display: block;
+        width: 90%;
+        margin: 0 auto 10px;
+      }
+    }
+    #create-message {
+      label {
+        font-size: 2rem;
+      }
+    }
+    #new-topic {
+        h2 {
+          /* On ajuste la taille du titre au mobile */
+          font-size: 2.5rem;
+          top: 15%;
+          left: 25%;
+        }
+        fieldset {
+          width: 90%;
+        }
+        legend {
+          /* On cache le titre du formulaire, qui prend trop de place et n'est pas nécessaire sur mobile */
+          display: none;
+        }
+        ul {
+          margin-left: -20px;
+        }
+        li {
+          font-size: 1.6rem;
+        }
+    }
+    #list-users {
+      h2 {
+        /* On ajuste la taille du titre au mobile */
+        font-size: 2.5rem;
+        top: 5.5%;
+        left: 20%;
+      }
+      table {
+        th {
+          font-size: 1.6rem;
+          padding: 5px;
+        }
+        td {
+          font-size: 1.4rem;
+          padding: 5px;
+        }
+        .date {
+          /* On masque la colonne date d'inscription, qui est moins essentielle sur mobile */
+          display: none;
+        }
+      }
+    }
+    #mps {
+      margin-bottom: 0;
+
+      .mp-container {
+        h2 {
+          font-size: 2rem;
+          left: 25%;
+        }
+        ul:not(.add-form):first-child {
+          li {
+            font-size: 1.8rem;
+            color: $white;
+          }
+          input[type="text"] {
+            /* on le masque pour les mobiles */
+            display: none;
+          }
+        }
+        .fas {
+          font-size: 2.5rem;
+          margin-left: 5px;
+        }
+        .hide {
+          /* Toutes les colonnes avec cette classe seront cachées sur mobile pour plus de lisibilité */
+          display: none;
+        }
+      }
+    }
+    #custom-profile {
+      article ul:first-child input[type=text] {
+        display: none;
+      }
+      article ul:first-child .fas {
+        font-size: 2.5rem;
+      }
+      .profile-grid {
+        display: flex;
+        flex-direction: column;
+
+        .grid-avatar,
+        .grid-life,
+        .grid-stats {
+          padding-bottom: 10px;
+        }
+      }
+    }
+    #connection {
+      h2 {
+        font-size: 2rem;
+      }
+      .login-form {
+        margin: auto;
+        width: 90%;
+
+        ul {
+          margin-left: -30px;
+
+          li:last-child {
+            width: 100%;
+            text-align: center;
+            margin: 20px auto 0;
+          }
+        }
+        }
+      }
+      .new {
+        margin-left: 0;
+      }
+      .profile-container {
+        .hide {
+          display: none;
+        }
+      }
+      .admin-grid {
+        display: flex;
+        flex-direction: column;
+      }
+      .listing {
+        width: 100%;
+        thead {
+          display: none;
+        }
+        tr {
+          display: block;
+          margin-bottom: 40px;
+        }
+        td {
+          display: block;
+          text-align: right;
+        }
+        td:before {
+          content: attr(data-label);
+          float: left;
+          font-weight: bold;
+        }
+        .fa-pen, .fa-trash-alt {
+          font-size: 3rem;
+        }
+      }
+      #custom-admin {
+        .hide {
+          display: none;
+        }
+        .add-container {
+          width: 100%;
+
+          h2 {
+            font-size: 2rem;
+          }
+        }
+        form .add-form {
+          width: 100%;
+          margin-left: -20px;
+        }
+      }
+    }

@@ -1,0 +1,64 @@
+<!-- Code HTML dédié à l'affichage de l'intérieur des sections -->
+<!-- Début de la section d'affichage des sous-sections  -->
+<section id="section-list">
+  <img src="<?= $wwwUrl ?>/images/frise.jpg" alt="" />
+  <h2><?= htmlspecialchars($section['Name']); ?></h2>
+</section>
+<!-- Début de la section d'affichage des topics  -->
+<section id="topic-list">
+  <?php
+    if ($userSession->isAuthenticated()) {
+  ?>
+  <a href="<?= $requestUrl ?>/topic/new?index=<?= intval($section['Id']); ?>" class="new">>> Nouveau topic</a>
+  <?php
+    }
+   ?>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nom du topic</th>
+        <th>Auteur</th>
+        <th>Réponses</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Début du foreach -->
+      <?php
+      foreach ($topics as $topic) {
+      ?>
+      <tr>
+        <td>
+          <?php
+          if (!$userSession->isAuthenticated() || $topic['Unread'] == NULL) {
+            // Si l'utilisateur n'est pas connecté
+          ?>
+          <a href="<?= $requestUrl ?>/topic?index=<?= intval($topic['Id']); ?>"><img src="<?= $wwwUrl ?>/images/buttons/normal-circle.png" alt="Simple message" /></a>
+          <?php
+        } elseif ($topic['Unread'] == 0) {
+          // Si l'utilisateur est connecté et qu'Unread == 0 (lu)
+          ?>
+          <a href="<?= $requestUrl ?>/topic?index=<?= intval($topic['Id']); ?>"><img src="<?= $wwwUrl ?>/images/buttons/old-circle.png" alt="Topic lu" /></a>
+          <?php
+        } elseif ($topic['Unread'] == 1) {
+          // Sinon (Non lu)
+          ?>
+          <a href="<?= $requestUrl ?>/topic?index=<?= intval($topic['Id']); ?>"><img src="<?= $wwwUrl ?>/images/buttons/new-circle.png" alt="Topic non lu" /></a>
+          <?php
+        }
+          ?>
+        </td>
+        <td><a href="<?= $requestUrl ?>/topic?index=<?= intval($topic['Id']); ?>"><?= htmlspecialchars($topic['Title']); ?></a></td>
+        <td><a href="<?= $requestUrl ?>/user/profile?index=<?= intval($topic['user_Id']); ?>" style="color: <?= htmlentities($topic['Color']); ?>"><?= htmlspecialchars($topic['Name']); ?></a></td>
+        <td><?= intval($messagesModel->countMessages($topic['Id'])); ?></td>
+      </tr>
+      <?php
+      }
+      ?>
+      <!-- Fin du foreach -->
+    </tbody>
+  </table>
+  <article class="pagination">
+    <a href="<?= $requestUrl ?>">>> Retour</a>
+  </article>
+</section>
