@@ -25,5 +25,4 @@ Forum RPG (Role Play Game), où l'utilisateur incarne un personnage, et particip
 * HTML/CSS
 * Javascript
 * PHP/MySQL
-* Sass/Gulp
-* Vue.js
+* Sass
